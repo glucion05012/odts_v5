@@ -41,7 +41,7 @@
     <a href="<?php echo base_url(); ?>home" class="brand-link">
       <img src="<?php echo base_url()."assets/"; ?>denr-logo.png" alt="Logo" class="brand-image "
            style="opacity: .8">
-      <span class="brand-text font-weight-light" style="font-size:14px">Client Registration System</span>
+      <span class="brand-text font-weight-light" style="font-size:14px">ODTS  v5</span>
     </a>
 
     <!-- Sidebar -->
@@ -63,13 +63,6 @@
                 </a>
                 
                 <ul class="nav nav-treeview">
-
-                  <li class="nav-item">
-                      <a href="<?php echo $_SESSION['base_url_tcp']; ?>" class="nav-link">
-                      <i class="nav-icon fa fa-scissors"></i>
-                        <p>Tree Cutting Permit</p>
-                      </a>
-                  </li>
 
                 </ul>
             </li>
