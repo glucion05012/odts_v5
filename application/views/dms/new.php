@@ -141,7 +141,7 @@
             </div>
 
             <div class="col-sm-12" style="text-align:right; padding-top: 2rem; padding-right: 8rem;">
-                <button type="submit" name="process_transaction" class="btn btn-success btn-icon-split" value="process_transaction"><span class="text"> <i class="fas fa-share-square"></i> Process</span></button>
+                <button type="submit" name="process_transaction" id="process_transaction" class="btn btn-success btn-icon-split" value="process_transaction"><span class="text"> <i class="fas fa-share-square"></i> Process</span></button>
             </div>
         </div>
     </div>
@@ -233,5 +233,22 @@
                     </option>`);
                 }
         <?php endforeach; ?>
+    });
+
+    
+    $('#process_transaction').click(function() {
+        Swal.fire({
+            title: "Confirm New Transaction.",
+            text: "Are you sure you want to process New Transaction?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Proceed"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            //return true
+        }
+        });
     });
 </script>

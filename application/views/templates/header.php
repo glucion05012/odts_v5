@@ -53,6 +53,7 @@
 <!-- JQUERY ALERT -->
 <script src="<?php echo base_url()."assets/"; ?>js/jAlert.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?php echo base_url()."assets/"; ?>css/jAlert.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -67,6 +68,11 @@ table td {
 }
 label {
     color: gray;
+}
+
+body.swal2-shown > [aria-hidden='true'] {
+  transition: 0.1s filter;
+  filter: blur(3px);
 }
 </style>
 <body>
