@@ -34,6 +34,11 @@ class Config_model extends CI_Model{
         $query = $this->dniis->query("SELECT * FROM core_users");
         return $query->result_array();
     }
+
+    public function action_list(){
+        $query = $this->db->query("SELECT * FROM conf_action");
+        return $query->result_array();
+    }
 }
 
 ?>

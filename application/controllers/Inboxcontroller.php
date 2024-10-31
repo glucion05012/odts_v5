@@ -15,6 +15,7 @@
         public function new(){
             $data['category_list'] =  $this->Config_model->category_list();
             $data['sub_category_list'] =  $this->Config_model->sub_category_list();
+            $data['action_list'] =  $this->Config_model->action_list();
             
             $data['office_list'] =  $this->Config_model->office_list();
             $data['division_list'] =  $this->Config_model->division_list();

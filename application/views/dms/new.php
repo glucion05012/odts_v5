@@ -36,8 +36,6 @@
                         </label>
                         <select name="division" id="division" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
-                            <option value="division1">division1</option>
-                            <option value="division2">division2</option>
                         </select>
                     </div>  
 
@@ -69,8 +67,6 @@
                         </label>
                         <select name="section" id="section" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
-                            <option value="section1">section1</option>
-                            <option value="section2">section2</option>
                         </select>
                     </div>  
 
@@ -79,7 +75,7 @@
                         <label for="subject">
                             Subject Name
                         </label>
-                        <textarea name="subject" id="subject" rows="6" cols="50" class="form-control"></textarea>
+                        <textarea name="subject" id="subject" rows="6" cols="50" class="form-control" required></textarea>
                     </div>  
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
                     <div class="col-sm-3" style='padding-top: 1rem'>
@@ -95,17 +91,16 @@
                         </label>
                         <select name="personnel" id="personnel" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
-                            <option value="personnel1">personnel1</option>
-                            <option value="personnel2">personnel2</option>
                         </select>
 
                         <label for="action" style="padding-top:1rem">
                             Action:
                         </label>
                         <select name="action" id="action" class="form-control" required>
-                        <option value="" selected disabled>-- SELECT --</option>
-                            <option value="action1">action1</option>
-                            <option value="action2">action2</option>
+                            <option value="" selected disabled>-- SELECT --</option>
+                            <?php foreach($action_list as $al) : ?>
+                                <option value="<?= $al['id']; ?>" ><?= $al['action']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div> 
 
@@ -133,7 +128,7 @@
                         <label for="remarks">
                             Remarks:
                         </label>
-                        <textarea name="remarks" id="remarks" rows="6" cols="50" class="form-control" readonly></textarea>
+                        <textarea name="remarks" id="remarks" rows="6" cols="50" class="form-control" required></textarea>
 
                         <label for="attachment" style='padding-top: 1rem'>
                             Attachment:
