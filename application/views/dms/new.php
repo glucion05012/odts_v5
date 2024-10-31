@@ -19,9 +19,10 @@
                             Category
                         </label>
                         <select name="category" id="category" class="form-control" required>
-                        <option value="" selected disabled>-- SELECT --</option>
-                            <option value="cat1">cat1</option>
-                            <option value="cat2">cat2</option>
+                            <option value="" selected disabled>-- SELECT --</option>
+                            <?php foreach($category_list as $cl) : ?>
+                                <option value="<?= $cl['id']; ?>" ><?= $cl['main_category']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>  
                     <div class="col-sm-1"></div>
@@ -47,8 +48,6 @@
                         </label>
                         <select name="sub_category" id="sub_category" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
-                            <option value="subcat1">subcat1</option>
-                            <option value="subcat2">subcat2</option>
                         </select>
                     </div>  
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
@@ -57,9 +56,10 @@
                             Select Office:
                         </label>
                         <select name="office" id="office" class="form-control" required>
-                        <option value="" selected disabled>-- SELECT --</option>
-                            <option value="office1">office1</option>
-                            <option value="office2">office2</option>
+                            <option value="" selected disabled>-- SELECT --</option>
+                            <?php foreach($office_list as $ol) : ?>
+                                <option value="<?= $ol['office_id']; ?>" ><?= $ol['office_name']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>  
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
@@ -151,3 +151,62 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#category').change(function(){
+        var category_id = $('#category').val();
+        $("#sub_category").empty();
+
+        $('#sub_category').append(`<option value="" selected disabled>-- SELECT --</option>`);
+        <?php foreach($sub_category_list as $scl) : ?>
+            if(<?php echo $scl['cat_id']; ?> == category_id){
+                $('#sub_category').append(`<option value="<?php echo $scl['id']; ?>">
+                            <?php echo $scl['sub_category']; ?>
+                            </option>`);
+            }
+        <?php endforeach; ?>
+    });
+
+    $('#office').change(function(){
+        var office_id = $('#office').val();
+        var office_address = '';
+        var longitude = '';
+        var latitude = '';
+
+        $("#division").empty();
+        $("#section").empty();
+        $("#personnel").empty();
+
+        $('#division').append(`<option value="" selected disabled>-- SELECT --</option>`);
+        $('#section').append(`<option value="" selected disabled>-- SELECT --</option>`);
+        $('#personnel').append(`<option value="" selected disabled>-- SELECT --</option>`);
+
+        
+        <?php foreach($office_list as $ol) : ?>
+            if(<?php echo $ol['office_id']; ?> == office_id){
+                office_address = '<?php echo $ol['office_address']; ?>';
+                longitude = '<?php echo $ol['long']; ?>';
+                latitude = '<?php echo $ol['lat']; ?>';
+            }
+        <?php endforeach; ?>
+        
+        $('#office_address').val(office_address)
+        $('#longitude').val(longitude)
+        $('#latitude').val(latitude)
+
+        
+        <?php foreach($division_list as $dl) : ?>
+            if(office_id == 3 || office_id == 5 || office_id == 6 || office_id == 7){
+                if('<?php echo $dl['division_id']; ?>' == 11){
+                    $('#division').append(`<option value="<?php echo $dl['division_id']; ?>">
+                        <?php echo $dl['division']; ?>
+                        </option>`);
+                }
+            }else if('<?php echo $dl['office_id']; ?>' == office_id){
+                $('#division').append(`<option value="<?php echo $dl['division_id']; ?>">
+                    <?php echo $dl['division']; ?>
+                    </option>`);
+                }
+        <?php endforeach; ?>
+    });
+</script>

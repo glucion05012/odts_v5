@@ -13,9 +13,17 @@
         }
 
         public function new(){
+            $data['category_list'] =  $this->Config_model->category_list();
+            $data['sub_category_list'] =  $this->Config_model->sub_category_list();
+            
+            $data['office_list'] =  $this->Config_model->office_list();
+            $data['division_list'] =  $this->Config_model->division_list();
+            $data['section_list'] =  $this->Config_model->section_list();
+            $data['user_list'] =  $this->Config_model->user_list();
+
             $this->load->view('templates/header');
             $this->load->view('templates/navbar');
-            $this->load->view('dms/new');
+            $this->load->view('dms/new', $data);
             $this->load->view('templates/footer');
         }
 
