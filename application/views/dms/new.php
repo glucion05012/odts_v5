@@ -32,7 +32,7 @@
                     <div class="col-sm-1"></div>
                     <div class="col-sm-3">
                         <label for="division">
-                            Division:
+                            Division: <span style="color:red">*</span>
                         </label>
                         <select name="division" id="division" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
@@ -51,7 +51,7 @@
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
                     <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="office">
-                            Select Office:
+                            Select Office: <span style="color:red">*</span>
                         </label>
                         <select name="office" id="office" class="form-control" required>
                             <option value="" selected disabled>-- SELECT --</option>
@@ -63,7 +63,7 @@
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
                     <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="section">
-                            Section:
+                            Section: <span style="color:red">*</span>
                         </label>
                         <select name="section" id="section" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
@@ -73,7 +73,7 @@
                     <!-- 3rd row -->
                     <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="subject">
-                            Subject Name
+                            Subject Name: <span style="color:red">*</span>
                         </label>
                         <textarea name="subject" id="subject" rows="6" cols="50" class="form-control" required></textarea>
                     </div>  
@@ -87,14 +87,14 @@
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
                     <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="personnel">
-                            Personnel:
+                            Personnel: <span style="color:red">*</span>
                         </label>
                         <select name="personnel" id="personnel" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
                         </select>
 
                         <label for="action" style="padding-top:1rem">
-                            Action:
+                            Action: <span style="color:red">*</span>
                         </label>
                         <select name="action" id="action" class="form-control" required>
                             <option value="" selected disabled>-- SELECT --</option>
@@ -107,7 +107,7 @@
                     <!-- 4th row -->
                     <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="document_type">
-                            Tag Document Type As:
+                            Tag Document Type As: <span style="color:red">*</span>
                         </label>
                         <select name="document_type" id="document_type" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
@@ -126,7 +126,7 @@
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
                     <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="remarks">
-                            Remarks:
+                            Remarks: <span style="color:red">*</span>
                         </label>
                         <textarea name="remarks" id="remarks" rows="6" cols="50" class="form-control" required></textarea>
 
@@ -264,7 +264,61 @@
                     $("#sub_category").css({'border-color': 'black', 'border-width': 'thin'})
                 }
 
+                if($("#subject").val() == ""){
+                    $("#subject").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#subject").css({'border-color': 'black', 'border-width': 'thin'})
+                }
 
+                if($("#document_type").find(":selected").val() == ""){
+                    $("#document_type").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#document_type").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+                if($("#office").find(":selected").val() == ""){
+                    $("#office").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#office").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+                if($("#division").find(":selected").val() == ""){
+                    $("#division").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#division").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+                if($("#section").find(":selected").val() == ""){
+                    $("#section").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#section").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+                if($("#personnel").find(":selected").val() == ""){
+                    $("#personnel").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#personnel").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+                if($("#action").find(":selected").val() == ""){
+                    $("#action").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#action").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+                if($("#remarks").val() == ""){
+                    $("#remarks").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#remarks").css({'border-color': 'black', 'border-width': 'thin'})
+                }
 
 
                 if(completefields == 1){
