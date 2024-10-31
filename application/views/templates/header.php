@@ -54,9 +54,19 @@
 <script src="<?php echo base_url()."assets/"; ?>js/jAlert.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?php echo base_url()."assets/"; ?>css/jAlert.css" />
 
-
-<!-- ADDRESS SELECTOR -->
-<script src="<?php echo base_url()."assets/"; ?>js/ph-address-selector.js"></script>
-
 </head>
+
+<style>
+table {
+  table-layout:fixed;
+}
+table td {
+  word-wrap: break-word;
+  max-width: 210px;
+  font-weight: normal;
+}
+label {
+    color: gray;
+}
+</style>
 <body>

@@ -1,7 +1,34 @@
 
-
-</div>
-<!-- ./wrapper -->
+<script>
+  $( document ).ready(function() {
+        // Setup - add a text input to each footer cell
+        $('#myTable thead tr').clone(true).appendTo( '#myTable thead' );
+        $('#myTable thead tr:eq(1) th').each( function (i) {
+            var title = $(this).text();
+            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    
+            $( 'input', this ).on( 'keyup change', function () {
+                if ( table.column(i).search() !== this.value ) {
+                    table
+                        .column(i)
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+        } );
+    
+        var table = $('#myTable').DataTable( {
+            dom: 'Bflrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            orderCellsTop: true,
+            fixedHeader: true,
+            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ]
+            
+        } );
+    });
+</script>
 
  <!-- Main Footer -->
  <footer class="main-footer">

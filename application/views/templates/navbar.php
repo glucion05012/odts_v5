@@ -7,30 +7,15 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?php echo base_url(); ?>home" class="nav-link">Home</a>
+        <a href="<?php echo base_url(); ?>dashboard" class="nav-link">Online Document Tracking System version 5</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
     
       <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user-tie nav-icon"></i>
-             FULL NAME
-            </a>
-            <ul class="dropdown-menu">
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="<?php echo base_url(); ?>logincontroller/logout" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <!-- <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li> -->
+          <b> <i class="fas fa-user-tie nav-icon"></i>
+          FULLNAME
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -38,10 +23,10 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url(); ?>home" class="brand-link">
+    <a href="<?php echo base_url(); ?>dashboard" class="brand-link">
       <img src="<?php echo base_url()."assets/"; ?>denr-logo.png" alt="Logo" class="brand-image "
            style="opacity: .8">
-      <span class="brand-text font-weight-light" style="font-size:14px">ODTS  v5</span>
+      <span class="brand-text font-weight-light" style="font-size:14px">ODTS v5</span>
     </a>
 
     <!-- Sidebar -->
@@ -51,21 +36,30 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">  
 
-            <li class="nav-header">Permits</li>
-            
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fa fa-tree"></i>
-                  <p>
-                    Forest Utilization
-                    <i class="fas fa-angle-right right"></i>
-                  </p>
-                </a>
-                
-                <ul class="nav nav-treeview">
-
-                </ul>
+          <li class="nav-item">
+              <a href="https://denrncrsys.online/index.php" class="nav-link">
+                <i class="nav-icon fas fa-arrow-left"></i>
+                <p>
+                  DNIIS
+                </p>
+              </a>
             </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>dashboard" class="nav-link">
+              <i class="nav-icon fa fa-dashboard"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+
+            <li class="nav-header">Documents</li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>inbox" class="nav-link">
+                <i class="nav-icon fa fa-folder-plus"></i>
+                  <p>Inbox</p>
+                </a>
+              </li>
+          </li>
             
         </ul>
       </nav>
