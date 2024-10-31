@@ -246,9 +246,31 @@
             cancelButtonColor: "#d33",
             confirmButtonText: "Proceed"
         }).then((result) => {
-        if (result.isConfirmed) {
-            //return true
-        }
+            if (result.isConfirmed) {
+                //return true
+                var completefields = 1;
+                // check input box if filled out
+                if($("#category").find(":selected").val() == ""){
+                    $("#category").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#category").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+                if(completefields == 1){
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: "Transaction Successfully Created.",
+                    });
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Please complete required fields.",
+                    });
+                }
+            }
         });
     });
 </script>
