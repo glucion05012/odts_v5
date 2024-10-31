@@ -209,4 +209,34 @@
                 }
         <?php endforeach; ?>
     });
+
+    $('#division').change(function(){
+        var division_id = $('#division').val();
+        $("#section").empty();
+        $('#section').append(`<option value="" selected disabled>-- SELECT --</option>`);
+        $("#personnel").empty();
+        $('#personnel').append(`<option value="" selected disabled>-- SELECT --</option>`);
+        
+        <?php foreach($section_list as $sl) : ?>
+           if('<?php echo $sl['division_id']; ?>' == division_id){
+                $('#section').append(`<option value="<?php echo $sl['section_id']; ?>">
+                    <?php echo $sl['section']; ?>
+                    </option>`);
+                }
+        <?php endforeach; ?>
+    });
+
+    $('#section').change(function(){
+        var section_id = $('#section').val();
+        $("#personnel").empty();
+        $('#personnel').append(`<option value="" selected disabled>-- SELECT --</option>`);
+        
+        <?php foreach($user_list as $ul) : ?>
+           if('<?php echo $ul['section']; ?>' == section_id){
+                $('#personnel').append(`<option value="<?php echo $ul['id']; ?>">
+                    <?php echo $ul['name']; ?>
+                    </option>`);
+                }
+        <?php endforeach; ?>
+    });
 </script>
