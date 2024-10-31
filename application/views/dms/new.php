@@ -16,7 +16,7 @@
                     <!-- 1st row -->
                     <div class="col-sm-3">
                         <label for="category">
-                            Category
+                            Category: <span style="color:red">*</span>
                         </label>
                         <select name="category" id="category" class="form-control" required>
                             <option value="" selected disabled>-- SELECT --</option>
@@ -42,7 +42,7 @@
                     <!-- 2nd row -->
                     <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="sub_category">
-                            Sub-Category:
+                            Sub-Category: <span style="color:red">*</span>
                         </label>
                         <select name="sub_category" id="sub_category" class="form-control" required>
                         <option value="" selected disabled>-- SELECT --</option>
@@ -256,6 +256,16 @@
                 }else{
                     $("#category").css({'border-color': 'black', 'border-width': 'thin'})
                 }
+
+                if($("#sub_category").find(":selected").val() == ""){
+                    $("#sub_category").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#sub_category").css({'border-color': 'black', 'border-width': 'thin'})
+                }
+
+
+
 
                 if(completefields == 1){
                     Swal.fire({
