@@ -322,11 +322,40 @@
 
 
                 if(completefields == 1){
-                    Swal.fire({
-                        icon: "success",
-                        title: "Success",
-                        text: "Transaction Successfully Created.",
-                    });
+                    var base_url = <?php echo json_encode(base_url()); ?>;
+                    var category_id = $('#category').val();
+                    var sub_category_id = $('#sub_category').val();
+                    var subject_name = $('#subject').val();
+                    var document_type = $('#document_type').val();
+                    var personnel_id = $('#personnel').val();
+                    var action_id = $('#action').val();
+                    var remarks = $('#remarks').val();
+
+                    $.ajax({
+                            data : {
+                                    category_id : category_id,
+                                    sub_category_id : sub_category_id,
+                                    subject_name : subject_name,
+                                    document_type : document_type,
+                                    personnel_id : personnel_id,
+                                    action_id : action_id,
+                                    remarks : remarks,
+                                    }
+                            , type: "POST"
+                            , url: base_url + "Inboxcontroller/create_transaction"
+                            , dataType: 'json'
+                            , crossOrigin: false
+                            , error: function(err) {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Success",
+                                    text: "Transaction Successfully Created.",
+                                    }).then(function(){ 
+                                        location.reload();
+                                });
+                            }
+                        });
+                    
                 }else{
                     Swal.fire({
                         icon: "error",

@@ -27,6 +27,9 @@
             $this->load->view('dms/new', $data);
             $this->load->view('templates/footer');
         }
-
+        
+        public function create_transaction(){
+            return $this->Dms_model->create_transaction();
+        }
     }
 ?>

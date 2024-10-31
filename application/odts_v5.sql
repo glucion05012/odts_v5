@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 31, 2024 at 03:08 AM
+-- Generation Time: Oct 31, 2024 at 04:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -110,7 +110,7 @@ CREATE TABLE `dms_attachments` (
 CREATE TABLE `dms_transaction` (
   `id` int(20) NOT NULL,
   `category_id` int(20) DEFAULT NULL,
-  `sub_category` int(20) DEFAULT NULL,
+  `sub_category_id` int(20) DEFAULT NULL,
   `subject_name` text DEFAULT NULL,
   `document_type` varchar(200) DEFAULT NULL,
   `personnel_id` varchar(200) DEFAULT NULL,
@@ -118,6 +118,13 @@ CREATE TABLE `dms_transaction` (
   `remarks` text DEFAULT NULL,
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dms_transaction`
+--
+
+INSERT INTO `dms_transaction` (`id`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `personnel_id`, `action_id`, `remarks`, `status`) VALUES
+(1, 4, 6, 'Creation of New Memo for the Online Registration of Clients', 'For Compliance', '1520', '8', 'Please check the memo released', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -185,5 +192,5 @@ ALTER TABLE `dms_attachments`
 -- AUTO_INCREMENT for table `dms_transaction`
 --
 ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
