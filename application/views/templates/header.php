@@ -55,6 +55,10 @@
 <link rel="stylesheet" href="<?php echo base_url()."assets/"; ?>css/jAlert.css" />
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- DROP ZONE -->
+<link href="https://iis.emb.gov.ph/embis/assets/common/dropzone/dropzone.css" rel="stylesheet">
+<script src="https://iis.emb.gov.ph/embis/assets/common/dropzone/dropzone.min.js"></script>
+
 </head>
 
 <style>
@@ -74,5 +78,22 @@ body.swal2-shown > [aria-hidden='true'] {
   transition: 0.1s filter;
   filter: blur(3px);
 }
+
+ /* dropzone */
+ div.dropzone_table {
+    display: table;
+    white-space: nowrap;
+  }
+  div.dropzone_table .file-row {
+    display: table-row;
+  }
+  div.dropzone_table .file-row > div {
+    display: table-cell;
+    vertical-align: top;
+  }
+  div.dropzone_table .file-row:nth-child(odd) {
+    background: #f9f9f9;
+  }
+
 </style>
 <body>

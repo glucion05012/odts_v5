@@ -129,13 +129,19 @@
                             Remarks: <span style="color:red">*</span>
                         </label>
                         <textarea name="remarks" id="remarks" rows="6" cols="50" class="form-control" required></textarea>
+                    </div>
 
+                    <div class="col-sm-6" style='padding-top: 1rem'></div>
+                    <div class="col-sm-6" style='padding-top: 1rem'>
                         <label for="attachment" style='padding-top: 1rem'>
                             Attachment:
                         </label>
-                        <input type="file" name="fileToUpload[]" id="fileToUpload" class="form-control" style="margin: 0px;" multiple>
+                        <!-- <input type="file" name="fileToUpload[]" id="fileToUpload" class="form-control" style="margin: 0px;" multiple> -->
+
+                        <!-- ------------------------- drop zone ------------------------- -->
+                        <div class="dropzone" id="myDropzone"></div>
+                        <!-- ------------------------- drop zone end ------------------------- -->
                     </div>
-                        
                     
                 </div>  
             </div>
@@ -146,8 +152,42 @@
         </div>
     </div>
 </div>
-
+<style>
+    .dz-error-mark svg g g {
+        fill: #c00;
+    }
+    .dropzone .dz-preview.dz-success .dz-success-mark {
+        opacity: 1;
+    }
+</style>
 <script>
+    // ----------------------------------- dropzone -----------------------------------
+    Dropzone.options.myDropzone = {
+    url: "#",
+    autoProcessQueue: true,
+    paramName: "file",
+    clickable: true,
+    maxFilesize: 1, //in mb
+    addRemoveLinks: true,
+    acceptedFiles: 'image/*,application/pdf,.docx,.doc,.xlsx,.xls,.xlsm,.pptx,.ppt,.pub,.zdoc,.zsheet,.zshow',
+    dictDefaultMessage: "Upload your file here",
+    init: function() {
+        // this.on("sending", function(file, xhr, formData) {
+        // console.log("sending file");
+        // });
+        // this.on("success", function(file, responseText) {
+        // console.log('great success');
+        // });
+        // this.on("addedfile", function(file){
+        //     console.log('file added');
+        // });
+    }
+    };
+    // ----------------------------------- dropzone end -----------------------------------
+
+
+
+
     $('#category').change(function(){
         var category_id = $('#category').val();
         $("#sub_category").empty();
