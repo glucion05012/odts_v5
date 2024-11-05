@@ -44,6 +44,9 @@ LEFT JOIN conf_action d on a.action_id=d.id;");
 
         $this->db->where('id', $dms_id);
         $this->db->update('dms_dms', $datar);
+
+        $query = $this->db->query("SELECT * FROM dms_dms WHERE id = '$dms_id'");
+        return $query->result_array();
     }
     
     public function create_transaction_attachment($file){

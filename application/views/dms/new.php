@@ -402,13 +402,15 @@
                             , crossOrigin: false
                             , error: function(err) {
                     
+                                // attachment start
                                 var myDropzone = Dropzone.forElement("#myDropzone");
                                 myDropzone.processQueue();
+                                // attachment end
 
                                 Swal.fire({
                                     icon: "success",
                                     title: "Success",
-                                    text: "Transaction Successfully Created.",
+                                    html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'><?php echo $this->session->flashdata('successmsg'); ?></b>.",
                                     }).then(function(){ 
                                         location.reload();
                                 });

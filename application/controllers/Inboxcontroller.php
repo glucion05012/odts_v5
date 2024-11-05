@@ -32,7 +32,9 @@
         }
         
         public function create_transaction(){
-            return $this->Dms_model->create_transaction();
+            $data['application'] = $this->Dms_model->create_transaction();
+            $ref_no = ($data['application'][0]['reference_no']);
+            $this->session->set_flashdata('successmsg', $ref_no);
         }
     }
 ?>
