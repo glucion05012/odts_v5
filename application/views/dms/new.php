@@ -140,6 +140,11 @@
 
                         <!-- ------------------------- drop zone ------------------------- -->
                         <div class="dropzone" id="myDropzone"></div>
+                        <br>
+                        <button type="button" class="btn btn-outline-danger btn-sm" id="remove_all">
+                            <i class="fas fa-trash"></i>
+                            <span>Remove All</span>
+                        </button>
                         <!-- ------------------------- drop zone end ------------------------- -->
                     </div>
                     
@@ -161,15 +166,18 @@
     }
 </style>
 <script>
+    var base_url = <?php echo json_encode(base_url()); ?>;
     // ----------------------------------- dropzone -----------------------------------
     Dropzone.options.myDropzone = {
-    url: "#",
-    autoProcessQueue: true,
+    url: base_url + "assets/attachments/upload.php",
+    autoProcessQueue: false,
     paramName: "file",
+    parallelUploads: 100,
     clickable: true,
-    maxFilesize: 1, //in mb
+    maxFilesize: 100, //in mb
     addRemoveLinks: true,
     acceptedFiles: 'image/*,application/pdf,.docx,.doc,.xlsx,.xls,.xlsm,.pptx,.ppt,.pub,.zdoc,.zsheet,.zshow',
+    uploadMultiple: true,
     dictDefaultMessage: "Upload your file here",
     init: function() {
         // this.on("sending", function(file, xhr, formData) {
@@ -183,6 +191,10 @@
         // });
     }
     };
+
+    $(document).on('click', '#remove_all', function(){
+        Dropzone.forElement('#myDropzone').removeAllFiles(true)
+    });
     // ----------------------------------- dropzone end -----------------------------------
 
 
@@ -277,6 +289,7 @@
 
     
     $('#process_transaction').click(function() {
+
         Swal.fire({
             title: "Confirm New Transaction.",
             text: "Are you sure you want to process New Transaction?",
@@ -361,7 +374,13 @@
                 }
 
 
-                if(completefields == 1){
+                if(completefields == 0){
+
+                    var myDropzone = Dropzone.forElement("#myDropzone");
+                    alert(myDropzone.getQueuedFiles().length);
+                    myDropzone.processQueue();
+
+
                     var base_url = <?php echo json_encode(base_url()); ?>;
                     var category_id = $('#category').val();
                     var sub_category_id = $('#sub_category').val();
@@ -370,7 +389,6 @@
                     var personnel_id = $('#personnel').val();
                     var action_id = $('#action').val();
                     var remarks = $('#remarks').val();
-
                     $.ajax({
                             data : {
                                     category_id : category_id,
