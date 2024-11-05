@@ -377,7 +377,6 @@
 
                 if(completefields == 1){
 
-
                     var base_url = <?php echo json_encode(base_url()); ?>;
                     var category_id = $('#category').val();
                     var sub_category_id = $('#sub_category').val();
@@ -413,7 +412,7 @@
                                     title: "Success",
                                     html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'>" + refno + "</b>.",
                                     }).then(function(){ 
-                                        location.reload();
+                                        window.location = "<?php  echo base_url('inbox'); ?>";
                                 });
                             }
                         });

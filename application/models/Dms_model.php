@@ -18,13 +18,14 @@ LEFT JOIN conf_sub_category c on a.sub_category_id=c.id;");
     
     public function create_transaction(){
 
+        // insert dms_dms
         $data = array(
             'date_created' => date("Y-m-d"),
             'created_by_id' => $_SESSION['userid'],
             'category_id' => $this->input->post('category_id'),
-            'sub_category_id' => trim($this->input->post('sub_category_id')),
+            'sub_category_id' => $this->input->post('sub_category_id'),
             'subject_name' => $this->input->post('subject_name'),
-            'document_type' => trim($this->input->post('document_type')),
+            'document_type' => $this->input->post('document_type'),
             'status' => 'Active'
         );
         
@@ -41,13 +42,26 @@ LEFT JOIN conf_sub_category c on a.sub_category_id=c.id;");
         $this->db->where('id', $dms_id);
         $this->db->update('dms_dms', $datar);
 
+        // insert dms_transaction
+        $datatr = array(
+            'dms_id' => $dms_id,
+            'forwarded_by_id' => $_SESSION['userid'],
+            'forwarded_date' => date("Y-m-d"),
+            'forwarded_to_id' => $this->input->post('personnel_id'),
+            'action_id' => $this->input->post('action_id'),
+            'remarks' => $this->input->post('remarks'),
+            'status' => 'Pending'
+        );
+        
+        $this->db->insert('dms_transaction', $datatr);
+
         $query = $this->db->query("SELECT * FROM dms_dms WHERE id = '$dms_id'");
         return $query->result_array();
     }
     
     public function create_transaction_attachment($file){
 
-        $dms_id_query = $this->db->query('select * from dms_dms ORDER BY id DESC LIMIT 1');
+        $dms_id_query = $this->db->query('select * from dms_transaction ORDER BY id DESC LIMIT 1');
         foreach($dms_id_query->result() as $diq){
             $dms_id = $diq->id;
         }
