@@ -375,9 +375,7 @@
                 }
 
 
-                if(completefields == 1){
-                    var myDropzone = Dropzone.forElement("#myDropzone");
-                    myDropzone.processQueue();
+                if(completefields == 0){
 
 
                     var base_url = <?php echo json_encode(base_url()); ?>;
@@ -403,6 +401,10 @@
                             , dataType: 'json'
                             , crossOrigin: false
                             , error: function(err) {
+                    
+                                var myDropzone = Dropzone.forElement("#myDropzone");
+                                myDropzone.processQueue();
+
                                 Swal.fire({
                                     icon: "success",
                                     title: "Success",

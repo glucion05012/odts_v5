@@ -33,7 +33,13 @@ class Dms_model extends CI_Model{
     
     public function create_transaction_attachment($file){
 
+        $dms_id_query = $this->db->query('select * from dms_transaction ORDER BY id DESC LIMIT 1');
+        foreach($dms_id_query->result() as $diq){
+            $dms_id = $diq->id;
+        }
+
         $data = array(
+            'dms_transaction_id' => $dms_id,
             'file_name' => $file['file_name'],
             'file_location' => $file['file_location'],
             'date_uploaded' => date("Y-m-d"),
