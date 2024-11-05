@@ -375,7 +375,7 @@
                 }
 
 
-                if(completefields == 0){
+                if(completefields == 1){
 
 
                     var base_url = <?php echo json_encode(base_url()); ?>;

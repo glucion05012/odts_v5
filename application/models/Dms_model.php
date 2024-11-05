@@ -7,17 +7,18 @@ class Dms_model extends CI_Model{
     public function create_transaction(){
 
         $data = array(
+            'date_created' => date("Y-m-d"),
+            'created_by_id' => $_SESSION['userid'],
             'category_id' => $this->input->post('category_id'),
             'sub_category_id' => trim($this->input->post('sub_category_id')),
             'subject_name' => $this->input->post('subject_name'),
             'document_type' => trim($this->input->post('document_type')),
-            'personnel_id' => $this->input->post('personnel_id'),
             'action_id' => $this->input->post('action_id'),
             'remarks' => $this->input->post('remarks'),
             'status' => 'Active'
         );
         
-        $this->db->insert('dms_transaction', $data);
+        $this->db->insert('dms_dms', $data);
 
         // add reference no
         $dms_id = $this->db->insert_id();
@@ -28,12 +29,12 @@ class Dms_model extends CI_Model{
         );
 
         $this->db->where('id', $dms_id);
-        $this->db->update('dms_transaction', $datar);
+        $this->db->update('dms_dms', $datar);
     }
     
     public function create_transaction_attachment($file){
 
-        $dms_id_query = $this->db->query('select * from dms_transaction ORDER BY id DESC LIMIT 1');
+        $dms_id_query = $this->db->query('select * from dms_dms ORDER BY id DESC LIMIT 1');
         foreach($dms_id_query->result() as $diq){
             $dms_id = $diq->id;
         }
