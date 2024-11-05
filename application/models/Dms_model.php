@@ -3,6 +3,20 @@ class Dms_model extends CI_Model{
     public function __construct(){
         $this->load->database();
     }
+
+    public function dms_list(){
+        $query = $this->db->query("SELECT 
+a.*,
+b.main_category,
+c.sub_category,
+d.action
+FROM dms_dms a
+LEFT JOIN conf_category b on a.category_id=b.id
+LEFT JOIN conf_sub_category c on a.sub_category_id=c.id
+LEFT JOIN conf_action d on a.action_id=d.id;");
+
+        return $query->result_array();
+    }
     
     public function create_transaction(){
 

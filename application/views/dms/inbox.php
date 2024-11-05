@@ -21,29 +21,36 @@
                         <tr>
                             <th>ODTS No.</th>
                             <th>Category</th>
-                            <th>Subject</th>
+                            <th>Transaction Details</th>
                             <th>Forwarded By</th>
                             <th>Remarks</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>fsdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                        </tr>
-                        <tr>
-                            <td>fsdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                            <td>sadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdfsadasdasdasdasfadsfhjsdlkajfhksjadhfkjashdf</td>
-                        </tr>
+                        <?php foreach($dms_list as $dl) : ?>
+                            <tr class="table-active"> 
+                                <td><?php echo $dl['reference_no']; ?></td>
+                                <td>
+                                    <?php echo $dl['main_category']; ?>
+                                </td>
+                                <td>
+                                    <b>[<?php echo $dl['sub_category']; ?>]</b><br>
+                                    <?php echo $dl['subject_name']; ?>
+                                </td>
+                                <td>
+                                    get from transaction history
+                                </td>
+                                <td>
+                                    <b><?php echo $dl['action']; ?></b><br>
+                                    <?php echo $dl['remarks']; ?>
+                                </td>
+                                <td>
+                                    <a href="actioncontroller/edit/<?php echo $dl['id']; ?>"><i class="fa fa-edit"></i></a> &nbsp;
+                                    <a onclick="return confirm('Press OK to confirm archive user?')" href="actioncontroller/delete/<?php echo $dl['id']; ?>"><i style="color:red" class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>   
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

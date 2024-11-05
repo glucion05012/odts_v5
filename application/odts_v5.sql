@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 05, 2024 at 10:23 AM
+-- Generation Time: Nov 05, 2024 at 11:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -111,40 +111,48 @@ INSERT INTO `dms_attachments` (`id`, `dms_transaction_id`, `file_name`, `file_lo
 (20, NULL, '2024-10-15-STCP-21.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/2024-10-15-STCP-21.pdf', '2024-11-05', 'dms'),
 (21, NULL, 'G Source - Copy.png', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/G Source - Copy.png', '2024-11-05', 'dms'),
 (22, NULL, 'Draft-MPI-User-Enrollment-Form-for-DENR-NCR.xlsx', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/Draft-MPI-User-Enrollment-Form-for-DENR-NCR.xlsx', '2024-11-05', 'dms'),
-(23, 19, 'Script_Client Registration System (1).docx', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/Script_Client Registration System (1).docx', '2024-11-05', 'dms');
+(23, 19, 'Script_Client Registration System (1).docx', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/Script_Client Registration System (1).docx', '2024-11-05', 'dms'),
+(24, 21, 'Service-Quotation-Website-Booking-Modification.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/Service-Quotation-Website-Booking-Modification.pdf', '2024-11-05', 'dms'),
+(25, 24, '459087896_1033111385126582_4322812023638663426_n.jpg', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000024/459087896_1033111385126582_4322812023638663426_n.jpg', '2024-11-05', 'dms');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dms_transaction`
+-- Table structure for table `dms_dms`
 --
 
-CREATE TABLE `dms_transaction` (
+CREATE TABLE `dms_dms` (
   `id` int(20) NOT NULL,
   `reference_no` varchar(200) DEFAULT NULL,
   `category_id` int(20) DEFAULT NULL,
   `sub_category_id` int(20) DEFAULT NULL,
   `subject_name` text DEFAULT NULL,
   `document_type` varchar(200) DEFAULT NULL,
-  `personnel_id` varchar(200) DEFAULT NULL,
+  `created_by_id` varchar(200) DEFAULT NULL,
+  `date_created` varchar(200) DEFAULT NULL,
   `action_id` varchar(200) DEFAULT NULL,
   `remarks` text DEFAULT NULL,
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `dms_transaction`
+-- Dumping data for table `dms_dms`
 --
 
-INSERT INTO `dms_transaction` (`id`, `reference_no`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `personnel_id`, `action_id`, `remarks`, `status`) VALUES
-(12, 'ODTS-NCR-2024-000012', 4, 6, 'USE OF MOBILE DEVICE WHILE INSIDE OFFICE', 'For Compliance', '1520', '9', 'Please for filing', 'Active'),
-(13, 'ODTS-NCR-2024-000013', 6, 10, 'NOV CUBAO', 'Confidential', '170', '13', '123123', 'Active'),
-(14, 'ODTS-NCR-2024-000014', 5, 9, '12313', 'Confidential', '308', '4', '3213123', 'Active'),
-(15, 'ODTS-NCR-2024-000015', 4, 6, '123', 'For Compliance', '309', '8', '123', 'Active'),
-(16, 'ODTS-NCR-2024-000016', 4, 6, '2113213', 'For Compliance', '320', '4', '12312', 'Active'),
-(17, 'ODTS-NCR-2024-000017', 0, 0, '', '', '', '', '', 'Active'),
-(18, 'ODTS-NCR-2024-000018', 0, 0, '', '', '', '', '', 'Active'),
-(19, 'ODTS-NCR-2024-000019', 0, 0, '', '', '', '', '', 'Active');
+INSERT INTO `dms_dms` (`id`, `reference_no`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `created_by_id`, `date_created`, `action_id`, `remarks`, `status`) VALUES
+(12, 'ODTS-NCR-2024-000012', 4, 6, 'USE OF MOBILE DEVICE WHILE INSIDE OFFICE', 'For Compliance', '1520', NULL, '9', 'Please for filing', 'Active'),
+(13, 'ODTS-NCR-2024-000013', 6, 10, 'NOV CUBAO', 'Confidential', '170', NULL, '13', '123123', 'Active'),
+(14, 'ODTS-NCR-2024-000014', 5, 9, '12313', 'Confidential', '308', NULL, '4', '3213123', 'Active'),
+(15, 'ODTS-NCR-2024-000015', 4, 6, '123', 'For Compliance', '309', NULL, '8', '123', 'Active'),
+(16, 'ODTS-NCR-2024-000016', 4, 6, '2113213', 'For Compliance', '320', NULL, '4', '12312', 'Active'),
+(17, 'ODTS-NCR-2024-000017', 0, 0, '', '', '', NULL, '', '', 'Active'),
+(18, 'ODTS-NCR-2024-000018', 0, 0, '', '', '', NULL, '', '', 'Active'),
+(19, 'ODTS-NCR-2024-000019', 0, 0, '', '', '', NULL, '', '', 'Active'),
+(20, 'ODTS-NCR-2024-000020', NULL, 0, NULL, '', '1520', '2024-11-05', NULL, NULL, 'Active'),
+(21, 'ODTS-NCR-2024-000021', 7, 13, 'aaaaaa', 'Confidential', '1520', '2024-11-05', '8', 'bbbbbbbbb', 'Active'),
+(22, 'ODTS-NCR-2024-000022', 4, 6, '1231', 'For Compliance', '1520', '2024-11-05', '9', '1231231', 'Active'),
+(23, 'ODTS-NCR-2024-000023', 5, 8, '1', 'For Compliance', '1520', '2024-11-05', '8', '2', 'Active'),
+(24, 'ODTS-NCR-2024-000024', 5, 9, '1123123123', 'Confidential', '1520', '2024-11-05', '8', '123123', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -175,9 +183,9 @@ ALTER TABLE `dms_attachments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dms_transaction`
+-- Indexes for table `dms_dms`
 --
-ALTER TABLE `dms_transaction`
+ALTER TABLE `dms_dms`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -206,11 +214,11 @@ ALTER TABLE `conf_sub_category`
 -- AUTO_INCREMENT for table `dms_attachments`
 --
 ALTER TABLE `dms_attachments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `dms_transaction`
+-- AUTO_INCREMENT for table `dms_dms`
 --
-ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+ALTER TABLE `dms_dms`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
