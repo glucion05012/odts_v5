@@ -136,6 +136,7 @@
                         <label for="attachment" style='padding-top: 1rem'>
                             Attachment:
                         </label>
+                        <span style="font-weight: normal; color: blue"> (max. size of 100 MB per attachment)</span> <span style="font-weight: normal; color: red">-required</span>
                         <!-- <input type="file" name="fileToUpload[]" id="fileToUpload" class="form-control" style="margin: 0px;" multiple> -->
 
                         <!-- ------------------------- drop zone ------------------------- -->
