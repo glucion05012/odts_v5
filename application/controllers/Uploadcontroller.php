@@ -10,8 +10,17 @@
             for($i=0;$i<$countfiles;$i++){
                 
                 
-                $target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/" . basename($_FILES["file"]["name"][$i]);
-                //$target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . basename($_FILES["file"]["name"][$i]);
+                $dms_id_query = $this->db->query('select * from dms_dms ORDER BY id DESC LIMIT 1');
+                foreach($dms_id_query->result() as $diq){
+                    $dms_reference_no = $diq->reference_no;
+                }
+                
+                $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/".$dms_reference_no);
+                // $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/".$dms_reference_no);
+                
+                $target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
+                //$target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
+                
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
