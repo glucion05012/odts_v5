@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 31, 2024 at 04:56 AM
+-- Generation Time: Nov 05, 2024 at 09:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -120,13 +120,6 @@ CREATE TABLE `dms_transaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `dms_transaction`
---
-
-INSERT INTO `dms_transaction` (`id`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `personnel_id`, `action_id`, `remarks`, `status`) VALUES
-(1, 4, 6, 'Creation of New Memo for the Online Registration of Clients', 'For Compliance', '1520', '8', 'Please check the memo released', 'Active');
-
---
 -- Indexes for dumped tables
 --
 
@@ -186,11 +179,11 @@ ALTER TABLE `conf_sub_category`
 -- AUTO_INCREMENT for table `dms_attachments`
 --
 ALTER TABLE `dms_attachments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `dms_transaction`
 --
 ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
