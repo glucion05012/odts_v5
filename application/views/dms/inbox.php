@@ -23,13 +23,13 @@
                             <th>Category</th>
                             <th>Transaction Details</th>
                             <th>Forwarded By</th>
-                            <th>Remarks</th>
+                            <th>Desired Action/Remarks</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($dms_list as $dl) : ?>
-                            <!-- if($dl['forwarded_to_id'] == $_SESSION['userid']) -->
+                            <?php if($dl['ts_forwarded_to_id'] == $_SESSION['userid']) : ?>
                             <tr class="table-active"> 
                                 <td><?php echo $dl['reference_no']; ?></td>
                                 <td>
@@ -57,8 +57,10 @@
                                     <?php echo $dl['ts_remarks']; ?>
                                 </td>
                                 <td>
+                                    <button type="button" class="viewbtn btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target="#viewTransactionModal<?php echo $dl['id']; ?>">View</button>
                                 </td>
                             </tr>   
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -66,4 +68,32 @@
 
         </div>
     </div>
+
+    <?php foreach($dms_list as $dl) : ?>
+    <!-- HISTORY APPLICATION -->
+    <div id="viewTransactionModal<?php echo $dl['id']; ?>" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-xl" >
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">View Transaction</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body table-responsive" style="align-self:center; width: 100%;">  
+
+                
+                
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
 </div>

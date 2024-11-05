@@ -13,6 +13,7 @@ class Dms_model extends CI_Model{
                                 d.ts_remarks,
                                 d.ts_forwarded_by_id,
                                 d.ts_forwarded_date,
+                                d.ts_forwarded_to_id,
                                 d.ts_status
                                 FROM dms_dms a
                                 LEFT JOIN conf_category b on a.category_id=b.id
@@ -20,6 +21,7 @@ class Dms_model extends CI_Model{
                                 LEFT JOIN (
                                             select
                                                 dt.forwarded_by_id as ts_forwarded_by_id,
+                                                dt.forwarded_to_id as ts_forwarded_to_id,
                                                 dt.dms_id,
                                                 dt.status as ts_status,
                                                 ac.action as ts_action,

@@ -94,6 +94,9 @@ body.swal2-shown > [aria-hidden='true'] {
   div.dropzone_table .file-row:nth-child(odd) {
     background: #f9f9f9;
   }
-
+.modal-header{
+  background-color: #08507E !important;
+  color: #FFF !important;
+}
 </style>
 <body>
