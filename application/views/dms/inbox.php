@@ -43,12 +43,9 @@
                                     get from transaction history
                                 </td>
                                 <td>
-                                    <b><?php echo $dl['action']; ?></b><br>
-                                    <?php echo $dl['remarks']; ?>
+                                    get from transaction history
                                 </td>
                                 <td>
-                                    <a href="actioncontroller/edit/<?php echo $dl['id']; ?>"><i class="fa fa-edit"></i></a> &nbsp;
-                                    <a onclick="return confirm('Press OK to confirm archive user?')" href="actioncontroller/delete/<?php echo $dl['id']; ?>"><i style="color:red" class="fa fa-trash"></i></a>
                                 </td>
                             </tr>   
                         <?php endforeach; ?>

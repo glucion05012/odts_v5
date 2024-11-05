@@ -8,12 +8,10 @@ class Dms_model extends CI_Model{
         $query = $this->db->query("SELECT 
 a.*,
 b.main_category,
-c.sub_category,
-d.action
+c.sub_category
 FROM dms_dms a
 LEFT JOIN conf_category b on a.category_id=b.id
-LEFT JOIN conf_sub_category c on a.sub_category_id=c.id
-LEFT JOIN conf_action d on a.action_id=d.id;");
+LEFT JOIN conf_sub_category c on a.sub_category_id=c.id;");
 
         return $query->result_array();
     }
@@ -27,8 +25,6 @@ LEFT JOIN conf_action d on a.action_id=d.id;");
             'sub_category_id' => trim($this->input->post('sub_category_id')),
             'subject_name' => $this->input->post('subject_name'),
             'document_type' => trim($this->input->post('document_type')),
-            'action_id' => $this->input->post('action_id'),
-            'remarks' => $this->input->post('remarks'),
             'status' => 'Active'
         );
         

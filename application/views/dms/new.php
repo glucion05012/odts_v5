@@ -400,8 +400,9 @@
                             , url: base_url + "Inboxcontroller/create_transaction"
                             , dataType: 'json'
                             , crossOrigin: false
-                            , error: function(err) {
-                    
+                            , success: function(res) {
+                                let resp = JSON.stringify(res[0]['reference_no']);
+                                let refno = (JSON.parse(resp));
                                 // attachment start
                                 var myDropzone = Dropzone.forElement("#myDropzone");
                                 myDropzone.processQueue();
@@ -410,7 +411,7 @@
                                 Swal.fire({
                                     icon: "success",
                                     title: "Success",
-                                    html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'><?php echo $this->session->flashdata('successmsg'); ?></b>.",
+                                    html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'>" + refno + "</b>.",
                                     }).then(function(){ 
                                         location.reload();
                                 });
