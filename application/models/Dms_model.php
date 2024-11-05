@@ -19,6 +19,17 @@ class Dms_model extends CI_Model{
         
         return $this->db->insert('dms_transaction', $data);
     }
-}
+    
+    public function create_transaction_attachment(){
 
+        $data = array(
+            'file_name' => $this->input->post('file_name'),
+            'file_location' => $this->input->post('file_location'),
+            'date_uploaded' => date("Y-m-d"),
+            'type' => trim($this->input->post('type')),
+        );
+        
+        $this->db->insert('dms_attachments', $data);
+    }
+}
 ?>

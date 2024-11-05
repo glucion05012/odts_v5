@@ -24,6 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/odts_v5/';
+
+// FOR CHANGE OF CONFIGURATION
+// upload.php -> $target_file
+
+
 // session routes inside Dashnoardcontroller
 /*
 |--------------------------------------------------------------------------
