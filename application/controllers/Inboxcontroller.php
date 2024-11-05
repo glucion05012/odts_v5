@@ -29,9 +29,7 @@
         }
         
         public function create_transaction(){
-            
-
-            // return $this->Dms_model->create_transaction();
+            return $this->Dms_model->create_transaction();
         }
     }
 ?>

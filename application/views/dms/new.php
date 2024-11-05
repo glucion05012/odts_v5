@@ -374,10 +374,9 @@
                 }
 
 
-                if(completefields == 0){
+                if(completefields == 1){
 
                     var myDropzone = Dropzone.forElement("#myDropzone");
-                    alert(myDropzone.getQueuedFiles().length);
                     myDropzone.processQueue();
 
 
