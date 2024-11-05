@@ -2,7 +2,7 @@
   $countfiles = count($_FILES['file']['name']);
   for($i=0;$i<$countfiles;$i++){
     
-      $target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms_temp/" . basename($_FILES["file"]["name"][$i]);
+      $target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/" . basename($_FILES["file"]["name"][$i]);
       $uploadOk = 1;
       $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
