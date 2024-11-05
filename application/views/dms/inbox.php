@@ -40,10 +40,21 @@
                                     <?php echo $dl['subject_name']; ?>
                                 </td>
                                 <td>
-                                    get from transaction history
+                                    <b>
+                                        <?php 
+                                            foreach($user_list as $ul){
+                                                if($ul['id'] == $dl['ts_forwarded_by_id']){
+                                                    echo $ul['name'];
+                                                }
+                                            }
+                                        ?>
+                                    </b>
+                                    <br>
+                                    <?php echo date('F j, Y', strtotime($dl['ts_forwarded_date'])); ?>
                                 </td>
                                 <td>
-                                    get from transaction history
+                                    <b><?php echo $dl['ts_action']; ?></b><br>
+                                    <?php echo $dl['ts_remarks']; ?>
                                 </td>
                                 <td>
                                 </td>

@@ -6,12 +6,29 @@ class Dms_model extends CI_Model{
 
     public function dms_list(){
         $query = $this->db->query("SELECT 
-a.*,
-b.main_category,
-c.sub_category
-FROM dms_dms a
-LEFT JOIN conf_category b on a.category_id=b.id
-LEFT JOIN conf_sub_category c on a.sub_category_id=c.id;");
+                                a.*,
+                                b.main_category,
+                                c.sub_category,
+                                d.ts_action,
+                                d.ts_remarks,
+                                d.ts_forwarded_by_id,
+                                d.ts_forwarded_date,
+                                d.ts_status
+                                FROM dms_dms a
+                                LEFT JOIN conf_category b on a.category_id=b.id
+                                LEFT JOIN conf_sub_category c on a.sub_category_id=c.id
+                                LEFT JOIN (
+                                            select
+                                                dt.forwarded_by_id as ts_forwarded_by_id,
+                                                dt.dms_id,
+                                                dt.status as ts_status,
+                                                ac.action as ts_action,
+                                                dt.remarks as ts_remarks,
+                                                max(dt.forwarded_date) as ts_forwarded_date
+                                            from dms_transaction as dt
+                                            left join conf_action as ac on dt.action_id=ac.id
+                                            group by dt.dms_id
+                                        ) as d on d.dms_id=a.id;");
 
         return $query->result_array();
     }
