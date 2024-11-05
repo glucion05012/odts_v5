@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 05, 2024 at 09:42 AM
+-- Generation Time: Nov 05, 2024 at 10:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -101,6 +101,15 @@ CREATE TABLE `dms_attachments` (
   `type` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `dms_attachments`
+--
+
+INSERT INTO `dms_attachments` (`id`, `dms_transaction_id`, `file_name`, `file_location`, `date_uploaded`, `type`) VALUES
+(18, NULL, 'linkbiz payment.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/linkbiz payment.pdf', '2024-11-05', 'dms'),
+(19, NULL, '20241021_111258.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/20241021_111258.pdf', '2024-11-05', 'dms'),
+(20, NULL, '2024-10-15-STCP-21.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/2024-10-15-STCP-21.pdf', '2024-11-05', 'dms');
+
 -- --------------------------------------------------------
 
 --
@@ -109,6 +118,7 @@ CREATE TABLE `dms_attachments` (
 
 CREATE TABLE `dms_transaction` (
   `id` int(20) NOT NULL,
+  `reference_no` varchar(200) DEFAULT NULL,
   `category_id` int(20) DEFAULT NULL,
   `sub_category_id` int(20) DEFAULT NULL,
   `subject_name` text DEFAULT NULL,
@@ -118,6 +128,13 @@ CREATE TABLE `dms_transaction` (
   `remarks` text DEFAULT NULL,
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dms_transaction`
+--
+
+INSERT INTO `dms_transaction` (`id`, `reference_no`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `personnel_id`, `action_id`, `remarks`, `status`) VALUES
+(12, 'ODTS-NCR-2024-000012', 4, 6, 'USE OF MOBILE DEVICE WHILE INSIDE OFFICE', 'For Compliance', '1520', '9', 'Please for filing', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -179,11 +196,11 @@ ALTER TABLE `conf_sub_category`
 -- AUTO_INCREMENT for table `dms_attachments`
 --
 ALTER TABLE `dms_attachments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `dms_transaction`
 --
 ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;

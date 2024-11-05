@@ -17,7 +17,18 @@ class Dms_model extends CI_Model{
             'status' => 'Active'
         );
         
-        return $this->db->insert('dms_transaction', $data);
+        $this->db->insert('dms_transaction', $data);
+
+        // add reference no
+        $dms_id = $this->db->insert_id();
+        $ref_no = 'ODTS-NCR-'.date("Y").'-'.sprintf("%06d", $dms_id);
+        
+        $datar = array(
+            'reference_no' => $ref_no,
+        );
+
+        $this->db->where('id', $dms_id);
+        $this->db->update('dms_transaction', $datar);
     }
     
     public function create_transaction_attachment($file){

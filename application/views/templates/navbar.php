@@ -14,8 +14,8 @@
     <ul class="navbar-nav ml-auto">
     
       <li class="dropdown user user-menu">
-          <b> <i class="fas fa-user-tie nav-icon"></i>
-          FULLNAME
+          <b> <i class="fas fa-user-tie nav-icon"></i> 
+          <?php echo $_SESSION['userid'].' - '.$_SESSION['fullname']; ?></b>
     </ul>
   </nav>
   <!-- /.navbar -->
