@@ -45,12 +45,18 @@ class Dms_model extends CI_Model{
         $query = $this->db->query("SELECT
                             b.reference_no,
                             b.category_id,
+                            c.main_category as category,
                             b.sub_category_id,
+                            d.sub_category,
                             b.subject_name,
                             b.document_type,
-                            a.* 
+                            a.*,
+                            e.action as action_name
                             FROM dms_transaction a
-                            LEFT JOIN dms_dms b on a.dms_id=b.id;");
+                            LEFT JOIN dms_dms b on a.dms_id=b.id
+                            LEFT JOIN conf_category c on b.category_id=c.id
+                            LEFT JOIN conf_sub_category d on b.sub_category_id=d.id
+                            LEFT JOIN conf_action e on a.action_id=e.id;");
 
         return $query->result_array();
     }

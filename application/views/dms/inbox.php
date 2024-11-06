@@ -184,8 +184,51 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="history<?php echo $dl['id']; ?>" role="tabpanel" aria-labelledby="history-tab">
-                    <h4>history Tab</h4>
-                    <p>Welcome to the history tab. Add your content here.</p>
+                    <div style=" background-color: gray; color: white; font-size: 18px; font-weight: bolder; text-align: center"> TRANSACTION HISTORY </div>
+                    <p style="text-align: center">[<?php echo $dl['reference_no']; ?>]</p>
+
+                    <table id="myTable<?php echo $dl['id'];?>" class="table table-striped table-bordered table-sm align">
+                        <thead>
+                                <th>Date Received</th>
+                                <th>Transaction Type</th>
+                                <th>Action</th>
+                                <th>Remarks</th>
+                                <th>From</th>
+                                <th>Assigned</th>
+                                <th>Status</th>
+                        </thead>
+
+                        <tbody>
+                            <?php foreach($dms_transaction_list as $dtl) : ?>
+                                <tr>
+                                    <td><?php echo date('F j, Y', strtotime($dtl['forwarded_date'])); ?></td>
+                                    <td><?php echo $dtl['sub_category']; ?></td>
+                                    <td><?php echo $dtl['action_name']; ?></td>
+                                    <td><?php echo $dtl['remarks']; ?></td>
+                                    <td>
+                                        <?php 
+                                            foreach($user_list as $ul){
+                                                if($ul['id'] == $dtl['forwarded_by_id']){
+                                                    echo $ul['name'];
+                                                }
+                                            }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php 
+                                            foreach($user_list as $ul){
+                                                if($ul['id'] == $dtl['forwarded_to_id']){
+                                                    echo $ul['name'];
+                                                }
+                                            }
+                                        ?>
+                                    </td>
+                                    <td><?php echo $dtl['status']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
                 
