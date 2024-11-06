@@ -60,6 +60,8 @@
                                     <button type="button" class="viewbtn btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target="#viewTransactionModal<?php echo $dl['id']; ?>">View</button>
                                     <?php if($dl['ts_accepted_date'] == '') : ?>
                                         <button type="button" id="receivebtn<?php echo $dl['id']; ?>" class="receivebtn btn btn-primary btn-sm waves-effect waves-light" >Receive</button>
+                                    <?php else: ?>
+                                        <a class="viewbtn btn btn-success btn-sm waves-effect waves-light" href="inbox/process/<?php echo base64_encode($dl['ts_transaction_id']); ?>"><span class="btn-label"> Process</a>
                                     <?php endif; ?>
                                 </td>
                             </tr>   
@@ -144,8 +146,7 @@
                             <div class="form-group">
                                 <label for="address">Address</label>
                                 <br>
-                                <textarea name="address" rows="6" cols="50" class="form-control"  disabled><?php echo $office_address; ?>
-                                </textarea>
+                                <textarea name="address" rows="6" cols="50" class="form-control"  disabled><?php echo $office_address; ?></textarea>
                             </div>
 
                             <div class="form-group">
@@ -177,8 +178,7 @@
                             <div class="form-group">
                                 <label for="remarks">Remarks</label>
                                 <br>
-                                <textarea name="remarks" rows="6" cols="50" class="form-control"  disabled><?php echo $dl['ts_remarks']; ?>
-                                </textarea>
+                                <textarea name="remarks" rows="6" cols="50" class="form-control"  disabled><?php echo $dl['ts_remarks']; ?></textarea>
                             </div>
                         </div>
                     </div>

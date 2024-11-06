@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 06, 2024 at 05:31 AM
+-- Generation Time: Nov 06, 2024 at 12:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -106,7 +106,9 @@ CREATE TABLE `dms_attachments` (
 --
 
 INSERT INTO `dms_attachments` (`id`, `dms_transaction_id`, `file_name`, `file_location`, `date_uploaded`, `type`) VALUES
-(36, 1, 'linkbiz payment.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000049/linkbiz payment.pdf', '2024-11-05', 'dms');
+(36, 1, 'linkbiz payment.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000049/linkbiz payment.pdf', '2024-11-05', 'dms'),
+(37, 2, 'linkbiz payment.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000050/linkbiz payment.pdf', '2024-11-06', 'dms'),
+(38, 2, 'Revised Guide Questions Client Registration System.docx', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000050/Revised Guide Questions Client Registration System.docx', '2024-11-06', 'dms');
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,8 @@ CREATE TABLE `dms_dms` (
 --
 
 INSERT INTO `dms_dms` (`id`, `reference_no`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `created_by_id`, `date_created`, `status`) VALUES
-(49, 'ODTS-NCR-2024-000049', 5, 8, 'GIDDEL LUCION DTR FOR MONTH OF SEPTEMBER', 'For Compliance', '1520', '2024-11-05', 'Active');
+(49, 'ODTS-NCR-2024-000049', 5, 8, 'GIDDEL LUCION DTR FOR MONTH OF SEPTEMBER', 'For Compliance', '1520', '2024-11-05', 'Active'),
+(50, 'ODTS-NCR-2024-000050', 5, 8, 'FOR YOUR CHECKING OF TCP', 'For Compliance', '1581', '2024-11-06', 'Active');
 
 -- --------------------------------------------------------
 
@@ -157,7 +160,10 @@ CREATE TABLE `dms_transaction` (
 --
 
 INSERT INTO `dms_transaction` (`id`, `dms_id`, `office_id`, `forwarded_by_id`, `forwarded_date`, `forwarded_to_id`, `accepted_date`, `action_id`, `remarks`, `status`) VALUES
-(1, '49', '1', '1465', '2024-11-05', '1520', NULL, '4', 'For your checking', 'Pending');
+(1, '49', '1', '1465', '2024-11-05', '1520', NULL, '4', 'For your checking', 'Pending'),
+(2, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '8', 'patingin lang', 'Pending'),
+(10, '50', '1', '1520', '2024-11-06', '1581', '2024-11-06', '12', '111', 'Pending'),
+(11, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '4', '23', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -225,17 +231,17 @@ ALTER TABLE `conf_sub_category`
 -- AUTO_INCREMENT for table `dms_attachments`
 --
 ALTER TABLE `dms_attachments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `dms_dms`
 --
 ALTER TABLE `dms_dms`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `dms_transaction`
 --
 ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;

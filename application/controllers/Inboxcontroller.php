@@ -39,6 +39,26 @@
         public function accept_transaction(){
             return $this->Dms_model->accept_transaction();
         }
+        public function process_transaction(){
+            $data = $this->Dms_model->process_transaction();
+            echo json_encode($data);
+        }
         
+        public function process($id){
+            $data['category_list'] =  $this->Config_model->category_list();
+            $data['sub_category_list'] =  $this->Config_model->sub_category_list();
+            $data['action_list'] =  $this->Config_model->action_list();
+            
+            $data['office_list'] =  $this->Config_model->office_list();
+            $data['division_list'] =  $this->Config_model->division_list();
+            $data['section_list'] =  $this->Config_model->section_list();
+            $data['user_list'] =  $this->Config_model->user_list();
+            $data['dms_transaction_list_one'] =  $this->Dms_model->dms_transaction_list_one($id);
+            
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('dms/process', $data);
+            $this->load->view('templates/footer');
+        }
     }
 ?>
