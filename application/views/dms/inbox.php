@@ -183,12 +183,14 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="tab-pane fade" id="history<?php echo $dl['id']; ?>" role="tabpanel" aria-labelledby="history-tab">
                     <div style=" background-color: gray; color: white; font-size: 18px; font-weight: bolder; text-align: center"> TRANSACTION HISTORY </div>
                     <p style="text-align: center">[<?php echo $dl['reference_no']; ?>]</p>
 
                     <table id="myTable<?php echo $dl['id'];?>" class="table table-striped table-bordered table-sm align">
                         <thead>
+                                <th>ID</th>
                                 <th>Date Received</th>
                                 <th>Transaction Type</th>
                                 <th>Action</th>
@@ -196,59 +198,92 @@
                                 <th>From</th>
                                 <th>Assigned</th>
                                 <th>Status</th>
+                                <th>View Attachment</th>
                         </thead>
 
                         <tbody>
+                            <?php $dms_id = $dl['id']; ?>
+
                             <?php foreach($dms_transaction_list as $dtl) : ?>
-                                <tr>
-                                    <td><?php echo date('F j, Y', strtotime($dtl['forwarded_date'])); ?></td>
-                                    <td><?php echo $dtl['sub_category']; ?></td>
-                                    <td><?php echo $dtl['action_name']; ?></td>
-                                    <td><?php echo $dtl['remarks']; ?></td>
-                                    <td>
+                                <?php if($dms_id == $dtl['dms_id']) : ?>
+                                    <tr>
+                                        <td><?php echo $dtl['id']; ?></td>
+                                        <td><?php echo date('F j, Y', strtotime($dtl['forwarded_date'])); ?></td>
+                                        <td><?php echo $dtl['sub_category']; ?></td>
+                                        <td><?php echo $dtl['action_name']; ?></td>
+                                        <td><?php echo $dtl['remarks']; ?></td>
+                                        <td>
+                                            <?php 
+                                                foreach($user_list as $ul){
+                                                    if($ul['id'] == $dtl['forwarded_by_id']){
+                                                        foreach($section_list as $sl){
+                                                            if($ul['section'] == $sl['section_id']){
+                                                                $sec_res = $sl['abbr'];
+                                                            }
+                                                        }
+
+                                                        foreach($division_list as $dl){
+                                                            if($ul['division'] == $dl['division_id']){
+                                                                $div_res = $dl['abbr'];
+                                                            }
+                                                        }
+
+                                                        echo $div_res.'|'.$sec_res.'|'.$ul['name'];
+                                                    }
+                                                }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php 
+                                                foreach($user_list as $ul){
+                                                    if($ul['id'] == $dtl['forwarded_to_id']){
+                                                        foreach($section_list as $sl){
+                                                            if($ul['section'] == $sl['section_id']){
+                                                                $sec_res = $sl['abbr'];
+                                                            }
+                                                        }
+
+                                                        foreach($division_list as $dl){
+                                                            if($ul['division'] == $dl['division_id']){
+                                                                $div_res = $dl['abbr'];
+                                                            }
+                                                        }
+
+                                                        echo $div_res.'|'.$sec_res.'|'.$ul['name'];
+                                                    }
+                                                }
+                                            ?>
+                                        </td>
+                                        <td><?php echo $dtl['status']; ?></td>
+                                        <td>
                                         <?php 
-                                            foreach($user_list as $ul){
-                                                if($ul['id'] == $dtl['forwarded_by_id']){
-                                                    foreach($section_list as $sl){
-                                                        if($ul['section'] == $sl['section_id']){
-                                                            $sec_res = $sl['abbr'];
-                                                        }
-                                                    }
-
-                                                    foreach($division_list as $dl){
-                                                        if($ul['division'] == $dl['division_id']){
-                                                            $div_res = $dl['abbr'];
-                                                        }
-                                                    }
-
-                                                    echo $div_res.'|'.$sec_res.'|'.$ul['name'];
+                                            $with_attach = 0;
+                                            foreach($dms_attachment_list as $dal){
+                                                if($dtl['id'] === $dal['dms_transaction_id']){
+                                                    $with_attach = 1;
                                                 }
                                             }
                                         ?>
-                                    </td>
-                                    <td>
-                                        <?php 
-                                            foreach($user_list as $ul){
-                                                if($ul['id'] == $dtl['forwarded_to_id']){
-                                                    foreach($section_list as $sl){
-                                                        if($ul['section'] == $sl['section_id']){
-                                                            $sec_res = $sl['abbr'];
-                                                        }
-                                                    }
-
-                                                    foreach($division_list as $dl){
-                                                        if($ul['division'] == $dl['division_id']){
-                                                            $div_res = $dl['abbr'];
-                                                        }
-                                                    }
-
-                                                    echo $div_res.'|'.$sec_res.'|'.$ul['name'];
-                                                }
-                                            }
-                                        ?>
-                                    </td>
-                                    <td><?php echo $dtl['status']; ?></td>
-                                </tr>
+                                        <?php if($with_attach == 1) : ?>
+                                            <div class="dropdown">
+                                                <button class="btn btn-info btn-sm waves-effect waves-light" type="button" data-toggle="dropdown" aria-expanded="false">View <i class="far fa-caret-square-down"></i></button> 
+                                                <ul class="dropdown-menu" style="max-height: 500px; overflow: auto; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(10px, 23px, 0px);" x-placement="bottom-start">
+                                                <?php foreach($dms_attachment_list as $dal) : ?>   
+                                                    <?php if($dtl['id'] === $dal['dms_transaction_id']) : ?>
+                                                        <li>
+                                                            <a href="<?php echo base_url($dal['file_location']); ?>" target="_blank"><?php echo $dal['file_name']; ?></a>
+                                                            <!-- <a href="<?php echo $_SERVER['DOCUMENT_ROOT'] . $dal['file_location'] ?>" target="_blank"><?php echo $dal['file_name']; ?></a> -->
+                                                        </li>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                                </ul>
+                                            </div>
+                                        <?php else: ?>
+                                            ---
+                                        <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </tbody>
 
@@ -271,42 +306,43 @@
 </div>
 
 <script>
-    
-    $('#receivebtn<?php echo $dl['id']; ?>').click(function() {
-        var transaction_id = '<?php echo $dl['ts_transaction_id']; ?>';
-        var reference_no = '<?php echo $dl['reference_no']; ?>';
-        Swal.fire({
-            title: "Confirm.",
-            text: "Are you sure you want to receive Transaction?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#008000",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Receive"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var base_url = <?php echo json_encode(base_url()); ?>;
-                $.ajax({
-                    data : {
-                            transaction_id : transaction_id,
-                            }
-                    , type: "POST"
-                    , url: base_url + "Inboxcontroller/accept_transaction"
-                    , dataType: 'json'
-                    , crossOrigin: false
-                    , error: function() {
+    <?php foreach($dms_list as $dl) : ?>
+        $('#receivebtn<?php echo $dl['id']; ?>').click(function() {
+            var transaction_id = '<?php echo $dl['ts_transaction_id']; ?>';
+            var reference_no = '<?php echo $dl['reference_no']; ?>';
+            Swal.fire({
+                title: "Confirm.",
+                text: "Are you sure you want to receive Transaction?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#008000",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Receive"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var base_url = <?php echo json_encode(base_url()); ?>;
+                    $.ajax({
+                        data : {
+                                transaction_id : transaction_id,
+                                }
+                        , type: "POST"
+                        , url: base_url + "Inboxcontroller/accept_transaction"
+                        , dataType: 'json'
+                        , crossOrigin: false
+                        , error: function() {
 
-                        Swal.fire({
-                            icon: "success",
-                            title: "Success",
-                            html: "Transaction Successfully Received. <br> Reference No. <b style='color:blue'>" + reference_no + "</b>.",
-                            }).then(function(){ 
-                                location.reload();
-                        });
-                    }
-                })  
-            }
+                            Swal.fire({
+                                icon: "success",
+                                title: "Success",
+                                html: "Transaction Successfully Received. <br> Reference No. <b style='color:blue'>" + reference_no + "</b>.",
+                                }).then(function(){ 
+                                    location.reload();
+                            });
+                        }
+                    })  
+                }
+            });
         });
-    });
+    <?php endforeach; ?>
 
 </script>

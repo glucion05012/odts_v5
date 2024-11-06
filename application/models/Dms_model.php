@@ -75,6 +75,11 @@ class Dms_model extends CI_Model{
 
         return $query->row_array();
     }
+
+    public function dms_attachment_list(){
+        $query = $this->db->query("SELECT * FROM dms_attachments;");
+        return $query->result_array();
+    }
     
     public function create_transaction(){
 

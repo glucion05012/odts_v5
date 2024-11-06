@@ -27,8 +27,9 @@ $config['base_url'] = 'http://localhost/odts_v5/';
 
 //http://localhost/odts_v5/?session_id=iv7d1lsig4hu4sj3ufdgskgh0l
 
-// FOR CHANGE OF CONFIGURATION
-// upload.php -> $target_file & $ref_dir
+// ---------------------------FOR CHANGE OF CONFIGURATION---------------------------
+// Uploadcontroller.php -> $target_file & $ref_dir & $file_location
+// inbox.php -> $_SERVER['DOCUMENT_ROOT']
 
 
 // session routes inside Dashnoardcontroller
@@ -165,8 +166,9 @@ $config['composer_autoload'] = FALSE;
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:\_\=+%\&';
-
+// $config['permitted_uri_chars'] = 'a-z 0-9~%.:\_\=+%\&';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-\=&';
+$config['enable_query_strings'] = TRUE;
 /*
 |--------------------------------------------------------------------------
 | Enable Query Strings

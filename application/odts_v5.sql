@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 06, 2024 at 12:23 PM
+-- Generation Time: Nov 06, 2024 at 02:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -106,9 +106,12 @@ CREATE TABLE `dms_attachments` (
 --
 
 INSERT INTO `dms_attachments` (`id`, `dms_transaction_id`, `file_name`, `file_location`, `date_uploaded`, `type`) VALUES
-(36, 1, 'linkbiz payment.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000049/linkbiz payment.pdf', '2024-11-05', 'dms'),
-(37, 2, 'linkbiz payment.pdf', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000050/linkbiz payment.pdf', '2024-11-06', 'dms'),
-(38, 2, 'Revised Guide Questions Client Registration System.docx', 'C:/xampp/htdocs/odts_v5/assets/attachments/dms/ODTS-NCR-2024-000050/Revised Guide Questions Client Registration System.docx', '2024-11-06', 'dms');
+(36, 1, 'linkbiz payment.pdf', '/assets/attachments/dms/ODTS-NCR-2024-000049/linkbiz payment.pdf', '2024-11-05', 'dms'),
+(37, 2, 'linkbiz payment.pdf', '/assets/attachments/dms/ODTS-NCR-2024-000050/linkbiz payment.pdf', '2024-11-06', 'dms'),
+(38, 2, 'Revised Guide Questions Client Registration System.docx', '/assets/attachments/dms/ODTS-NCR-2024-000050/Revised Guide Questions Client Registration System.docx', '2024-11-06', 'dms'),
+(39, 12, '09a92e21-c278-4c91-b963-6622c5c7bb58.jpg', '/assets/attachments/dms/ODTS-NCR-2024-000050/09a92e21-c278-4c91-b963-6622c5c7bb58.jpg', '2024-11-06', 'dms'),
+(40, 13, 'Guidelines for assisting clients on CRS Registration.pptx', '/assets/attachments/dms/ODTS-NCR-2024-000050/Guidelines for assisting clients on CRS Registration.pptx', '2024-11-06', 'dms'),
+(41, 14, '1.png', '/assets/attachments/dms/ODTS-NCR-2024-000050/1.png', '2024-11-06', 'dms');
 
 -- --------------------------------------------------------
 
@@ -163,7 +166,10 @@ INSERT INTO `dms_transaction` (`id`, `dms_id`, `office_id`, `forwarded_by_id`, `
 (1, '49', '1', '1465', '2024-11-05', '1520', NULL, '4', 'For your checking', 'Pending'),
 (2, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '8', 'patingin lang', 'Pending'),
 (10, '50', '1', '1520', '2024-11-06', '1581', '2024-11-06', '12', '111', 'Pending'),
-(11, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '4', '23', 'Pending');
+(11, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '4', '23', 'Pending'),
+(12, '50', '1', '1520', '2024-11-06', '1581', '2024-11-06', '8', '1', 'Pending'),
+(13, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '4', '123', 'Pending'),
+(14, '50', '1', '1520', '2024-11-06', '1581', NULL, '4', '123', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -231,7 +237,7 @@ ALTER TABLE `conf_sub_category`
 -- AUTO_INCREMENT for table `dms_attachments`
 --
 ALTER TABLE `dms_attachments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `dms_dms`
@@ -243,5 +249,5 @@ ALTER TABLE `dms_dms`
 -- AUTO_INCREMENT for table `dms_transaction`
 --
 ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
