@@ -209,7 +209,19 @@
                                         <?php 
                                             foreach($user_list as $ul){
                                                 if($ul['id'] == $dtl['forwarded_by_id']){
-                                                    echo $ul['name'];
+                                                    foreach($section_list as $sl){
+                                                        if($ul['section'] == $sl['section_id']){
+                                                            $sec_res = $sl['abbr'];
+                                                        }
+                                                    }
+
+                                                    foreach($division_list as $dl){
+                                                        if($ul['division'] == $dl['division_id']){
+                                                            $div_res = $dl['abbr'];
+                                                        }
+                                                    }
+
+                                                    echo $div_res.'|'.$sec_res.'|'.$ul['name'];
                                                 }
                                             }
                                         ?>
@@ -218,7 +230,19 @@
                                         <?php 
                                             foreach($user_list as $ul){
                                                 if($ul['id'] == $dtl['forwarded_to_id']){
-                                                    echo $ul['name'];
+                                                    foreach($section_list as $sl){
+                                                        if($ul['section'] == $sl['section_id']){
+                                                            $sec_res = $sl['abbr'];
+                                                        }
+                                                    }
+
+                                                    foreach($division_list as $dl){
+                                                        if($ul['division'] == $dl['division_id']){
+                                                            $div_res = $dl['abbr'];
+                                                        }
+                                                    }
+
+                                                    echo $div_res.'|'.$sec_res.'|'.$ul['name'];
                                                 }
                                             }
                                         ?>
