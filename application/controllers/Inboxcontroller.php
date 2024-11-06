@@ -36,5 +36,9 @@
             $data = $this->Dms_model->create_transaction();
             echo json_encode($data);
         }
+        public function accept_transaction(){
+            return $this->Dms_model->accept_transaction();
+        }
+        
     }
 ?>

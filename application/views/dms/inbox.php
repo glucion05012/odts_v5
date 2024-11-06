@@ -58,6 +58,9 @@
                                 </td>
                                 <td>
                                     <button type="button" class="viewbtn btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target="#viewTransactionModal<?php echo $dl['id']; ?>">View</button>
+                                    <?php if($dl['ts_accepted_date'] == '') : ?>
+                                        <button type="button" id="receivebtn<?php echo $dl['id']; ?>" class="receivebtn btn btn-primary btn-sm waves-effect waves-light" >Receive</button>
+                                    <?php endif; ?>
                                 </td>
                             </tr>   
                             <?php endif; ?>
@@ -199,3 +202,44 @@
     </div>
     <?php endforeach; ?>
 </div>
+
+<script>
+    
+    $('#receivebtn<?php echo $dl['id']; ?>').click(function() {
+        var transaction_id = '<?php echo $dl['ts_transaction_id']; ?>';
+        var reference_no = '<?php echo $dl['reference_no']; ?>';
+        Swal.fire({
+            title: "Confirm.",
+            text: "Are you sure you want to receive Transaction?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#008000",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Receive"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var base_url = <?php echo json_encode(base_url()); ?>;
+                $.ajax({
+                    data : {
+                            transaction_id : transaction_id,
+                            }
+                    , type: "POST"
+                    , url: base_url + "Inboxcontroller/accept_transaction"
+                    , dataType: 'json'
+                    , crossOrigin: false
+                    , error: function() {
+
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            html: "Transaction Successfully Received. <br> Reference No. <b style='color:blue'>" + reference_no + "</b>.",
+                            }).then(function(){ 
+                                location.reload();
+                        });
+                    }
+                })  
+            }
+        });
+    });
+
+</script>

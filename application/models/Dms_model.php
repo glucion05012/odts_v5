@@ -14,6 +14,8 @@ class Dms_model extends CI_Model{
                                 d.ts_forwarded_by_id,
                                 d.ts_forwarded_date,
                                 d.ts_forwarded_to_id,
+                                d.ts_accepted_date,
+                                d.ts_transaction_id,
                                 d.ts_status,
                                 d.ts_office_id
                                 FROM dms_dms a
@@ -21,9 +23,11 @@ class Dms_model extends CI_Model{
                                 LEFT JOIN conf_sub_category c on a.sub_category_id=c.id
                                 LEFT JOIN (
                                             select
+                                                dt.id as ts_transaction_id,
                                                 dt.forwarded_by_id as ts_forwarded_by_id,
                                                 dt.forwarded_to_id as ts_forwarded_to_id,
                                                 dt.dms_id,
+                                                dt.accepted_date as ts_accepted_date,
                                                 dt.office_id as ts_office_id,
                                                 dt.status as ts_status,
                                                 ac.action as ts_action,
@@ -97,6 +101,16 @@ class Dms_model extends CI_Model{
         );
         
         $this->db->insert('dms_attachments', $data);
+    }
+
+    
+    public function accept_transaction(){
+        $data = array(
+            'accepted_date' => date("Y-m-d"),
+        );
+
+        $this->db->where('id', $this->input->post('transaction_id'));
+        $this->db->update('dms_transaction', $data);
     }
 }
 ?>
