@@ -82,7 +82,109 @@
 
             <!-- Modal body -->
             <div class="modal-body table-responsive" style="align-self:center; width: 100%;">  
+            
+            <ul class="nav nav-tabs" id="myTab<?php echo $dl['id']; ?>" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="transaction-details-tab<?php echo $dl['id']; ?>" data-bs-toggle="tab" href="#transaction-details<?php echo $dl['id']; ?>" role="tab" aria-controls="transaction-details" aria-selected="true">Transaction Details</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="history-tab<?php echo $dl['id']; ?>" data-bs-toggle="tab" href="#history<?php echo $dl['id']; ?>" role="tab" aria-controls="history" aria-selected="false">History</a>
+                </li>
+            </ul>
 
+            <div class="tab-content" id="myTabContent<?php echo $dl['id']; ?>">
+                <div class="tab-pane fade show active" id="transaction-details<?php echo $dl['id']; ?>" role="tabpanel" aria-labelledby="transaction-details-tab">
+                    <div class="row">
+                        <?php 
+                            foreach($office_list as $ol){
+                                if($ol['office_id'] == $dl['ts_office_id']){
+                                    $office_name = $ol['abbreviation'];
+                                    $office_address = $ol['office_address'];
+                                    $longitude = $ol['long'];
+                                    $latitude = $ol['lat'];
+                                }
+                            }; 
+                        ?>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="reference_no">Transaction No.</label>
+                                <br>
+                                <input type="text" name="reference_no" value="<?php echo $dl['reference_no']; ?>" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <br>
+                                <input type="text" name="category" value="<?php echo $dl['main_category']; ?>" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sub_category">Sub-Category</label>
+                                <br>
+                                <input type="text" name="sub_category" value="<?php echo $dl['sub_category']; ?>" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject_name">Subject Name</label>
+                                <br>
+                                <textarea name="subject_name" rows="6" cols="50" class="form-control"  disabled><?php echo $dl['subject_name']; ?></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                 <label for="reference_no">Office</label>
+                                <br>
+                                <input type="text" name="reference_no" value="<?php echo $office_name; ?>" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <br>
+                                <textarea name="address" rows="6" cols="50" class="form-control"  disabled><?php echo $office_address; ?>
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="geo_coordinates">Geo Coordinates</label>
+                                <br>
+                                <input type="text" name="geo_coordinates" value="<?php echo $longitude .', '. $latitude; ?>" disabled />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="reference_no">Assigned to:</label>
+                                <br>
+                                <input type="text" name="reference_no" value="<?php 
+                                            foreach($user_list as $ul){
+                                                if($ul['id'] == $dl['ts_forwarded_to_id']){
+                                                    echo $ul['name'];
+                                                }
+                                            }
+                                        ?>
+                                        " disabled />
+                            </div>
+
+                            <div class="form-group">
+                                 <label for="action">Action</label>
+                                <br>
+                                <input type="text" name="action" value="<?php echo $dl['ts_action']; ?>" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="remarks">Remarks</label>
+                                <br>
+                                <textarea name="remarks" rows="6" cols="50" class="form-control"  disabled><?php echo $dl['ts_remarks']; ?>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="history<?php echo $dl['id']; ?>" role="tabpanel" aria-labelledby="history-tab">
+                    <h4>history Tab</h4>
+                    <p>Welcome to the history tab. Add your content here.</p>
+                </div>
+            </div>
                 
                 
             </div>

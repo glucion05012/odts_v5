@@ -8,6 +8,7 @@
         public function inbox(){
             $data['dms_list'] =  $this->Dms_model->dms_list();
             $data['user_list'] =  $this->Config_model->user_list();
+            $data['office_list'] =  $this->Config_model->office_list();
 
             $this->load->view('templates/header');
             $this->load->view('templates/navbar');

@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/odts_v5/';
 
-//http://localhost/odts_v5/?session_id=8budqmkilidlpjb6f8aidiejhe
+//http://localhost/odts_v5/?session_id=iv7d1lsig4hu4sj3ufdgskgh0l
 
 // FOR CHANGE OF CONFIGURATION
 // upload.php -> $target_file & $ref_dir

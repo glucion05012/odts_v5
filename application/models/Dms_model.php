@@ -14,7 +14,8 @@ class Dms_model extends CI_Model{
                                 d.ts_forwarded_by_id,
                                 d.ts_forwarded_date,
                                 d.ts_forwarded_to_id,
-                                d.ts_status
+                                d.ts_status,
+                                d.ts_office_id
                                 FROM dms_dms a
                                 LEFT JOIN conf_category b on a.category_id=b.id
                                 LEFT JOIN conf_sub_category c on a.sub_category_id=c.id
@@ -23,6 +24,7 @@ class Dms_model extends CI_Model{
                                                 dt.forwarded_by_id as ts_forwarded_by_id,
                                                 dt.forwarded_to_id as ts_forwarded_to_id,
                                                 dt.dms_id,
+                                                dt.office_id as ts_office_id,
                                                 dt.status as ts_status,
                                                 ac.action as ts_action,
                                                 dt.remarks as ts_remarks,
@@ -63,6 +65,7 @@ class Dms_model extends CI_Model{
 
         // insert dms_transaction
         $datatr = array(
+            'office_id' => $this->input->post('office_id'),
             'dms_id' => $dms_id,
             'forwarded_by_id' => $_SESSION['userid'],
             'forwarded_date' => date("Y-m-d"),

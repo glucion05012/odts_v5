@@ -73,7 +73,9 @@ table td {
 label {
     color: gray;
 }
-
+input {
+  width: -webkit-fill-available;
+}
 body.swal2-shown > [aria-hidden='true'] {
   transition: 0.1s filter;
   filter: blur(3px);
@@ -98,5 +100,32 @@ body.swal2-shown > [aria-hidden='true'] {
   background-color: #08507E !important;
   color: #FFF !important;
 }
+
+/* Custom CSS for active tab styling */
+.nav-tabs .nav-link {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      color: #495057;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .nav-tabs .nav-link.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .tab-content {
+      border: 1px solid #ddd;
+      border-top: none;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 0 0 5px 5px;
+    }
+
+    /* Hover effect for tabs */
+    .nav-tabs .nav-link:hover {
+      background-color: #e2e6ea;
+    }
 </style>
 <body>

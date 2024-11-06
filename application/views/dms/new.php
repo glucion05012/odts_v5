@@ -56,7 +56,7 @@
                         <select name="office" id="office" class="form-control" required>
                             <option value="" selected disabled>-- SELECT --</option>
                             <?php foreach($office_list as $ol) : ?>
-                                <option value="<?= $ol['office_id']; ?>" ><?= $ol['office_name']; ?></option>
+                                <option value="<?= $ol['office_id']; ?>" ><?= $ol['abbreviation']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>  
@@ -385,8 +385,11 @@
                     var personnel_id = $('#personnel').val();
                     var action_id = $('#action').val();
                     var remarks = $('#remarks').val();
+                    var office_id = $('#office').val();
+                    
                     $.ajax({
                             data : {
+                                    office_id : office_id,
                                     category_id : category_id,
                                     sub_category_id : sub_category_id,
                                     subject_name : subject_name,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 05, 2024 at 02:52 PM
+-- Generation Time: Nov 06, 2024 at 05:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -142,6 +142,7 @@ INSERT INTO `dms_dms` (`id`, `reference_no`, `category_id`, `sub_category_id`, `
 CREATE TABLE `dms_transaction` (
   `id` int(20) NOT NULL,
   `dms_id` varchar(200) DEFAULT NULL,
+  `office_id` varchar(200) DEFAULT NULL,
   `forwarded_by_id` varchar(200) DEFAULT NULL,
   `forwarded_date` varchar(200) DEFAULT NULL,
   `forwarded_to_id` varchar(200) DEFAULT NULL,
@@ -155,8 +156,8 @@ CREATE TABLE `dms_transaction` (
 -- Dumping data for table `dms_transaction`
 --
 
-INSERT INTO `dms_transaction` (`id`, `dms_id`, `forwarded_by_id`, `forwarded_date`, `forwarded_to_id`, `accepted_date`, `action_id`, `remarks`, `status`) VALUES
-(1, '49', '1520', '2024-11-05', '1465', NULL, '4', 'For your checking', 'Pending');
+INSERT INTO `dms_transaction` (`id`, `dms_id`, `office_id`, `forwarded_by_id`, `forwarded_date`, `forwarded_to_id`, `accepted_date`, `action_id`, `remarks`, `status`) VALUES
+(1, '49', '1', '1465', '2024-11-05', '1520', NULL, '4', 'For your checking', 'Pending');
 
 --
 -- Indexes for dumped tables
