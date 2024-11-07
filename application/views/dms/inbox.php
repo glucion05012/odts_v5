@@ -50,7 +50,11 @@
                                         ?>
                                     </b>
                                     <br>
-                                    <?php echo date('F j, Y', strtotime($dl['ts_forwarded_date'])); ?>
+                                    <?php 
+                                        $unixTime = strtotime($dl['ts_timestamp_forwarded_date']);
+                                        $newDate = date("F j, Y h:i a", $unixTime);
+                                        echo $newDate; 
+                                    ?>
                                 </td>
                                 <td>
                                     <b><?php echo $dl['ts_action']; ?></b><br>
@@ -208,7 +212,13 @@
                                 <?php if($dms_id == $dtl['dms_id']) : ?>
                                     <tr>
                                         <td><?php echo $dtl['id']; ?></td>
-                                        <td><?php echo date('F j, Y', strtotime($dtl['forwarded_date'])); ?></td>
+                                        <td>
+                                            <?php 
+                                                $unixTime = strtotime($dtl['timestamp_forwarded_date']);
+                                                $newDate = date("F j, Y h:i a", $unixTime);
+                                                echo $newDate; 
+                                            ?>
+                                        </td>
                                         <td><?php echo $dtl['sub_category']; ?></td>
                                         <td><?php echo $dtl['action_name']; ?></td>
                                         <td><?php echo $dtl['remarks']; ?></td>

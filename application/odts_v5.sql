@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 06, 2024 at 02:10 PM
+-- Generation Time: Nov 07, 2024 at 03:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -98,6 +98,7 @@ CREATE TABLE `dms_attachments` (
   `file_name` varchar(200) DEFAULT NULL,
   `file_location` varchar(200) DEFAULT NULL,
   `date_uploaded` varchar(200) DEFAULT NULL,
+  `timestamp_date_uploaded` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -105,13 +106,16 @@ CREATE TABLE `dms_attachments` (
 -- Dumping data for table `dms_attachments`
 --
 
-INSERT INTO `dms_attachments` (`id`, `dms_transaction_id`, `file_name`, `file_location`, `date_uploaded`, `type`) VALUES
-(36, 1, 'linkbiz payment.pdf', '/assets/attachments/dms/ODTS-NCR-2024-000049/linkbiz payment.pdf', '2024-11-05', 'dms'),
-(37, 2, 'linkbiz payment.pdf', '/assets/attachments/dms/ODTS-NCR-2024-000050/linkbiz payment.pdf', '2024-11-06', 'dms'),
-(38, 2, 'Revised Guide Questions Client Registration System.docx', '/assets/attachments/dms/ODTS-NCR-2024-000050/Revised Guide Questions Client Registration System.docx', '2024-11-06', 'dms'),
-(39, 12, '09a92e21-c278-4c91-b963-6622c5c7bb58.jpg', '/assets/attachments/dms/ODTS-NCR-2024-000050/09a92e21-c278-4c91-b963-6622c5c7bb58.jpg', '2024-11-06', 'dms'),
-(40, 13, 'Guidelines for assisting clients on CRS Registration.pptx', '/assets/attachments/dms/ODTS-NCR-2024-000050/Guidelines for assisting clients on CRS Registration.pptx', '2024-11-06', 'dms'),
-(41, 14, '1.png', '/assets/attachments/dms/ODTS-NCR-2024-000050/1.png', '2024-11-06', 'dms');
+INSERT INTO `dms_attachments` (`id`, `dms_transaction_id`, `file_name`, `file_location`, `date_uploaded`, `timestamp_date_uploaded`, `type`) VALUES
+(36, 1, 'linkbiz payment.pdf', '/assets/attachments/dms/ODTS-NCR-2024-000049/linkbiz payment.pdf', '2024-11-05', '2024-11-07 02:25:38', 'dms'),
+(37, 2, 'linkbiz payment.pdf', '/assets/attachments/dms/ODTS-NCR-2024-000050/linkbiz payment.pdf', '2024-11-06', '2024-11-07 02:25:38', 'dms'),
+(38, 2, 'Revised Guide Questions Client Registration System.docx', '/assets/attachments/dms/ODTS-NCR-2024-000050/Revised Guide Questions Client Registration System.docx', '2024-11-06', '2024-11-07 02:25:38', 'dms'),
+(39, 12, '09a92e21-c278-4c91-b963-6622c5c7bb58.jpg', '/assets/attachments/dms/ODTS-NCR-2024-000050/09a92e21-c278-4c91-b963-6622c5c7bb58.jpg', '2024-11-06', '2024-11-07 02:25:38', 'dms'),
+(40, 13, 'Guidelines for assisting clients on CRS Registration.pptx', '/assets/attachments/dms/ODTS-NCR-2024-000050/Guidelines for assisting clients on CRS Registration.pptx', '2024-11-06', '2024-11-07 02:25:38', 'dms'),
+(41, 14, '1.png', '/assets/attachments/dms/ODTS-NCR-2024-000050/1.png', '2024-11-06', '2024-11-07 02:25:38', 'dms'),
+(42, 15, '462566030_735712422091671_6324657592879754925_n.jpg', '/assets/attachments/dms/ODTS-NCR-2024-000051/462566030_735712422091671_6324657592879754925_n.jpg', '2024-11-07', '2024-11-07 02:25:38', 'dms'),
+(43, 16, '4.png', '/assets/attachments/dms/ODTS-NCR-2024-000051/4.png', '2024-11-07 9:58:am', '2024-11-07 02:25:38', 'dms'),
+(44, 18, 'Revised Guide Questions Client Registration System.docx', '/assets/attachments/dms/ODTS-NCR-2024-000052/Revised Guide Questions Client Registration System.docx', '2024-11-07', '2024-11-07 02:41:53', 'dms');
 
 -- --------------------------------------------------------
 
@@ -128,6 +132,7 @@ CREATE TABLE `dms_dms` (
   `document_type` varchar(200) DEFAULT NULL,
   `created_by_id` varchar(200) DEFAULT NULL,
   `date_created` varchar(200) DEFAULT NULL,
+  `timestamp_date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -135,9 +140,11 @@ CREATE TABLE `dms_dms` (
 -- Dumping data for table `dms_dms`
 --
 
-INSERT INTO `dms_dms` (`id`, `reference_no`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `created_by_id`, `date_created`, `status`) VALUES
-(49, 'ODTS-NCR-2024-000049', 5, 8, 'GIDDEL LUCION DTR FOR MONTH OF SEPTEMBER', 'For Compliance', '1520', '2024-11-05', 'Active'),
-(50, 'ODTS-NCR-2024-000050', 5, 8, 'FOR YOUR CHECKING OF TCP', 'For Compliance', '1581', '2024-11-06', 'Active');
+INSERT INTO `dms_dms` (`id`, `reference_no`, `category_id`, `sub_category_id`, `subject_name`, `document_type`, `created_by_id`, `date_created`, `timestamp_date_created`, `status`) VALUES
+(49, 'ODTS-NCR-2024-000049', 5, 8, 'GIDDEL LUCION DTR FOR MONTH OF SEPTEMBER', 'For Compliance', '1520', '2024-11-05', '2024-11-07 02:24:46', 'Active'),
+(50, 'ODTS-NCR-2024-000050', 5, 8, 'FOR YOUR CHECKING OF TCP', 'For Compliance', '1581', '2024-11-06', '2024-11-07 02:24:46', 'Active'),
+(51, 'ODTS-NCR-2024-000051', 4, 6, '123', 'Confidential', '1669', '2024-11-07', '2024-11-07 02:24:46', 'Active'),
+(52, 'ODTS-NCR-2024-000052', 4, 6, 'timestamo testing', 'For Compliance', '1520', '2024-11-07', '2024-11-07 02:39:32', 'Active');
 
 -- --------------------------------------------------------
 
@@ -151,8 +158,10 @@ CREATE TABLE `dms_transaction` (
   `office_id` varchar(200) DEFAULT NULL,
   `forwarded_by_id` varchar(200) DEFAULT NULL,
   `forwarded_date` varchar(200) DEFAULT NULL,
+  `timestamp_forwarded_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `forwarded_to_id` varchar(200) DEFAULT NULL,
   `accepted_date` varchar(200) DEFAULT NULL,
+  `timestamp_accepted_date` varchar(200) DEFAULT NULL,
   `action_id` varchar(200) DEFAULT NULL,
   `remarks` text DEFAULT NULL,
   `status` varchar(200) DEFAULT NULL
@@ -162,14 +171,18 @@ CREATE TABLE `dms_transaction` (
 -- Dumping data for table `dms_transaction`
 --
 
-INSERT INTO `dms_transaction` (`id`, `dms_id`, `office_id`, `forwarded_by_id`, `forwarded_date`, `forwarded_to_id`, `accepted_date`, `action_id`, `remarks`, `status`) VALUES
-(1, '49', '1', '1465', '2024-11-05', '1520', NULL, '4', 'For your checking', 'Pending'),
-(2, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '8', 'patingin lang', 'Pending'),
-(10, '50', '1', '1520', '2024-11-06', '1581', '2024-11-06', '12', '111', 'Pending'),
-(11, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '4', '23', 'Pending'),
-(12, '50', '1', '1520', '2024-11-06', '1581', '2024-11-06', '8', '1', 'Pending'),
-(13, '50', '1', '1581', '2024-11-06', '1520', '2024-11-06', '4', '123', 'Pending'),
-(14, '50', '1', '1520', '2024-11-06', '1581', NULL, '4', '123', 'Pending');
+INSERT INTO `dms_transaction` (`id`, `dms_id`, `office_id`, `forwarded_by_id`, `forwarded_date`, `timestamp_forwarded_date`, `forwarded_to_id`, `accepted_date`, `timestamp_accepted_date`, `action_id`, `remarks`, `status`) VALUES
+(1, '49', '1', '1465', '2024-11-05', '2024-11-07 02:22:51', '1520', NULL, NULL, '4', 'For your checking', 'Pending'),
+(2, '50', '1', '1581', '2024-11-06', '2024-11-07 02:22:51', '1520', '2024-11-06', NULL, '8', 'patingin lang', 'Pending'),
+(10, '50', '1', '1520', '2024-11-06', '2024-11-07 02:22:51', '1581', '2024-11-06', NULL, '12', '111', 'Pending'),
+(11, '50', '1', '1581', '2024-11-06', '2024-11-07 02:22:51', '1520', '2024-11-06', NULL, '4', '23', 'Pending'),
+(12, '50', '1', '1520', '2024-11-06', '2024-11-07 02:22:51', '1581', '2024-11-06', NULL, '8', '1', 'Pending'),
+(13, '50', '1', '1581', '2024-11-06', '2024-11-07 02:22:51', '1520', '2024-11-06', NULL, '4', '123', 'Pending'),
+(14, '50', '1', '1520', '2024-11-06', '2024-11-07 02:22:51', '1581', '2024-11-07 9:56:am', NULL, '4', '123', 'Pending'),
+(15, '51', '1', '1669', '2024-11-07', '2024-11-07 02:22:51', '1809', NULL, NULL, '4', '213', 'Pending'),
+(16, '50', '1', '1581', '2024-11-07', '2024-11-07 02:22:51', '1520', NULL, NULL, '4', '123', 'Pending'),
+(17, '52', '1', '1520', '2024-11-07', '2024-11-07 02:41:22', '1581', '2024-11-07', '2024-11-07 10:41:22', '4', 'timestamo testing', 'Pending'),
+(18, '52', '1', '1581', '2024-11-07', '2024-11-07 02:44:22', '1520', '2024-11-07', '2024-11-07 10:44:22', '4', '1', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -237,17 +250,17 @@ ALTER TABLE `conf_sub_category`
 -- AUTO_INCREMENT for table `dms_attachments`
 --
 ALTER TABLE `dms_attachments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `dms_dms`
 --
 ALTER TABLE `dms_dms`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `dms_transaction`
 --
 ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;

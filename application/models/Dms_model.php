@@ -13,8 +13,10 @@ class Dms_model extends CI_Model{
                                 d.ts_remarks,
                                 d.ts_forwarded_by_id,
                                 d.ts_forwarded_date,
+                                d.ts_timestamp_forwarded_date,
                                 d.ts_forwarded_to_id,
                                 d.ts_accepted_date,
+                                d.ts_timestamp_accepted_date,
                                 d.ts_transaction_id,
                                 d.ts_status,
                                 d.ts_office_id
@@ -28,11 +30,13 @@ class Dms_model extends CI_Model{
                                                 dt.forwarded_to_id as ts_forwarded_to_id,
                                                 dt.dms_id,
                                                 dt.accepted_date as ts_accepted_date,
+                                                dt.timestamp_accepted_date as ts_timestamp_accepted_date,
                                                 dt.office_id as ts_office_id,
                                                 dt.status as ts_status,
                                                 ac.action as ts_action,
                                                 dt.remarks as ts_remarks,
-                                               	dt.forwarded_date as ts_forwarded_date
+                                               	dt.forwarded_date as ts_forwarded_date,
+                                               	dt.timestamp_forwarded_date as ts_timestamp_forwarded_date
                                             from dms_transaction as dt
                                             left join conf_action as ac on dt.action_id=ac.id
                                     WHERE dt.id IN (SELECT max(dt2.id) from dms_transaction dt2														group by dt2.dms_id
@@ -145,8 +149,10 @@ class Dms_model extends CI_Model{
 
     
     public function accept_transaction(){
+        date_default_timezone_set('Asia/Manila');
         $data = array(
             'accepted_date' => date("Y-m-d"),
+            'timestamp_accepted_date' => date("Y-m-d h:i:s"),
         );
 
         $this->db->where('id', $this->input->post('transaction_id'));
