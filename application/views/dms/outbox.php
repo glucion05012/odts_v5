@@ -319,6 +319,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <a class="btn btn-sm btn-info mr-auto" target="_blank" href="df/<?php echo base64_encode($dms_id); ?>"><span class="btn-label"><i class="fas fa-print"></i></span> Print DF</a>
+                <a class="btn btn-sm btn-primary mr-auto" target="_blank" href="ar/<?php echo base64_encode($dms_id); ?>"><span class="btn-label"><i class="fas fa-print"></i></span> Print AR</a>
 
                 <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
             </div>
