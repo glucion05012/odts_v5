@@ -10,3 +10,5 @@ $route['dashboard'] = 'Dashboardcontroller';
 $route['inbox'] = 'Inboxcontroller/inbox';
 $route['inbox/new'] = 'Inboxcontroller/new';
 $route['inbox/process/(:any)'] = 'Inboxcontroller/process/$1';
+
+$route['outbox'] = 'Outboxcontroller/outbox';
