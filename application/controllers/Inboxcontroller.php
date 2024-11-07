@@ -69,5 +69,21 @@
             $this->load->view('dms/process', $data);
             $this->load->view('templates/footer');
         }
+        
+        public function df($id){
+            $decid = base64_decode($id);
+            $data['dms_id'] = $decid;
+            
+            $data['dms_list'] =  $this->Dms_model->dms_list();
+            $data['dms_transaction_list'] =  $this->Dms_model->dms_transaction_list();
+            $data['division_list'] =  $this->Config_model->division_list();
+            $data['section_list'] =  $this->Config_model->section_list();
+            $data['user_list'] =  $this->Config_model->user_list();
+            $data['dms_transaction_list'] =  $this->Dms_model->dms_transaction_list();
+
+            $this->load->view('templates/header');
+            $this->load->view('dms/df', $data);
+        }
     }
+
 ?>

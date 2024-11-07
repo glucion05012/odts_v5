@@ -39,7 +39,8 @@ class Dms_model extends CI_Model{
                                                	dt.timestamp_forwarded_date as ts_timestamp_forwarded_date
                                             from dms_transaction as dt
                                             left join conf_action as ac on dt.action_id=ac.id
-                                    WHERE dt.id IN (SELECT max(dt2.id) from dms_transaction dt2														group by dt2.dms_id
+                                    WHERE dt.id IN (SELECT max(dt2.id) from dms_transaction dt2
+                                    group by dt2.dms_id
                                         ))as d on a.id=d.dms_id;");
 
         return $query->result_array();

@@ -303,10 +303,11 @@
                 
                 
             </div>
-
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
+                <a class="btn btn-sm btn-info mr-auto" href="df/<?php echo base64_encode($dms_id); ?>"><span class="btn-label"><i class="fas fa-print"></i></span> Print DF</a>
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
 
             </div>
