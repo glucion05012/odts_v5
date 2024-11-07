@@ -116,6 +116,7 @@
                             <?php foreach($action_list as $al) : ?>
                                 <option value="<?= $al['id']; ?>" ><?= $al['action']; ?></option>
                             <?php endforeach; ?>
+                            <option value="0">Filed/Closed</option>
                         </select>
                     </div> 
 
@@ -419,7 +420,11 @@
                     var action_id = $('#action').val();
                     var remarks = $('#remarks').val();
                     var office_id = $('#office').val();
-                    var status = 'Pending';
+                    if(action_id == 0){
+                        var status = 'Closed';
+                    }else{
+                        var status = 'Pending';
+                    }
                     
                     $.ajax({
                         data : {

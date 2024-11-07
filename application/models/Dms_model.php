@@ -174,8 +174,17 @@ class Dms_model extends CI_Model{
         );
         
         $this->db->insert('dms_transaction', $datatr);
-
         $dms_transaction_id = $this->db->insert_id();
+
+        if($this->input->post('action_id') == 0){
+            $datar = array(
+                'status' => 'Inactive',
+            );
+    
+            $this->db->where('id', $this->input->post('dms_id'));
+            $this->db->update('dms_dms', $datar);
+        }
+
         $query = $this->db->query("SELECT * FROM dms_transaction WHERE id = '$dms_transaction_id'");
         return $query->result_array();
     }

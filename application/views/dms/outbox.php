@@ -31,7 +31,7 @@
                             <?php 
                                 $out_yes = 0;
                                 foreach($dms_transaction_list as $dtl) : ?>
-                                    <?php if($dtl['dms_id'] == $dl['id']) : ?>
+                                    <?php if($dtl['dms_id'] == $dl['id'] AND $dl['status'] == 'Active') : ?>
                                         <?php if($dtl['forwarded_by_id'] == $_SESSION['userid']) : ?>
                                             
                                             <tr class="table-active"> 

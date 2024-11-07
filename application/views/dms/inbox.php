@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <?php foreach($dms_list as $dl) : ?>
-                            <?php if($dl['ts_forwarded_to_id'] == $_SESSION['userid']) : ?>
+                            <?php if($dl['ts_forwarded_to_id'] == $_SESSION['userid'] AND $dl['status'] == 'Active') : ?>
                             <tr class="table-active"> 
                                 <td><?php echo $dl['reference_no']; ?></td>
                                 <td>

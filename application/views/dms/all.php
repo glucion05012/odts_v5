@@ -54,7 +54,7 @@
                                     ?>
                                 </td>
                                 <td>
-                                    <b><?php echo $dl['ts_action']; ?></b><br>
+                                    <b><?php if($dl['ts_action']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?></b><br>
                                     <?php echo $dl['ts_remarks']; ?>
                                 </td>
                                 <td>
@@ -168,7 +168,7 @@
                             <div class="form-group">
                                  <label for="action">Action</label>
                                 <br>
-                                <input type="text" name="action" value="<?php echo $dl['ts_action']; ?>" disabled />
+                                <input type="text" name="action" value="<?php if($dl['ts_action']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?>" disabled />
                             </div>
 
                             <div class="form-group">
@@ -213,7 +213,7 @@
                                             ?>
                                         </td>
                                         <td><?php echo $dtl['sub_category']; ?></td>
-                                        <td><?php echo $dtl['action_name']; ?></td>
+                                        <td><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['action_name']; }; ?></td>
                                         <td><?php echo $dtl['remarks']; ?></td>
                                         <td>
                                             <?php 
