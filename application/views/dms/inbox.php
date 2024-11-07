@@ -5,7 +5,7 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    <a class="btn btn-success create-btn" href="inbox/new"><span class="btn-label"><i class="fas fa-plus"></i></span> ADD TRANSACTION</a>
+                    <a class="viewbtn btn btn-success btn-sm waves-effect waves-light" href="inbox/new"><span class="btn-label"><i class="fas fa-plus"></i></span> ADD TRANSACTION</a>
                 </div>
 
                 <div class="trans-layout card  mb-4">
