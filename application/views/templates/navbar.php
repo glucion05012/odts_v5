@@ -71,8 +71,32 @@
                   <p>Outbox</p>
                 </a>
               </li>
+
+              <li class="nav-header">Configuration</li>
+                <li class="nav-item has-treeview">
+                  
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fa fa-gear"></i>
+                      <p>
+                        DMS Settings
+                        <i class="fas fa-angle-list right"></i>
+                      </p>
+                    </a>
+                    
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>conf/category" class="nav-link">
+                        <i class="nav-icon fa fa-list"></i>
+                          <p>Category/Action</p>
+                        </a>
+                      </li>
+                      
+
+                    </ul>
+              </li>
             
           </li>
+          
             
         </ul>
       </nav>
