@@ -85,11 +85,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-8">
                             <p><b>Subject/Title:</b> <?php echo $subject_name; ?></p>
-                            <hr class="hr">
+                        </div>
+
+                        <!-- QR CODE IMAGE -->
+                        <div class="col-sm-4">
+                            <img src='https://quickchart.io/qr?text=<?php echo base_url(); ?>validator/<?php echo base64_encode($dms_id); ?>' width='50' height='50' alt='signature'></img>
+                            <?php echo $reference_no; ?>
                         </div>
                     </div>
+                    <hr class="hr">
 
                     <p>
                     Officials/Personnel Concerned:<br><br>

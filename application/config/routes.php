@@ -15,3 +15,4 @@ $route['outbox'] = 'Outboxcontroller/outbox';
 
 // Disposition Form
 $route['df/(:any)'] = 'Inboxcontroller/df/$1';
+$route['validator/(:any)'] = 'Inboxcontroller/validator/$1';

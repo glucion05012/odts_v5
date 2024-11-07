@@ -209,6 +209,7 @@
 
                         <tbody>
                             <?php $dms_id = $dl['id']; ?>
+                            <?php $reference_no = $dl['reference_no']; ?>
 
                             <?php foreach($dms_transaction_list as $dtl) : ?>
                                 <?php if($dms_id == $dtl['dms_id']) : ?>
@@ -300,6 +301,15 @@
                         </tbody>
 
                     </table>
+                </div>
+
+                <!-- QR CODE IMAGE -->
+                <div class="col-sm-6" style='margin-top:2rem;'>
+                    <img src='https://quickchart.io/qr?text=<?php echo base_url(); ?>validator/<?php echo base64_encode($dms_id); ?>' width='150' height='150' alt='signature'></img>
+                    <?php echo $reference_no; ?>
+                    
+                    <p><img src='<?php echo base_url()."assets/"; ?>denr-logo.png' width='50' height='50'>
+                    <span style="font-size: 7px;">DENR NATIONAL CAPITAL REGION</span></p>
                 </div>
             </div>
                 
