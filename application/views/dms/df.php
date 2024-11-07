@@ -119,6 +119,7 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach($dms_transaction_list as $dtl) : ?>
+                                            <?php if($dtl['dms_id']==$dms_id) : ?>
                                             <tr class="text-wrap">
                                                 <td>
                                                     <?php 
@@ -174,6 +175,7 @@
                                                     <?php echo $dtl['remarks']; ?>
                                                 </td>
                                             </tr>
+                                            <?php endif; ?>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
