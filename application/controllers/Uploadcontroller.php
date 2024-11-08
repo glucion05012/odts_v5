@@ -22,7 +22,7 @@
 
                 // $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/".$dms_reference_no);
 
-                // $target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);\
+                // $target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
                 // $file_location = "/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
                 
                 $uploadOk = 1;
