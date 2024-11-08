@@ -57,7 +57,8 @@
                                     ?>
                                 </td>
                                 <td>
-                                    <b><?php echo $dl['ts_action']; ?></b><br>
+                                    <!-- <b><?php echo $dl['ts_action']; ?></b><br> -->
+                                    <b><?php if($dl['ts_action_id']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?></b><br>
                                     <?php echo $dl['ts_remarks']; ?>
                                 </td>
                                 <td>
@@ -65,7 +66,9 @@
                                     <?php if($dl['ts_accepted_date'] == '') : ?>
                                         <button type="button" id="receivebtn<?php echo $dl['id']; ?>" class="receivebtn btn btn-primary btn-sm waves-effect waves-light" >Receive</button>
                                     <?php else: ?>
-                                        <a class="viewbtn btn btn-success btn-sm waves-effect waves-light" href="inbox/process/<?php echo base64_encode($dl['ts_transaction_id']); ?>"><span class="btn-label"> Process</a>
+                                        <?php if($dl['ts_action_id'] != 0) : ?>
+                                            <a class="viewbtn btn btn-success btn-sm waves-effect waves-light" href="inbox/process/<?php echo base64_encode($dl['ts_transaction_id']); ?>"><span class="btn-label"> Process</a>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 </td>
                             </tr>   
@@ -221,7 +224,8 @@
                                             ?>
                                         </td>
                                         <td><?php echo $dtl['sub_category']; ?></td>
-                                        <td><?php echo $dtl['action_name']; ?></td>
+                                        <!-- <td><?php echo $dtl['action_name']; ?></td> -->
+                                        <td><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['action_name']; }; ?></td>
                                         <td><?php echo $dtl['remarks']; ?></td>
                                         <td>
                                             <?php 
@@ -265,7 +269,8 @@
                                                 }
                                             ?>
                                         </td>
-                                        <td><?php echo $dtl['status']; ?></td>
+                                        <!-- <td><?php echo $dtl['status']; ?></td> -->
+                                        <td><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['status']; }; ?></td>
                                         <td>
                                         <?php 
                                             $with_attach = 0;

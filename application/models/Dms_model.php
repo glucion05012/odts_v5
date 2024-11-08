@@ -10,6 +10,7 @@ class Dms_model extends CI_Model{
                                 b.main_category,
                                 c.sub_category,
                                 d.ts_action,
+                                d.ts_action_id,
                                 d.ts_remarks,
                                 d.ts_forwarded_by_id,
                                 d.ts_forwarded_date,
@@ -34,6 +35,7 @@ class Dms_model extends CI_Model{
                                                 dt.office_id as ts_office_id,
                                                 dt.status as ts_status,
                                                 ac.action as ts_action,
+                                                dt.action_id as ts_action_id,
                                                 dt.remarks as ts_remarks,
                                                	dt.forwarded_date as ts_forwarded_date,
                                                	dt.timestamp_forwarded_date as ts_timestamp_forwarded_date
