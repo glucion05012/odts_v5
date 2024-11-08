@@ -83,7 +83,7 @@
                                 </p>
 
                                 <!-- QR CODE IMAGE -->
-                                <div class="col-sm-6" style='margin-top:2rem;'>
+                                <div class="col-sm-12" style='margin-top:2rem;'>
                                     <img src='https://quickchart.io/qr?text=<?php echo base_url(); ?>validator/<?php echo base64_encode($dms_id); ?>' width='150' height='150' alt='signature'></img>
                                     <?php echo $reference_no; ?>
                                     
