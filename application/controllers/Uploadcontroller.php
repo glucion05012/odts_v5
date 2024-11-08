@@ -10,20 +10,21 @@
             for($i=0;$i<$countfiles;$i++){
                 
                 
-                $dms_id_query = $this->db->query('select * from dms_dms ORDER BY id DESC LIMIT 1');
+                $dms_id_query = $this->db->query('select a.id as txn_id, b.reference_no from dms_transaction a left join dms_dms b on a.dms_id=b.id ORDER BY a.id DESC LIMIT 1');
                 foreach($dms_id_query->result() as $diq){
                     $dms_reference_no = $diq->reference_no;
+                    $dms_transaction_id = $diq->txn_id;
                 }
                 
-                $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/".$dms_reference_no);
+                $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/".$dms_reference_no.'/'.$dms_transaction_id);
                 
-                $target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
-                $file_location = "/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
+                $target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
+                $file_location = "/assets/attachments/dms/" . $dms_reference_no.'/'.$dms_transaction_id .'/'.basename($_FILES["file"]["name"][$i]);
 
-                // $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/".$dms_reference_no);
+                // $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/".$dms_reference_no.'/'.$dms_transaction_id);
 
-                // $target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
-                // $file_location = "/assets/attachments/dms/" . $dms_reference_no .'/'.basename($_FILES["file"]["name"][$i]);
+                // $target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
+                // $file_location = "/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
                 
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
