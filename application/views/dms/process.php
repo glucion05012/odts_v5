@@ -454,13 +454,17 @@
                             myDropzone.processQueue();
                             // attachment end
 
-                            Swal.fire({
-                                icon: "success",
-                                title: "Success",
-                                html: "Transaction Successfully Forwarded to <b style='color:blue'>" + for_name + "</b>.",
-                                }).then(function(){ 
-                                    window.location = "<?php  echo base_url('inbox'); ?>";
+                            myDropzone.on("queuecomplete", function(){
+                                    Swal.fire({
+                                    icon: "success",
+                                    title: "Success",
+                                    html: "Transaction Successfully Forwarded to <b style='color:blue'>" + for_name + "</b>.",
+                                    }).then(function(){ 
+                                        window.location = "<?php  echo base_url('inbox'); ?>";
+                                });
                             });
+
+                            
                         }
                     });
                     

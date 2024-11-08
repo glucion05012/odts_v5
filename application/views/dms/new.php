@@ -410,13 +410,16 @@
                                 myDropzone.processQueue();
                                 // attachment end
 
-                                Swal.fire({
-                                    icon: "success",
-                                    title: "Success",
-                                    html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'>" + refno + "</b>.",
-                                    }).then(function(){ 
-                                        window.location = "<?php  echo base_url('inbox'); ?>";
+                                myDropzone.on("queuecomplete", function(){
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: "Success",
+                                        html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'>" + refno + "</b>.",
+                                        }).then(function(){ 
+                                            window.location = "<?php  echo base_url('inbox'); ?>";
+                                    });
                                 });
+                                
                             }
                         });
                     
