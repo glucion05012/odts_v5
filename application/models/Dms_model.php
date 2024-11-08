@@ -61,7 +61,7 @@ class Dms_model extends CI_Model{
                             LEFT JOIN dms_dms b on a.dms_id=b.id
                             LEFT JOIN conf_category c on b.category_id=c.id
                             LEFT JOIN conf_sub_category d on b.sub_category_id=d.id
-                            LEFT JOIN conf_action e on a.action_id=e.id;");
+                            LEFT JOIN conf_action e on a.action_id=e.id order by a.id DESC;");
 
         return $query->result_array();
     }
