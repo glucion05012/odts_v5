@@ -54,7 +54,8 @@
                                     ?>
                                 </td>
                                 <td>
-                                    <b><?php if($dl['ts_action']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?></b><br>
+                                    <b><?php echo $dl['ts_action']; ?></b><br>
+                                    <!-- <b><?php if($dl['ts_action']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?></b><br> -->
                                     <?php echo $dl['ts_remarks']; ?>
                                 </td>
                                 <td>
