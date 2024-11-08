@@ -13,6 +13,7 @@ $route['inbox/process/(:any)'] = 'Inboxcontroller/process/$1';
 
 $route['outbox'] = 'Outboxcontroller/outbox';
 $route['all'] = 'Inboxcontroller/all_transactions';
+$route['confidential'] = 'Inboxcontroller/confidential_transactions';
 
 // Disposition Form
 $route['df/(:any)'] = 'Inboxcontroller/df/$1';

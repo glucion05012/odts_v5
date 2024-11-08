@@ -59,6 +59,14 @@
                   <p>All Transactions</p>
                 </a>
               </li>
+              
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>confidential" class="nav-link">
+                <i class="nav-icon fa fa-eye-slash"></i>
+                  <p>Confidential</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>inbox" class="nav-link">
                 <i class="nav-icon fa fa-folder-plus"></i>

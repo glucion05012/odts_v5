@@ -7,7 +7,7 @@
 
                 <div class="trans-layout card  mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-folder"></i> ALL TRANSACTIONS</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-eye-slash"></i> ALL TRANSACTIONS (Confidential)</h6>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <tbody>
 
                         <?php foreach($dms_list as $dl) : ?>
-                            <?php if($dl['document_type'] =='For Compliance') : ?>
+                            <?php if($dl['document_type'] =='Confidential') : ?>
                                 <tr class="table-active"> 
                                     <td><?php echo $dl['reference_no']; ?></td>
                                     <td>
