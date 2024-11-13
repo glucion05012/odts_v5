@@ -454,18 +454,18 @@
                             let resp = JSON.stringify(res[0]['reference_no']);
                             let refno = (JSON.parse(resp));
                             var countdz= myDropzone.files.length;
+                            
                             if(countdz == 0){
-                                myDropzone.on("queuecomplete", function(){
-                                        Swal.fire({
-                                        icon: "success",
-                                        title: "Success",
-                                        html: "Transaction Successfully Forwarded to <b style='color:blue'>" + for_name + "</b>.",
-                                        }).then(function(){ 
-                                            window.location = "<?php  echo base_url('inbox'); ?>";
+                                    Swal.fire({
+                                    icon: "success",
+                                    title: "Success",
+                                    html: "Transaction Successfully Forwarded to <b style='color:blue'>" + for_name + "</b>.",
+                                    }).then(function(){ 
+                                        window.location = "<?php  echo base_url('inbox'); ?>";
                                     });
-                                });
                             }else{
-                            // attachment start
+                                alert('meron')
+                                // attachment start
                                 myDropzone.processQueue();
                                 // attachment end
 
@@ -482,6 +482,9 @@
                             }
                            
                             
+                        }
+                        , error: function(err) {
+                            alert(err)
                         }
                     });
                     
