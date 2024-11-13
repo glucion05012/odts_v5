@@ -440,8 +440,8 @@
                         , dataType: 'json'
                         , crossOrigin: false
                         , success: function(res) {
-                            let resp = JSON.stringify(res[0]['forwarded_to_id']);
-                            let f_id = (JSON.parse(resp));
+                            let resf = JSON.stringify(res[0]['forwarded_to_id']);
+                            let f_id = (JSON.parse(resf));
                             var for_name = 'Unknown';
 
                             <?php foreach($user_list as $ul) : ?>

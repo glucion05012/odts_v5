@@ -187,7 +187,7 @@ class Dms_model extends CI_Model{
             $this->db->update('dms_dms', $datar);
         }
 
-        $query = $this->db->query("SELECT * FROM dms_transaction WHERE id = '$dms_transaction_id'");
+        $query = $this->db->query("SELECT a.*, b.reference_no FROM dms_transaction a left join dms_dms b on a.dms_id=b.id WHERE a.id = '$dms_transaction_id'");
         return $query->result_array();
     }
 
