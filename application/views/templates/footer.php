@@ -24,7 +24,8 @@
             ],
             orderCellsTop: true,
             fixedHeader: true,
-            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ]
+            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+            order: [[0, 'desc']]
             
         } );
     });
