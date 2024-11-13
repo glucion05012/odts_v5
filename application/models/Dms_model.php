@@ -11,6 +11,7 @@ class Dms_model extends CI_Model{
                                 c.sub_category,
                                 d.ts_action,
                                 d.ts_action_id,
+                                d.ts_attachment_type,
                                 d.ts_remarks,
                                 d.ts_forwarded_by_id,
                                 d.ts_forwarded_date,
@@ -36,6 +37,7 @@ class Dms_model extends CI_Model{
                                                 dt.status as ts_status,
                                                 ac.action as ts_action,
                                                 dt.action_id as ts_action_id,
+                                                dt.attachment_type as ts_attachment_type,
                                                 dt.remarks as ts_remarks,
                                                	dt.forwarded_date as ts_forwarded_date,
                                                	dt.timestamp_forwarded_date as ts_timestamp_forwarded_date
@@ -123,7 +125,8 @@ class Dms_model extends CI_Model{
             'forwarded_to_id' => $this->input->post('personnel_id'),
             'action_id' => $this->input->post('action_id'),
             'remarks' => $this->input->post('remarks'),
-            'status' => 'Pending'
+            'status' => 'Pending',
+            'attachment_type' => $this->input->post('attach_type'),
         );
         
         $this->db->insert('dms_transaction', $datatr);
@@ -173,6 +176,7 @@ class Dms_model extends CI_Model{
             'action_id' => $this->input->post('action_id'),
             'remarks' => $this->input->post('remarks'),
             'status' => $this->input->post('status'),
+            'attachment_type' => $this->input->post('attach_type'),
         );
         
         $this->db->insert('dms_transaction', $datatr);

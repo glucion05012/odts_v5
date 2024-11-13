@@ -29,7 +29,7 @@
                         <?php foreach($dms_list as $dl) : ?>
                             <?php if($dl['document_type'] =='For Compliance') : ?>
                                 <tr class="table-active"> 
-                                    <td><?php echo $dl['reference_no']; ?></td>
+                                    <td><?php echo $dl['reference_no']; ?><br><?php if($dl['document_type'] == "Confidential"){ echo '<i style="color:red">['.$dl['document_type'].']</i>'; }; ?></td>
                                     <td>
                                         <?php echo $dl['main_category']; ?>
                                     </td>
@@ -56,7 +56,7 @@
                                     </td>
                                     <td>
                                         <!-- <b><?php echo $dl['ts_action']; ?></b><br> -->
-                                        <b><?php if($dl['ts_action_id']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?></b><br>
+                                        <b><?php if($dl['ts_action_id']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?></b> <i style='color:blue'>[<?php echo $dl['ts_attachment_type']; ?>]</i><br>
                                         <?php echo $dl['ts_remarks']; ?>
                                     </td>
                                     <td>
@@ -184,7 +184,7 @@
                 
                 <div class="tab-pane fade" id="history<?php echo $dl['id']; ?>" role="tabpanel" aria-labelledby="history-tab">
                     <div style=" background-color: gray; color: white; font-size: 18px; font-weight: bolder; text-align: center"> TRANSACTION HISTORY </div>
-                    <p style="text-align: center">[<?php echo $dl['reference_no']; ?>]</p>
+                    <p style="text-align: center">[<?php echo $dl['reference_no']; ?>]<br><?php if($dl['document_type'] == "Confidential"){ echo '<i style="color:red">['.$dl['document_type'].']</i>'; }; ?></p>
 
                     <table id="myTable<?php echo $dl['id'];?>" class="table table-striped table-bordered table-sm align">
                         <thead>
@@ -260,7 +260,7 @@
                                             ?>
                                         </td>
                                         <!-- <td><?php echo $dtl['status']; ?></td> -->
-                                        <td><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['status']; }; ?></td>
+                                        <td><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['status']; }; ?><br><i style='color:blue'>[<?php echo $dtl['attachment_type']; ?>]</i></td>
                                         <td>
                                         <?php 
                                             $with_attach = 0;

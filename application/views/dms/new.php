@@ -131,8 +131,19 @@
                         <textarea name="remarks" id="remarks" rows="6" cols="50" class="form-control" required></textarea>
                     </div>
 
-                    <div class="col-sm-6" style='padding-top: 1rem'></div>
-                    <div class="col-sm-6" style='padding-top: 1rem'>
+                    <div class="col-sm-4" style='padding-top: 1rem'></div>
+                    <div class="col-sm-3" style='padding-top: 1rem'>
+                        <label for="remarks" style='padding-top: 1rem'>
+                            Attachment Type: <span style="color:red">*</span>
+                        </label>
+                        <select name="attach_type" id="attach_type" class="form-control" required>
+                            <option value="" selected disabled>-- SELECT --</option>
+                            <option value="Hard Copy">Hard Copy</option>
+                            <option value="Attachment">Attachment</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1" style='padding-top: 1rem'></div>
+                    <div class="col-sm-3" style='padding-top: 1rem'>
                         <label for="attachment" style='padding-top: 1rem'>
                             Attachment:
                         </label>
@@ -148,6 +159,7 @@
                         </button>
                         <!-- ------------------------- drop zone end ------------------------- -->
                     </div>
+                    <div class="col-sm-1" style='padding-top: 1rem'></div>
                     
                 </div>  
             </div>
@@ -331,6 +343,13 @@
                 }else{
                     $("#document_type").css({'border-color': 'black', 'border-width': 'thin'})
                 }
+                
+                if($("#attach_type").find(":selected").val() == ""){
+                    $("#attach_type").css({'border-color': 'red', 'border-width': '2px'})
+                    completefields = 0;
+                }else{
+                    $("#attach_type").css({'border-color': 'black', 'border-width': 'thin'})
+                }
 
                 if($("#office").find(":selected").val() == ""){
                     $("#office").css({'border-color': 'red', 'border-width': '2px'})
@@ -381,6 +400,7 @@
                     var sub_category_id = $('#sub_category').val();
                     var subject_name = $('#subject').val();
                     var document_type = $('#document_type').val();
+                    var attach_type = $('#attach_type').val();
                     var personnel_id = $('#personnel').val();
                     var action_id = $('#action').val();
                     var remarks = $('#remarks').val();
@@ -393,6 +413,7 @@
                                     sub_category_id : sub_category_id,
                                     subject_name : subject_name,
                                     document_type : document_type,
+                                    attach_type : attach_type,
                                     personnel_id : personnel_id,
                                     action_id : action_id,
                                     remarks : remarks,

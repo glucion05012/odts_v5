@@ -19,7 +19,7 @@
                             <th>ODTS No.</th>
                             <th>Category</th>
                             <th>Transaction Details</th>
-                            <th>Forwarded By</th>
+                            <th>Forwarded To</th>
                             <th>Desired Action/Remarks</th>
                             <th>Action</th>
                         </tr>
@@ -35,19 +35,19 @@
                                         <?php if($dtl['forwarded_by_id'] == $_SESSION['userid']) : ?>
                                             
                                             <tr class="table-active"> 
-                                                <td><?php echo $dl['reference_no']; ?></td>
+                                                <td><?php echo $dtl['reference_no']; ?><br><?php if($dtl['document_type'] == "Confidential"){ echo '<i style="color:red">['.$dtl['document_type'].']</i>'; }; ?></td>
                                                 <td>
-                                                    <?php echo $dl['main_category']; ?>
+                                                    <?php echo $dtl['category']; ?>
                                                 </td>
                                                 <td>
-                                                    <b>[<?php echo $dl['sub_category']; ?>]</b><br>
-                                                    <?php echo $dl['subject_name']; ?>
+                                                    <b>[<?php echo $dtl['sub_category']; ?>]</b><br>
+                                                    <?php echo $dtl['subject_name']; ?>
                                                 </td>
                                                 <td>
                                                     <b>
                                                         <?php 
                                                             foreach($user_list as $ul){
-                                                                if($ul['id'] == $dl['ts_forwarded_by_id']){
+                                                                if($ul['id'] == $dtl['forwarded_to_id']){
                                                                     echo $ul['name'];
                                                                 }
                                                             }
@@ -55,18 +55,18 @@
                                                     </b>
                                                     <br>
                                                     <?php 
-                                                        $unixTime = strtotime($dl['ts_timestamp_forwarded_date']);
+                                                        $unixTime = strtotime($dtl['timestamp_forwarded_date']);
                                                         $newDate = date("F j, Y h:i a", $unixTime);
                                                         echo $newDate; 
                                                     ?>
                                                 </td>
                                                 <td>
-                                                    <!-- <b><?php echo $dl['ts_action']; ?></b><br> -->
-                                                    <b><?php if($dl['ts_action_id']==0){ echo 'Filed/Closed'; }else{ echo $dl['ts_action']; }; ?></b><br>
-                                                    <?php echo $dl['ts_remarks']; ?>
+                                                    <!-- <b><?php echo $dtl['ts_action']; ?></b><br> -->
+                                                    <b><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['action_name']; }; ?></b> <i style='color:blue'>[<?php echo $dtl['attachment_type']; ?>]</i><br>
+                                                    <?php echo $dtl['remarks']; ?>
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="viewbtn btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target="#viewTransactionModal<?php echo $dl['id']; ?>">View</button>
+                                                    <button type="button" class="viewbtn btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target="#viewTransactionModal<?php echo $dtl['dms_id']; ?>">View</button>
                                                 </td>
                                             </tr>   
                                         <?php endif; ?>
@@ -193,7 +193,7 @@
                 
                 <div class="tab-pane fade" id="history<?php echo $dl['id']; ?>" role="tabpanel" aria-labelledby="history-tab">
                     <div style=" background-color: gray; color: white; font-size: 18px; font-weight: bolder; text-align: center"> TRANSACTION HISTORY </div>
-                    <p style="text-align: center">[<?php echo $dl['reference_no']; ?>]</p>
+                    <p style="text-align: center">[<?php echo $dl['reference_no']; ?>]<br><?php if($dl['document_type'] == "Confidential"){ echo '<i style="color:red">['.$dl['document_type'].']</i>'; }; ?></p>
 
                     <table id="myTable<?php echo $dl['id'];?>" class="table table-striped table-bordered table-sm align">
                         <thead>
@@ -270,7 +270,7 @@
                                             ?>
                                         </td>
                                         <!-- <td><?php echo $dtl['status']; ?></td> -->
-                                        <td><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['status']; }; ?></td>
+                                        <td><?php if($dtl['action_id']==0){ echo 'Filed/Closed'; }else{ echo $dtl['status']; }; ?><br><i style='color:blue'>[<?php echo $dtl['attachment_type']; ?>]</i></td>
                                         <td>
                                         <?php 
                                             $with_attach = 0;
