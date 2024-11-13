@@ -288,7 +288,7 @@
                                                     <?php if($dtl['id'] === $dal['dms_transaction_id']) : ?>
                                                         <li>
                                                             <a href="<?php echo base_url($dal['file_location']); ?>" target="_blank"><?php echo $dal['file_name']; ?></a>
-                                                            <!-- <a href="<?php echo $_SERVER['DOCUMENT_ROOT'] . $dal['file_location'] ?>" target="_blank"><?php echo $dal['file_name']; ?></a> -->
+                                                            <!-- <a href="<?php echo $dal['file_location'] ?>" target="_blank"><?php echo $dal['file_name']; ?></a> -->
                                                         </li>
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
