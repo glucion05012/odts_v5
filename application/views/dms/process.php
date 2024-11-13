@@ -453,9 +453,20 @@
                             var myDropzone = Dropzone.forElement("#myDropzone");
                             let resp = JSON.stringify(res[0]['reference_no']);
                             let refno = (JSON.parse(resp));
+                            let resac = JSON.stringify(res[0]['action_id']);
+                            let action_id = (JSON.parse(resac));
                             var countdz= myDropzone.files.length;
                             
                             if(countdz == 0){
+                                if(action_id == 0){
+                                    Swal.fire({
+                                    icon: "success",
+                                    title: "Success",
+                                    html: "Transaction Successfully Closed.",
+                                    }).then(function(){ 
+                                        window.location = "<?php  echo base_url('inbox'); ?>";
+                                    });
+                                }else{
                                     Swal.fire({
                                     icon: "success",
                                     title: "Success",
@@ -463,20 +474,31 @@
                                     }).then(function(){ 
                                         window.location = "<?php  echo base_url('inbox'); ?>";
                                     });
+                                }
+                                    
                             }else{
-                                alert('meron')
                                 // attachment start
                                 myDropzone.processQueue();
                                 // attachment end
 
                                 myDropzone.on("queuecomplete", function(){
+                                    if(action_id == 0){
+                                        Swal.fire({
+                                        icon: "success",
+                                        title: "Success",
+                                        html: "Transaction Successfully Closed.",
+                                        }).then(function(){ 
+                                            window.location = "<?php  echo base_url('inbox'); ?>";
+                                        });
+                                    }else{
                                         Swal.fire({
                                         icon: "success",
                                         title: "Success",
                                         html: "Transaction Successfully Forwarded to <b style='color:blue'>" + for_name + "</b>.",
                                         }).then(function(){ 
                                             window.location = "<?php  echo base_url('inbox'); ?>";
-                                    });
+                                        });
+                                    }
                                 });
 
                             }
