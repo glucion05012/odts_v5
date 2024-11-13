@@ -376,7 +376,6 @@
 
 
                 if(completefields == 1){
-
                     var base_url = <?php echo json_encode(base_url()); ?>;
                     var category_id = $('#category').val();
                     var sub_category_id = $('#sub_category').val();
@@ -403,14 +402,11 @@
                             , dataType: 'json'
                             , crossOrigin: false
                             , success: function(res) {
+                                var myDropzone = Dropzone.forElement("#myDropzone");
                                 let resp = JSON.stringify(res[0]['reference_no']);
                                 let refno = (JSON.parse(resp));
-                                // attachment start
-                                var myDropzone = Dropzone.forElement("#myDropzone");
-                                myDropzone.processQueue();
-                                // attachment end
-
-                                myDropzone.on("queuecomplete", function(){
+                                var countdz= myDropzone.files.length;
+                                if(countdz == 0){
                                     Swal.fire({
                                         icon: "success",
                                         title: "Success",
@@ -418,8 +414,21 @@
                                         }).then(function(){ 
                                             window.location = "<?php  echo base_url('inbox'); ?>";
                                     });
-                                });
-                                
+                                }else{
+                                    // attachment start
+                                    myDropzone.processQueue();
+                                    // attachment end
+
+                                    myDropzone.on("queuecomplete", function(){
+                                        Swal.fire({
+                                            icon: "success",
+                                            title: "Success",
+                                            html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'>" + refno + "</b>.",
+                                            }).then(function(){ 
+                                                window.location = "<?php  echo base_url('inbox'); ?>";
+                                        });
+                                    });
+                                }
                             }
                         });
                     
