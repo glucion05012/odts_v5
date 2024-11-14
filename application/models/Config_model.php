@@ -49,6 +49,11 @@ class Config_model extends CI_Model{
         $query = $this->db->query("SELECT * FROM conf_action");
         return $query->result_array();
     }
+
+    public function usersession(){
+        $query = $this->dniis->query("SELECT * FROM core_session a left join core_users b on a.userid = b.id left join systems_clients c on b.id=c.user_id");
+        return $query->result_array();
+    }
 }
 
 ?>

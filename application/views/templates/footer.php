@@ -28,6 +28,18 @@
             order: [[0, 'desc']]
             
         } );
+
+         // SIMPLE Setup - add a text input to each footer cell
+         var tables = $('.myTableSimple').DataTable( {
+            orderCellsTop: true,
+            fixedHeader: true,
+            lengthMenu: [ [5], [5] ],
+            searching: false,
+            
+        } );
+
+
+
     });
 </script>
 
