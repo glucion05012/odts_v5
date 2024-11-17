@@ -114,7 +114,7 @@
                         <select name="action" id="action" class="form-control" required>
                             <option value="" selected disabled>-- SELECT --</option>
                             <?php foreach($action_list as $al) : ?>
-                                <option value="<?= $al['id']; ?>" ><?= $al['action']; ?></option>
+                                <option value="<?= $al['id']; ?>" ><?= $al['display']; ?></option>
                             <?php endforeach; ?>
                             <option value="0">Filed/Closed</option>
                         </select>
