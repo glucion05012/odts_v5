@@ -7,7 +7,7 @@
 
                 <div class="trans-layout card  mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-folder"></i> ALL TRANSACTIONS</h6>
+                        <h6 class="m-0 font-weight-bold"><i class="fas fa-folder"></i> ALL TRANSACTIONS</h6>
                     </div>
                 </div>
             </div>

@@ -101,6 +101,13 @@
     <button style="margin: 2rem" type="button" onclick="printDiv('printableArea')" class="btn btn-success" value="" ><i class='fa-solid fa-print' id="print"></i> Print</button>
 </div>
 <script>
+    window.onbeforeunload = function () { $('#loading').show(); }
+
+    $( document ).ready(function() {
+        $('#loading').hide();
+    });
+
+
     function printDiv(divName) {
         // let text = "Item will be removed from the inventory once the BOQ was printed\nClick OK to confirm?";
         let text = "Click OK to confirm print?";

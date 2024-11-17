@@ -98,7 +98,7 @@ body.swal2-shown > [aria-hidden='true'] {
     background: #f9f9f9;
   }
 .modal-header{
-  background-color: #08507E !important;
+  background-color: #7E3608 !important;
   color: #FFF !important;
 }
 
@@ -111,9 +111,9 @@ body.swal2-shown > [aria-hidden='true'] {
     }
 
     .nav-tabs .nav-link.active {
-      background-color: #007bff;
+      background-color: #be9a83;
       color: white;
-      border-color: #007bff;
+      border-color: black;
     }
 
     .tab-content {
@@ -127,6 +127,15 @@ body.swal2-shown > [aria-hidden='true'] {
     /* Hover effect for tabs */
     .nav-tabs .nav-link:hover {
       background-color: #e2e6ea;
+    }
+
+    .card-header{
+      color: #f8f9fa !important;
+      background-color: #7E3608;
+    }
+
+    .main-sidebar{
+      background-color: #3d1903 !important;
     }
 </style>
 <body>
