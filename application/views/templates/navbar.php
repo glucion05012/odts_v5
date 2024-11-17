@@ -79,6 +79,12 @@
                   <p>Outbox</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>closed" class="nav-link">
+                <i class="nav-icon fa fa-folder-closed"></i>
+                  <p>Filed/Closed</p>
+                </a>
+              </li>
 
               <li class="nav-header">Configuration</li>
                 <li class="nav-item has-treeview">
