@@ -153,7 +153,7 @@ left: 0;
 text-align: center;
 opacity: 0.9;
 background-color: black;
-z-index: 1039;
+z-index: 5000;
 }
 
 #loading-image {
