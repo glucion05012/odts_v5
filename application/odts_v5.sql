@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 13, 2024 at 05:32 PM
+-- Generation Time: Nov 17, 2024 at 02:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -85,6 +85,27 @@ INSERT INTO `conf_sub_category` (`id`, `cat_id`, `sub_category`) VALUES
 (11, '6', 'COMPLIANCE'),
 (12, '7', 'FUS'),
 (13, '7', 'WPS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conf_user_access`
+--
+
+CREATE TABLE `conf_user_access` (
+  `id` int(20) NOT NULL,
+  `userid` varchar(200) DEFAULT NULL,
+  `dms_settings` varchar(200) DEFAULT NULL,
+  `confidential` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `conf_user_access`
+--
+
+INSERT INTO `conf_user_access` (`id`, `userid`, `dms_settings`, `confidential`) VALUES
+(1, '1520', '1', '1'),
+(2, '1581', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -175,7 +196,8 @@ INSERT INTO `dms_dms` (`id`, `reference_no`, `category_id`, `sub_category_id`, `
 (86, 'ODTS-NCR-2024-000086', 4, 6, 'adfafdas', 'For Compliance', '1520', '2024-11-13', '2024-11-13 15:40:34', 'Active'),
 (87, 'ODTS-NCR-2024-000087', 4, 7, 'wdfsdf', 'Confidential', '1520', '2024-11-13', '2024-11-13 15:46:43', 'Active'),
 (88, 'ODTS-NCR-2024-000088', 4, 6, '123', 'For Compliance', '1520', '2024-11-13', '2024-11-13 16:06:59', 'Active'),
-(89, 'ODTS-NCR-2024-000089', 4, 6, '123', 'Confidential', '1520', '2024-11-13', '2024-11-13 16:15:47', 'Active');
+(89, 'ODTS-NCR-2024-000089', 4, 6, '123', 'Confidential', '1520', '2024-11-13', '2024-11-13 16:15:47', 'Active'),
+(90, 'ODTS-NCR-2024-000090', 4, 6, 'test', 'For Compliance', '1581', '2024-11-17', '2024-11-17 13:07:12', 'Active');
 
 -- --------------------------------------------------------
 
@@ -247,7 +269,8 @@ INSERT INTO `dms_transaction` (`id`, `dms_id`, `office_id`, `forwarded_by_id`, `
 (85, '88', '1', '1520', '2024-11-13', '2024-11-13 16:06:59', '1520', NULL, NULL, '4', '123', 'Hard Copy', 'Pending'),
 (86, '89', '1', '1520', '2024-11-13', '2024-11-13 16:16:07', '1520', '2024-11-14', '2024-11-14 12:16:07', '4', '123', 'Attachment', 'Pending'),
 (87, '89', '1', '1520', '2024-11-13', '2024-11-13 16:18:23', '1520', '2024-11-14', '2024-11-14 12:18:23', '4', 'fsd', 'Hard Copy', 'Pending'),
-(88, '89', '1', '1520', '2024-11-13', '2024-11-13 16:18:53', '1581', NULL, NULL, '4', '32', 'Hard Copy', 'Pending');
+(88, '89', '1', '1520', '2024-11-13', '2024-11-13 16:18:53', '1581', NULL, NULL, '4', '32', 'Hard Copy', 'Pending'),
+(89, '90', '1', '1581', '2024-11-17', '2024-11-17 13:07:12', '1669', NULL, NULL, '4', 'sadf', 'Hard Copy', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -269,6 +292,12 @@ ALTER TABLE `conf_category`
 -- Indexes for table `conf_sub_category`
 --
 ALTER TABLE `conf_sub_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `conf_user_access`
+--
+ALTER TABLE `conf_user_access`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -312,6 +341,12 @@ ALTER TABLE `conf_sub_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `conf_user_access`
+--
+ALTER TABLE `conf_user_access`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `dms_attachments`
 --
 ALTER TABLE `dms_attachments`
@@ -321,11 +356,11 @@ ALTER TABLE `dms_attachments`
 -- AUTO_INCREMENT for table `dms_dms`
 --
 ALTER TABLE `dms_dms`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `dms_transaction`
 --
 ALTER TABLE `dms_transaction`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 COMMIT;

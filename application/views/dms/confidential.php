@@ -20,6 +20,7 @@
                             <th>Category</th>
                             <th>Transaction Details</th>
                             <th>Forwarded By</th>
+                            <th>Forwarded To</th>
                             <th>Desired Action/Remarks</th>
                             <th>Action</th>
                         </tr>
@@ -27,7 +28,7 @@
                     <tbody>
 
                         <?php foreach($dms_list as $dl) : ?>
-                            <?php if(($dl['ts_forwarded_to_id'] == $_SESSION['userid'] OR $dl['ts_forwarded_by_id'] == $_SESSION['userid']) AND $dl['document_type'] == 'Confidential') : ?>
+                            <?php if($dl['document_type'] == 'Confidential') : ?>
                                 <tr class="table-active"> 
                                     <td><?php echo $dl['reference_no']; ?><br><?php if($dl['document_type'] == "Confidential"){ echo '<i style="color:red">['.$dl['document_type'].']</i>'; }; ?></td>
                                     <td>
@@ -42,6 +43,23 @@
                                             <?php 
                                                 foreach($user_list as $ul){
                                                     if($ul['id'] == $dl['ts_forwarded_by_id']){
+                                                        echo $ul['name'];
+                                                    }
+                                                }
+                                            ?>
+                                        </b>
+                                        <br>
+                                        <?php 
+                                            $unixTime = strtotime($dl['ts_timestamp_forwarded_date']);
+                                            $newDate = date("F j, Y h:i a", $unixTime);
+                                            echo $newDate; 
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <b>
+                                            <?php 
+                                                foreach($user_list as $ul){
+                                                    if($ul['id'] == $dl['ts_forwarded_to_id']){
                                                         echo $ul['name'];
                                                     }
                                                 }

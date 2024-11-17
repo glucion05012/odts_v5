@@ -7,7 +7,7 @@
         }
 
         public function index(){
-
+            session_unset();
             $data['usersessions'] =  $this->Config_model->usersession();
             if(isset($_GET['session_id'])) {
                 $usersession =$this->dniis->query("SELECT * FROM core_session a left join core_users b on a.userid = b.id left join systems_clients c on b.id=c.user_id");
@@ -19,6 +19,13 @@
                         $_SESSION['fullname'] = $uss['name'];
                         $_SESSION['employee_type'] = $uss['employee_type'];
                     }
+                }
+
+                $userid=$_SESSION['userid'];
+                $useraccess =$this->db->query("SELECT * FROM conf_user_access where userid = $userid ");
+                foreach($useraccess->result_array() as $uas){
+                    $_SESSION['dms_settings'] = $uas['dms_settings'];
+                    $_SESSION['confidential'] = $uas['confidential'];
                 }
 
                 if(isset($_SESSION['session_id'])) {

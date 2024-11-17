@@ -60,12 +60,14 @@
                 </a>
               </li>
               
+              <?php if(isset($_SESSION['confidential']) AND $_SESSION['confidential'] == 1) : ?>
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>confidential" class="nav-link">
                 <i class="nav-icon fa fa-eye-slash"></i>
                   <p>Confidential</p>
                 </a>
               </li>
+              <?php endif; ?>
 
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>inbox" class="nav-link">
@@ -86,6 +88,7 @@
                 </a>
               </li>
 
+              <?php if(isset($_SESSION['confidential']) AND $_SESSION['dms_settings'] == 1) : ?>
               <li class="nav-header">Configuration</li>
                 <li class="nav-item has-treeview">
                   
@@ -108,6 +111,7 @@
 
                     </ul>
               </li>
+              <?php endif; ?>
             
           </li>
           
