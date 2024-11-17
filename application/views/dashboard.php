@@ -99,13 +99,13 @@
         </div>
 
         
-        <div class="col-lg-12">
+        <!-- <div class="col-lg-12">
             <div class="card" style="margin: 2rem;">
                 <div class="card card-body">
                     <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzY4ZGRjNTMtMTI1ZC00Zjk5LWFhZmMtNmVmNzQ0ZDM5YTRkIiwidCI6ImY2ZjRhNjkyLTQzYjMtNDMzYi05MmIyLTY1YzRlNmNjZDkyMCIsImMiOjEwfQ%3D%3D" frameborder="0" style="width:100%;"></iframe>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
                 
 </div>
