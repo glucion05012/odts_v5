@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 17, 2024 at 02:32 PM
+-- Generation Time: Nov 17, 2024 at 02:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -23,21 +23,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `conf_action` (
   `id` int(11) NOT NULL,
-  `action` varchar(100) NOT NULL
+  `action` varchar(100) DEFAULT NULL,
+  `display` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `conf_action`
---
-
-INSERT INTO `conf_action` (`id`, `action`) VALUES
-(4, 'For Approval'),
-(8, 'For Appropriate Action'),
-(9, 'For releasing'),
-(10, 'For recommendation'),
-(11, 'For reference/information'),
-(12, 'For Barcoding'),
-(13, 'For Revision');
 
 -- --------------------------------------------------------
 
@@ -50,16 +38,6 @@ CREATE TABLE `conf_category` (
   `main_category` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `conf_category`
---
-
-INSERT INTO `conf_category` (`id`, `main_category`) VALUES
-(4, 'RECORDS'),
-(5, 'ADMINISTRATIVE'),
-(6, 'LEGAL'),
-(7, 'PERMITTING');
-
 -- --------------------------------------------------------
 
 --
@@ -71,20 +49,6 @@ CREATE TABLE `conf_sub_category` (
   `cat_id` varchar(100) NOT NULL,
   `sub_category` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `conf_sub_category`
---
-
-INSERT INTO `conf_sub_category` (`id`, `cat_id`, `sub_category`) VALUES
-(6, '4', 'MEMORANDUM'),
-(7, '4', 'SPECIAL ORDER'),
-(8, '5', 'DAILY TIME RECORD'),
-(9, '5', 'PURCHASE REQUEST'),
-(10, '6', 'NOTICE OF VIOLATION'),
-(11, '6', 'COMPLIANCE'),
-(12, '7', 'FUS'),
-(13, '7', 'WPS');
 
 -- --------------------------------------------------------
 
@@ -326,19 +290,19 @@ ALTER TABLE `dms_transaction`
 -- AUTO_INCREMENT for table `conf_action`
 --
 ALTER TABLE `conf_action`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `conf_category`
 --
 ALTER TABLE `conf_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `conf_sub_category`
 --
 ALTER TABLE `conf_sub_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `conf_user_access`
