@@ -92,5 +92,15 @@
 <!-- AdminLTE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/adminlte.min.js"></script>
 
+
+
+<script>
+    window.onbeforeunload = function () { $('#loading').show(); }
+
+    $( document ).ready(function() {
+        $('#loading').hide();
+    });
+</script>
+
 </body>
 </html>
