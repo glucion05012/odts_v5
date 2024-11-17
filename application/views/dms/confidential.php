@@ -27,7 +27,7 @@
                     <tbody>
 
                         <?php foreach($dms_list as $dl) : ?>
-                            <?php if($dl['document_type'] =='Confidential') : ?>
+                            <?php if(($dl['ts_forwarded_to_id'] == $_SESSION['userid'] OR $dl['ts_forwarded_by_id'] == $_SESSION['userid']) AND $dl['document_type'] == 'Confidential') : ?>
                                 <tr class="table-active"> 
                                     <td><?php echo $dl['reference_no']; ?><br><?php if($dl['document_type'] == "Confidential"){ echo '<i style="color:red">['.$dl['document_type'].']</i>'; }; ?></td>
                                     <td>
