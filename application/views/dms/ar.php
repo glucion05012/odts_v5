@@ -105,7 +105,47 @@
 
     $( document ).ready(function() {
         $('#loading').hide();
+        
+        // Force default theme for AR view (print document)
+        forceDefaultTheme();
     });
+    
+    // Function to force default theme for AR view
+    function forceDefaultTheme() {
+        // Remove any theme classes from body
+        document.body.classList.remove('christmas-theme', 'halloween-theme');
+        
+        // Remove theme decorations
+        const decorations = document.querySelectorAll('.christmas-decoration, .halloween-decoration');
+        decorations.forEach(decoration => decoration.remove());
+        
+        // Remove theme effects containers
+        const snowContainer = document.getElementById('snowflake-container');
+        const spiderContainer = document.getElementById('spider-container');
+        if (snowContainer) snowContainer.remove();
+        if (spiderContainer) spiderContainer.remove();
+        
+        // Reset body background to default
+        document.body.style.background = '';
+        document.body.style.overflowX = '';
+        
+        // Reset content wrapper styles
+        const contentWrapper = document.querySelector('.content-wrapper');
+        if (contentWrapper) {
+            contentWrapper.style.minHeight = '';
+            contentWrapper.style.height = '';
+            contentWrapper.style.overflowY = '';
+        }
+        
+        // Reset wrapper styles
+        const wrapper = document.querySelector('.wrapper');
+        if (wrapper) {
+            wrapper.style.minHeight = '';
+            wrapper.style.height = '';
+        }
+        
+        console.log('AR View: Forced to default theme for print layout');
+    }
 
 
     function printDiv(divName) {
