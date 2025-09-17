@@ -220,9 +220,11 @@
         $('#sub_category').append(`<option value="" selected disabled>-- SELECT --</option>`);
         <?php foreach($sub_category_list as $scl) : ?>
             if(<?php echo $scl['cat_id']; ?> == category_id){
-                $('#sub_category').append(`<option value="<?php echo $scl['id']; ?>">
+                
+                    $('#sub_category').append(`<option value="<?php echo $scl['id']; ?>">
                             <?php echo $scl['sub_category']; ?>
                             </option>`);
+                
             }
         <?php endforeach; ?>
     });
@@ -302,145 +304,134 @@
 
     
     $('#process_transaction').click(function() {
+        <?php if(isset($_SESSION['userid'])) : ?>
+            Swal.fire({
+                title: "Confirm New Transaction.",
+                text: "Are you sure you want to process New Transaction?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Proceed"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //return true
+                    var completefields = 1;
+                    // check input box if filled out
+                    if($("#category").find(":selected").val() == ""){
+                        $("#category").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#category").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
 
-        Swal.fire({
-            title: "Confirm New Transaction.",
-            text: "Are you sure you want to process New Transaction?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Proceed"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                //return true
-                var completefields = 1;
-                // check input box if filled out
-                if($("#category").find(":selected").val() == ""){
-                    $("#category").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#category").css({'border-color': 'black', 'border-width': 'thin'})
-                }
+                    if($("#sub_category").find(":selected").val() == ""){
+                        $("#sub_category").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#sub_category").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
 
-                if($("#sub_category").find(":selected").val() == ""){
-                    $("#sub_category").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#sub_category").css({'border-color': 'black', 'border-width': 'thin'})
-                }
+                    if($("#subject").val() == ""){
+                        $("#subject").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#subject").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
 
-                if($("#subject").val() == ""){
-                    $("#subject").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#subject").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-                if($("#document_type").find(":selected").val() == ""){
-                    $("#document_type").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#document_type").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-                
-                if($("#attach_type").find(":selected").val() == ""){
-                    $("#attach_type").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#attach_type").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-                if($("#office").find(":selected").val() == ""){
-                    $("#office").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#office").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-                if($("#division").find(":selected").val() == ""){
-                    $("#division").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#division").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-                if($("#section").find(":selected").val() == ""){
-                    $("#section").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#section").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-                if($("#personnel").find(":selected").val() == ""){
-                    $("#personnel").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#personnel").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-                if($("#action").find(":selected").val() == ""){
-                    $("#action").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#action").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-                if($("#remarks").val() == ""){
-                    $("#remarks").css({'border-color': 'red', 'border-width': '2px'})
-                    completefields = 0;
-                }else{
-                    $("#remarks").css({'border-color': 'black', 'border-width': 'thin'})
-                }
-
-
-                if(completefields == 1){
-                    var base_url = <?php echo json_encode(base_url()); ?>;
-                    var category_id = $('#category').val();
-                    var sub_category_id = $('#sub_category').val();
-                    var subject_name = $('#subject').val();
-                    var document_type = $('#document_type').val();
-                    var attach_type = $('#attach_type').val();
-                    var personnel_id = $('#personnel').val();
-                    var action_id = $('#action').val();
-                    var remarks = $('#remarks').val();
-                    var office_id = $('#office').val();
+                    if($("#document_type").find(":selected").val() == ""){
+                        $("#document_type").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#document_type").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
                     
-                    $.ajax({
-                            data : {
-                                    office_id : office_id,
-                                    category_id : category_id,
-                                    sub_category_id : sub_category_id,
-                                    subject_name : subject_name,
-                                    document_type : document_type,
-                                    attach_type : attach_type,
-                                    personnel_id : personnel_id,
-                                    action_id : action_id,
-                                    remarks : remarks,
-                                    }
-                            , type: "POST"
-                            , url: base_url + "Inboxcontroller/create_transaction"
-                            , dataType: 'json'
-                            , crossOrigin: false
-                            , success: function(res) {
-                                var myDropzone = Dropzone.forElement("#myDropzone");
-                                let resp = JSON.stringify(res[0]['reference_no']);
-                                let refno = (JSON.parse(resp));
-                                var countdz= myDropzone.files.length;
-                                if(countdz == 0){
-                                    Swal.fire({
-                                        icon: "success",
-                                        title: "Success",
-                                        html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'>" + refno + "</b>.",
-                                        }).then(function(){ 
-                                            window.location = "<?php  echo base_url('inbox'); ?>";
-                                    });
-                                }else{
-                                    // attachment start
-                                    myDropzone.processQueue();
-                                    // attachment end
+                    if($("#attach_type").find(":selected").val() == ""){
+                        $("#attach_type").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#attach_type").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
 
-                                    myDropzone.on("queuecomplete", function(){
+                    if($("#office").find(":selected").val() == ""){
+                        $("#office").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#office").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
+
+                    if($("#division").find(":selected").val() == ""){
+                        $("#division").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#division").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
+
+                    if($("#section").find(":selected").val() == ""){
+                        $("#section").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#section").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
+
+                    if($("#personnel").find(":selected").val() == ""){
+                        $("#personnel").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#personnel").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
+
+                    if($("#action").find(":selected").val() == ""){
+                        $("#action").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#action").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
+
+                    if($("#remarks").val() == ""){
+                        $("#remarks").css({'border-color': 'red', 'border-width': '2px'})
+                        completefields = 0;
+                    }else{
+                        $("#remarks").css({'border-color': 'black', 'border-width': 'thin'})
+                    }
+
+
+                    if(completefields == 1 && <?php echo $_SESSION['userid']; ?>!=''){
+                        var base_url = <?php echo json_encode(base_url()); ?>;
+                        var category_id = $('#category').val();
+                        var sub_category_id = $('#sub_category').val();
+                        var subject_name = $('#subject').val();
+                        var document_type = $('#document_type').val();
+                        var attach_type = $('#attach_type').val();
+                        var personnel_id = $('#personnel').val();
+                        var action_id = $('#action').val();
+                        var remarks = $('#remarks').val();
+                        var office_id = $('#office').val();
+                        var userid = <?php echo $_SESSION['userid']; ?>;
+                        
+                        $.ajax({
+                                data : {
+                                        userid : userid,
+                                        office_id : office_id,
+                                        category_id : category_id,
+                                        sub_category_id : sub_category_id,
+                                        subject_name : subject_name,
+                                        document_type : document_type,
+                                        attach_type : attach_type,
+                                        personnel_id : personnel_id,
+                                        action_id : action_id,
+                                        remarks : remarks,
+                                        }
+                                , type: "POST"
+                                , url: base_url + "Inboxcontroller/create_transaction"
+                                , dataType: 'json'
+                                , crossOrigin: false
+                                , success: function(res) {
+                                    var myDropzone = Dropzone.forElement("#myDropzone");
+                                    let resp = JSON.stringify(res[0]['reference_no']);
+                                    let refno = (JSON.parse(resp));
+                                    var countdz= myDropzone.files.length;
+                                    if(countdz == 0){
                                         Swal.fire({
                                             icon: "success",
                                             title: "Success",
@@ -448,19 +439,41 @@
                                             }).then(function(){ 
                                                 window.location = "<?php  echo base_url('inbox'); ?>";
                                         });
-                                    });
+                                    }else{
+                                        // attachment start
+                                        myDropzone.processQueue();
+                                        // attachment end
+
+                                        myDropzone.on("queuecomplete", function(){
+                                            Swal.fire({
+                                                icon: "success",
+                                                title: "Success",
+                                                html: "Transaction Successfully Created. <br> Reference No. <b style='color:blue'>" + refno + "</b>.",
+                                                }).then(function(){ 
+                                                    window.location = "<?php  echo base_url('inbox'); ?>";
+                                            });
+                                        });
+                                    }
                                 }
-                            }
+                            });
+                        
+                    }else{
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "Please complete required fields.",
                         });
-                    
-                }else{
-                    Swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "Please complete required fields.",
-                    });
+                    }
                 }
-            }
-        });
+            });
+        <?php else : ?>
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Please login again. Session Timeout.",
+            }).then(function(){ 
+                window.location = "<?php  echo base_url(); ?>"+'maintenance';
+            });
+        <?php endif; ?>
     });
 </script>

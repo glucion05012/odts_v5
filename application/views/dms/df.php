@@ -25,7 +25,7 @@
     </style>
 
     <?php 
-        foreach($dms_list as $dl){
+        foreach($dms_list_one_id as $dl){
             if($dl['id']==$dms_id){
                 $reference_no = $dl['reference_no'];
                 $date_created = $dl['timestamp_date_created'];
@@ -48,9 +48,9 @@
                         </div>
                         <div class="col-lg-6">
                             <p><b>Date Created:</b> <?php 
-                                                $unixTime = strtotime($date_created);
-                                                $newDate = date("F j, Y h:i a", $unixTime);
-                                                echo $newDate; 
+                                               $unixTime1 = strtotime($date_created);
+                                               $newDate1 = date("F j, Y h:i a", $unixTime1);
+                                               echo $newDate1;
                                             ?></p>
                         </div>
                         <div class="col-lg-6">

@@ -28,7 +28,7 @@
     </style>
 
     <?php 
-        foreach($dms_list as $dl){
+        foreach($dms_list_one_id as $dl){
             if($dl['id']==$dms_id){
                 $reference_no = $dl['reference_no'];
                 $date_created = $dl['timestamp_date_created'];
@@ -40,7 +40,7 @@
     ?>
 
 <?php 
-        foreach($dms_list as $dl){
+        foreach($dms_list_one_id as $dl){
             if($dl['id']==$dms_id){
                 $reference_no = $dl['reference_no'];
                 $date_created = $dl['timestamp_date_created'];
@@ -79,7 +79,7 @@
                                 <br><br>
                                 Your transaction has been tagged with Reference No. <b><?php echo $reference_no; ?></b>
                                 <br><br>
-                                    Should you have further clarification/inquiries, please  contact us through telephone nos.: 0939-925-3269 (local 2200), 0920-968-5931 (local 2201), or at email address: denrncrored@gmail.com.
+                                    Should you have further clarification/inquiries, please  contact us through telephone nos.: 09285065682, or at email address: records.ncr@denr.gov.ph.
                                 </p>
 
                                 <!-- QR CODE IMAGE -->

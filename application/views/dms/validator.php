@@ -44,7 +44,7 @@ body, html {height: 100%}
         <p style="text-align:center">ONLINE DOCUMENT VERIFICATION</p>
         <hr class="w3-border-grey" style="margin:auto;width:100%;">
                 <?php 
-                    foreach($dms_list as $dl){
+                    foreach($dms_list_one_id as $dl){
                         if($dl['id']==$dms_id){
                             $reference_no = $dl['reference_no'];
                             $date_created = $dl['timestamp_date_created'];
@@ -71,3 +71,11 @@ body, html {height: 100%}
 
 </body>
 </html>
+
+<script>
+    window.onbeforeunload = function () { $('#loading').show(); }
+
+    $( document ).ready(function() {
+        $('#loading').hide();
+    });
+</script>

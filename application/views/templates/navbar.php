@@ -16,6 +16,7 @@
       <li class="dropdown user user-menu">
           <b> <i class="fas fa-user-tie nav-icon"></i> 
           <?php echo $_SESSION['userid'].' - '.$_SESSION['fullname']; ?></b>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -72,7 +73,30 @@
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>inbox" class="nav-link">
                 <i class="nav-icon fa fa-folder-plus"></i>
-                  <p>Inbox</p>
+                  <p>Inbox
+                      <span class="badge badge-success right" title="Process">
+                        <?php 
+                          $i = 0;
+                          foreach ($inbox AS $inb) {
+                              if ($inb['ts_accepted_date'] != '') {
+                                $i++;
+                              }
+                          }
+                          echo $i;
+                        ?>
+                      </span>
+                      <span class="badge badge-primary right" title="Receive">
+                        <?php 
+                          $i = 0;
+                          foreach ($inbox AS $inb) {
+                              if ($inb['ts_accepted_date'] == '') {
+                                $i++;
+                              }
+                          }
+                          echo $i;
+                        ?>  
+                      </span>
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
@@ -87,29 +111,44 @@
                   <p>Filed/Closed</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>notice" class="nav-link">
+                <i class="nav-icon fa-solid fa-clipboard"></i>
+                  <p>SO/MEMO/NOM</p>
+                </a>
+              </li>
 
-              <?php if(isset($_SESSION['confidential']) AND $_SESSION['dms_settings'] == 1) : ?>
+              <?php if(isset($_SESSION['dms_settings']) AND $_SESSION['dms_settings'] == 1 OR isset($_SESSION['announcements']) AND $_SESSION['announcements'] == 1) : ?>
               <li class="nav-header">Configuration</li>
                 <li class="nav-item has-treeview">
                   
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon fa fa-gear"></i>
-                      <p>
-                        DMS Settings
-                        <i class="fas fa-angle-list right"></i>
-                      </p>
-                    </a>
-                    
-                    <ul class="nav nav-treeview">
+                    <?php if(isset($_SESSION['dms_settings']) AND $_SESSION['dms_settings'] == 1) : ?>
+                      <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-gear"></i>
+                        <p>
+                          DMS Settings
+                          <i class="fas fa-angle-list right"></i>
+                        </p>
+                      </a>
+                      
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="<?php echo base_url(); ?>conf/category" class="nav-link">
+                          <i class="nav-icon fa fa-list"></i>
+                            <p>Category/Action</p>
+                          </a>
+                        </li>
+                      </ul>
+                    <?php endif; ?>
+
+                    <?php if(isset($_SESSION['announcements']) AND $_SESSION['announcements'] == 1) : ?>
                       <li class="nav-item">
-                        <a href="<?php echo base_url(); ?>conf/category" class="nav-link">
-                        <i class="nav-icon fa fa-list"></i>
-                          <p>Category/Action</p>
+                        <a href="<?php echo base_url(); ?>conf/ann" class="nav-link">
+                        <i class="nav-icon fa fa-bullhorn"></i>
+                          <p>Bulletin</p>
                         </a>
                       </li>
-                      
-
-                    </ul>
+                    <?php endif; ?>
               </li>
               <?php endif; ?>
             

@@ -23,13 +23,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/odts_v5/';
+$config['base_url'] = 'https://denrncrsys.online:8005/';
 
 //http://localhost/odts_v5/?session_id=iv7d1lsig4hu4sj3ufdgskgh0l
 
 // ---------------------------FOR CHANGE OF CONFIGURATION---------------------------
 // Uploadcontroller.php -> $target_file & $ref_dir & $file_location
-// inbox.php -> $_SERVER['DOCUMENT_ROOT']
+// inbox.php -> file_location
+// Settingscontroller.php -> target_dir
+// announcements.php -> file_location
+// dashboard.php -> file_location
+// Dashboardcontroller.php -> $_SESSION['red_userid']
+
+// -----------------------FOR ACTION CONFIGURATION-----------------------
+// <option value="0">M - Filed/Closed</option>
+// <option value="22">V - Approved</option>
 
 
 // session routes inside Dashnoardcontroller

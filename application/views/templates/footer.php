@@ -34,21 +34,21 @@
             orderCellsTop: true,
             fixedHeader: true,
             lengthMenu: [ [5], [5] ],
-            searching: false,
             
         } );
 
-
+        $('#sort_asc').click();
+        $('#sorter').click();
 
     });
 </script>
 
  <!-- Main Footer -->
  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2025 <a href="https://ncr.denr.gov.ph/">DENR NCR</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0
+      <b>Version</b>1.0.0
     </div>
   </footer>
 
@@ -95,6 +95,7 @@
 
 
 <script>
+  
     window.onbeforeunload = function () { $('#loading').show(); }
 
     $( document ).ready(function() {

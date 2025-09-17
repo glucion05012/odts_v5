@@ -5,9 +5,13 @@
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 
+<!-- title -->
+<title>DENR NCR ODTS v5</title>
+
+<!-- icon -->
+<link rel="icon" href="<?php echo base_url()."assets"; ?>/denr-logo.png">
 
 <!-- REQUIRED SCRIPTS -->
-
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 
@@ -137,6 +141,93 @@ body.swal2-shown > [aria-hidden='true'] {
     .main-sidebar{
       background-color: #3d1903 !important;
     }
+
+    /* dashboard */
+    .carousel-control-prev{
+        background-color: gray; 
+        height: 2vw; 
+        align-self: flex-end;
+    }
+
+    .carousel-control-next{
+        background-color: gray; 
+        height: 2vw; 
+        align-self: flex-end;
+    }
+
+   iframe{
+       height: 720px;
+       width: 920px;
+   }
+   .hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: green;
+    font-weight: bold;
+    margin: 8px 0px;
+    }
+    .hr-sect:before,
+    .hr-sect:after {
+        content: "";
+        flex-grow: 1;
+        background: rgba(0, 0, 0, 0.35);
+        height: 1.5px;
+        font-size: 0px;
+        line-height: 0px;
+        margin: 8px 0px;
+    }
+ 
+    .ann-footer{
+        height: 50px;
+    }
+    /* dashboard end */
+
+    /* mobile responsive */
+    @media only screen and (max-width: 992px) {
+        body{
+            font-size: 10px;
+        }
+
+        input[type="text"]{ 
+          font-size: 10px;
+         }
+
+        textarea { 
+          font-size: 10px !important; 
+        }
+
+        h4, h6 { 
+          font-size: 10px !important;
+          font-weight: bold !important;
+        }
+
+        .btn{
+          font-size: 10px !important;
+        }
+
+
+        .carousel-control-prev{
+            background-color: gray; 
+            height: 8vw; 
+            width: 100px;
+            align-self: flex-end;
+        }
+
+        .carousel-control-next{
+            background-color: gray; 
+            height: 8vw; 
+            width: 100px;
+            align-self: flex-end;
+        }
+
+        .ann-footer{
+            height: 40px;
+        }
+
+
+        
+    }
 </style>
 <body>
 
@@ -179,6 +270,9 @@ z-index: 100;
 <div id="loading">
 <!-- https://gifer.com/en/gifs/christmas#google_vignette -->
 <img id="loading-image" height="100px" src="<?php echo base_url()."assets/"; ?>loading-christmas.gif" alt="Loading..." />
-<h5 id="loading-text" style='color:white'>Loading . . .</h5>
+<h5 id="loading-text" style='color:white'>DENR NCR</h5>
 </div>
 <!-- ---------------------------- loading ---------------------------- -->
+<!-- <div class="alert alert-danger" style="background-color: #EC5578 !important;" role="alert">
+<p style="text-align:center"><b>We apologize for the inconvenience. All transactions made between 7:00 AM and 12:00 PM today, including any attached files, are unavailable. Please kindly reprocess all transactions. We will provide further updates as soon as possible.</b></p>
+</div> -->

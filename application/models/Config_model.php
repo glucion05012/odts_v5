@@ -16,7 +16,28 @@ class Config_model extends CI_Model{
                                     left join systems_clients b on a.id=b.user_id
                                     left join systems_lgu l on b.lgu = l.psgc 
                                     left join systems_sub_lgu sl on b.sub_lgu = sl.psgc 
-                                    left join systems_barangays br on b.barangay = br.psgc ");
+                                    left join systems_barangays br on b.barangay = br.psgc
+                                    where a.block=0 and a.name not like '%test%' ORDER BY a.name");
+        return $query->result_array();
+    }
+    
+    public function user_list_one($id){
+        $query = $this->dniis->query("SELECT 
+                                        sd.abbr as div_name,
+                                        ss.abbr as sec_name,
+                                        a.*,
+                                        b.*,
+                                        l.name as 'lgu',
+                                        sl.name as 'sub_lgu',
+                                        br.name as 'barangay'
+                                        from core_users a
+                                        left join systems_clients b on a.id=b.user_id
+                                        left join systems_lgu l on b.lgu = l.psgc 
+                                        left join systems_sub_lgu sl on b.sub_lgu = sl.psgc 
+                                        left join systems_barangays br on b.barangay = br.psgc
+                                        left join systems_division sd on a.division = sd.division_id 
+                                        left join systems_section ss on a.`section` = ss.section_id 
+                                        where a.name not like '%test%' and a.id=$id");
         return $query->result_array();
     }
     
@@ -51,7 +72,9 @@ class Config_model extends CI_Model{
     }
 
     public function usersession(){
-        $query = $this->dniis->query("SELECT * FROM core_session a left join core_users b on a.userid = b.id left join systems_clients c on b.id=c.user_id");
+        $query = $this->dniis->query("SELECT * 
+FROM core_users a 
+left join core_session b on b.userid = a.id ");
         return $query->result_array();
     }
 }

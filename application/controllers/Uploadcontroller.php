@@ -16,15 +16,15 @@
                     $dms_transaction_id = $diq->txn_id;
                 }
                 
-                $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/".$dms_reference_no.'/'.$dms_transaction_id, 0777, true);
+                //$ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/".$dms_reference_no.'/'.$dms_transaction_id, 0777, true);
                 
-                $target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
-                $file_location = "/assets/attachments/dms/" . $dms_reference_no.'/'.$dms_transaction_id .'/'.basename($_FILES["file"]["name"][$i]);
+                //$target_file = $_SERVER['DOCUMENT_ROOT'] . "/odts_v5/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
+                //$file_location = "/assets/attachments/dms/" . $dms_reference_no.'/'.$dms_transaction_id .'/'.basename($_FILES["file"]["name"][$i]);
 
-                // $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/".$dms_reference_no.'/'.$dms_transaction_id, 0777, true);
+                 $ref_dir = mkdir($_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/".$dms_reference_no.'/'.$dms_transaction_id, 0777, true);
 
-                // $target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
-                // $file_location = "/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
+                 $target_file = $_SERVER['DOCUMENT_ROOT'] . "/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
+                 $file_location = "/assets/attachments/dms/" . $dms_reference_no .'/'.$dms_transaction_id.'/'.basename($_FILES["file"]["name"][$i]);
                 
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
