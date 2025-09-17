@@ -14,7 +14,7 @@
   /* Background with Christmas pattern */
   background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #4caf50 100%);
   position: relative;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .christmas-theme::before {
@@ -395,6 +395,58 @@
   color: var(--christmas-white);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   font-weight: bold;
+}
+
+/* Fix content wrapper height for proper scrolling */
+.christmas-theme .content-wrapper {
+  min-height: auto !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.christmas-theme .wrapper {
+  min-height: auto !important;
+  height: auto !important;
+}
+
+/* Fix DataTables scrolling in Christmas theme */
+.christmas-theme .dataTables_wrapper {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.christmas-theme .dataTables_scrollBody {
+  overflow-y: auto !important;
+  max-height: none !important;
+  position: relative !important;
+}
+
+.christmas-theme .dataTables_scrollHead {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+.christmas-theme .fixedHeader-floating {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.christmas-theme .dataTables_scrollHead table {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure table container allows scrolling */
+.christmas-theme .table-responsive {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  max-height: none !important;
 }
 
 /* Christmas decorations */

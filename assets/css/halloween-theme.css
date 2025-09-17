@@ -17,7 +17,7 @@
   /* Background with spooky pattern */
   background: linear-gradient(135deg, #1a1a1a 0%, #424242 50%, #6a1b9a 100%);
   position: relative;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .halloween-theme::before {
@@ -336,6 +336,58 @@
   color: var(--halloween-yellow);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   font-weight: bold;
+}
+
+/* Fix content wrapper height for proper scrolling */
+.halloween-theme .content-wrapper {
+  min-height: auto !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.halloween-theme .wrapper {
+  min-height: auto !important;
+  height: auto !important;
+}
+
+/* Fix DataTables scrolling in Halloween theme */
+.halloween-theme .dataTables_wrapper {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.halloween-theme .dataTables_scrollBody {
+  overflow-y: auto !important;
+  max-height: none !important;
+  position: relative !important;
+}
+
+.halloween-theme .dataTables_scrollHead {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+.halloween-theme .fixedHeader-floating {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.halloween-theme .dataTables_scrollHead table {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure table container allows scrolling */
+.halloween-theme .table-responsive {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  max-height: none !important;
 }
 
 /* Halloween loading decorations animation */
