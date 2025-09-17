@@ -60,6 +60,11 @@
 <link rel="stylesheet" href="<?php echo base_url()."assets/"; ?>css/jAlert.css" />
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Theme System -->
+<link rel="stylesheet" href="<?php echo base_url()."assets/"; ?>css/christmas-theme.css" />
+<link rel="stylesheet" href="<?php echo base_url()."assets/"; ?>css/halloween-theme.css" />
+<script src="<?php echo base_url()."assets/"; ?>js/theme-cycler.js" type="text/javascript"></script>
+
 <!-- DROP ZONE -->
 <link href="https://iis.emb.gov.ph/embis/assets/common/dropzone/dropzone.css" rel="stylesheet">
 <script src="https://iis.emb.gov.ph/embis/assets/common/dropzone/dropzone.min.js"></script>
@@ -243,7 +248,7 @@ top: 0;
 left: 0;
 text-align: center;
 opacity: 0.9;
-background-color: black;
+background: black;
 z-index: 5000;
 }
 
@@ -266,10 +271,21 @@ left: 50%;
 transform: translate(-50%, -50%);
 z-index: 100;
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
 </style>
 <div id="loading">
-<!-- https://gifer.com/en/gifs/christmas#google_vignette -->
-<img id="loading-image" height="100px" src="<?php echo base_url()."assets/"; ?>loading-christmas.gif" alt="Loading..." />
+<!-- Loading GIF will be set dynamically based on theme -->
+<?php 
+// Check if this is a print page (df.php or ar.php) - force default loading
+$current_url = current_url();
+$is_print_page = (strpos($current_url, '/df/') !== false || strpos($current_url, '/ar/') !== false);
+$loading_gif = $is_print_page ? 'loading.gif' : 'loading.gif'; // Default for print pages
+?>
+<img id="loading-image" height="100px" src="<?php echo base_url()."assets/"; ?><?php echo $loading_gif; ?>" alt="Loading..." />
 <h5 id="loading-text" style='color:white'>DENR NCR</h5>
 </div>
 <!-- ---------------------------- loading ---------------------------- -->

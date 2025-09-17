@@ -12,7 +12,22 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-    
+      <li class="nav-item dropdown">
+        <button id="themeDropdownBtn" class="btn btn-sm theme-toggle-btn-navbar dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Select Theme">
+          <i class="fas fa-palette"></i> <span id="currentThemeText">Theme: Default</span>
+        </button>
+        <div class="dropdown-menu theme-dropdown-menu" aria-labelledby="themeDropdownBtn">
+          <a class="dropdown-item theme-option" href="#" data-theme="default">
+            <i class="fas fa-palette"></i> Default
+          </a>
+          <a class="dropdown-item theme-option" href="#" data-theme="halloween">
+            <i class="fas fa-ghost"></i> Halloween
+          </a>
+          <a class="dropdown-item theme-option" href="#" data-theme="christmas">
+            <i class="fas fa-tree"></i> Christmas
+          </a>
+        </div>
+      </li>
       <li class="dropdown user user-menu">
           <b> <i class="fas fa-user-tie nav-icon"></i> 
           <?php echo $_SESSION['userid'].' - '.$_SESSION['fullname']; ?></b>
