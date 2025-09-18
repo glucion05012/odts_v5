@@ -18,6 +18,8 @@
   background: linear-gradient(135deg, #1a1a1a 0%, #424242 50%, #6a1b9a 100%);
   position: relative;
   overflow-x: auto;
+  /* Halloween cursor - Ghost as default */
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">👻</text></svg>'), auto;
 }
 
 .halloween-theme::before {
@@ -201,6 +203,44 @@
   color: white;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Halloween-themed links with pumpkin cursor */
+.halloween-theme a,
+.halloween-theme a:link,
+.halloween-theme a:visited,
+.halloween-theme a:hover,
+.halloween-theme a:active {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">🎃</text></svg>'), auto !important;
+}
+
+/* Halloween-themed buttons with pumpkin cursor */
+.halloween-theme button,
+.halloween-theme .btn,
+.halloween-theme .btn-primary,
+.halloween-theme .btn-success,
+.halloween-theme .btn-info,
+.halloween-theme .btn-danger,
+.halloween-theme .btn-warning,
+.halloween-theme .btn-secondary,
+.halloween-theme .btn-light,
+.halloween-theme .btn-dark,
+.halloween-theme .viewbtn {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">🎃</text></svg>'), auto !important;
+}
+
+.halloween-theme button:hover,
+.halloween-theme .btn:hover,
+.halloween-theme .btn-primary:hover,
+.halloween-theme .btn-success:hover,
+.halloween-theme .btn-info:hover,
+.halloween-theme .btn-danger:hover,
+.halloween-theme .btn-warning:hover,
+.halloween-theme .btn-secondary:hover,
+.halloween-theme .btn-light:hover,
+.halloween-theme .btn-dark:hover,
+.halloween-theme .viewbtn:hover {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">🎃</text></svg>'), auto !important;
 }
 
 /* Halloween-themed navbar */
