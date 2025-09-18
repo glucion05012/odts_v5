@@ -30,9 +30,21 @@
             if (savedTheme && THEME_ORDER.includes(savedTheme)) {
                 currentTheme = savedTheme;
                 currentThemeIndex = THEME_ORDER.indexOf(savedTheme);
+                console.log('🎨 Theme loaded from localStorage:', currentTheme);
             } else {
-                currentTheme = THEMES.DEFAULT;
-                currentThemeIndex = 0;
+                // Check sessionStorage as fallback
+                const sessionTheme = sessionStorage.getItem('currentTheme');
+                if (sessionTheme && THEME_ORDER.includes(sessionTheme)) {
+                    currentTheme = sessionTheme;
+                    currentThemeIndex = THEME_ORDER.indexOf(sessionTheme);
+                    // Save to localStorage for future sessions
+                    localStorage.setItem('currentTheme', currentTheme);
+                    console.log('🎨 Theme loaded from sessionStorage and saved to localStorage:', currentTheme);
+                } else {
+                    currentTheme = THEMES.DEFAULT;
+                    currentThemeIndex = 0;
+                    console.log('🎨 Using default theme');
+                }
             }
         }
         
@@ -57,8 +69,14 @@
         // Update loading GIF
         updateLoadingGif(theme);
         
-        // Save theme preference
+        // Save theme preference to both localStorage and sessionStorage
         localStorage.setItem('currentTheme', theme);
+        sessionStorage.setItem('currentTheme', theme);
+        
+        // Also save with timestamp for debugging
+        localStorage.setItem('currentTheme_timestamp', new Date().toISOString());
+        
+        console.log('🎨 Theme saved:', theme);
         
         // Apply theme-specific effects
         if (theme === THEMES.CHRISTMAS) {
@@ -561,6 +579,58 @@
         document.head.appendChild(style);
     }
     
+    // Handle logout and page unload events
+    function setupPersistenceEvents() {
+        // Save theme before page unload
+        window.addEventListener('beforeunload', function() {
+            if (currentTheme) {
+                localStorage.setItem('currentTheme', currentTheme);
+                sessionStorage.setItem('currentTheme', currentTheme);
+                console.log('🎨 Theme saved on page unload:', currentTheme);
+            }
+        });
+        
+        // Save theme on visibility change (when user switches tabs or minimizes)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && currentTheme) {
+                localStorage.setItem('currentTheme', currentTheme);
+                sessionStorage.setItem('currentTheme', currentTheme);
+                console.log('🎨 Theme saved on visibility change:', currentTheme);
+            }
+        });
+        
+        // Listen for logout events (if any logout buttons exist)
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a, button');
+            if (target) {
+                const href = target.getAttribute('href');
+                const text = target.textContent.toLowerCase();
+                const classList = target.className.toLowerCase();
+                
+                // Check if this is a logout action
+                if (href && (href.includes('logout') || href.includes('signout')) ||
+                    text.includes('logout') || text.includes('sign out') ||
+                    classList.includes('logout') || classList.includes('signout')) {
+                    
+                    // Save current theme before logout
+                    if (currentTheme) {
+                        localStorage.setItem('currentTheme', currentTheme);
+                        sessionStorage.setItem('currentTheme', currentTheme);
+                        console.log('🎨 Theme saved before logout:', currentTheme);
+                    }
+                }
+            }
+        });
+        
+        // Save theme periodically (every 30 seconds) as backup
+        setInterval(function() {
+            if (currentTheme) {
+                localStorage.setItem('currentTheme', currentTheme);
+                sessionStorage.setItem('currentTheme', currentTheme);
+            }
+        }, 30000);
+    }
+
     // Initialize everything when DOM is ready
     function init() {
         // Wait for DOM to be ready
@@ -574,6 +644,9 @@
         
         // Add theme SweetAlert styles
         addThemeSweetAlertStyles();
+        
+        // Setup persistence events
+        setupPersistenceEvents();
         
         // Initialize theme
         initTheme();
@@ -597,7 +670,32 @@
         applyTheme: applyTheme,
         cycleTheme: cycleTheme,
         getCurrentTheme: () => currentTheme,
-        getAvailableThemes: () => THEME_ORDER
+        getAvailableThemes: () => THEME_ORDER,
+        saveTheme: () => {
+            if (currentTheme) {
+                localStorage.setItem('currentTheme', currentTheme);
+                sessionStorage.setItem('currentTheme', currentTheme);
+                localStorage.setItem('currentTheme_timestamp', new Date().toISOString());
+                console.log('🎨 Theme manually saved:', currentTheme);
+                return true;
+            }
+            return false;
+        },
+        clearTheme: () => {
+            localStorage.removeItem('currentTheme');
+            localStorage.removeItem('currentTheme_timestamp');
+            sessionStorage.removeItem('currentTheme');
+            console.log('🎨 Theme preferences cleared');
+        },
+        getThemeInfo: () => {
+            return {
+                current: currentTheme,
+                saved: localStorage.getItem('currentTheme'),
+                session: sessionStorage.getItem('currentTheme'),
+                timestamp: localStorage.getItem('currentTheme_timestamp'),
+                available: THEME_ORDER
+            };
+        }
     };
     
     // Initialize
