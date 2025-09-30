@@ -727,7 +727,13 @@
                         var remarks = $('#remarks').val();
                         var office_id = $('#office').val();
                         var isautoSO = $('#isautoSO').val();
-                        var userid = <?php echo $_SESSION['userid']; ?>;
+                        // var userid = <?php echo $_SESSION['userid']; ?>;
+                        var userid;
+                                    if ([100, 99, 138].includes(parseInt(sub_category_id)) && "<?php echo $_SESSION['userid']; ?>" == "<?php echo $_SESSION['red_sec']; ?>") {
+                                        userid = <?php echo json_encode($_SESSION['red_userid']); ?>;
+                                    } else {
+                                        userid = <?php echo json_encode($_SESSION['userid']); ?>;
+                                    }
                         if(action_id == 0){
                             var status = 'Closed';
                         }else{

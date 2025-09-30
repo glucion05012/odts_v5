@@ -8,6 +8,7 @@ $route['dashboard'] = 'Dashboardcontroller';
 $route['maintenance'] = 'Dashboardcontroller/maintenance';
 
 //dms
+$route['red_inbox'] = 'Inboxcontroller/red_inbox';
 $route['inbox'] = 'Inboxcontroller/inbox';
 $route['inbox/new'] = 'Inboxcontroller/new';
 $route['inbox/process/(:any)'] = 'Inboxcontroller/process/$1';

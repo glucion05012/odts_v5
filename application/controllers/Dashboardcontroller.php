@@ -20,6 +20,7 @@
                         $_SESSION['session_id'] = $uss['session_id'];
                         $_SESSION['userid'] = $uss['userid'];
                         $_SESSION['red_userid'] = 1465;
+                        $_SESSION['red_sec'] = 275; //red secretary
                         $_SESSION['fullname'] = $uss['name'];
                         $_SESSION['employee_type'] = $uss['employee_type'];
                     }

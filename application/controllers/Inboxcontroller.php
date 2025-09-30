@@ -15,6 +15,16 @@
             $this->load->view('templates/footer');
         }
 
+        public function red_inbox(){
+           
+            $data['inbox'] =  $this->Dms_model->dms_list_forward_to();
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar', $data);
+            $this->load->view('dms/red_inbox');
+            $this->load->view('templates/footer');
+        }
+
         public function all_transactions(){
             //for count of inbox transactions
             $data['inbox'] =  $this->Dms_model->dms_list_forward_to();
@@ -341,7 +351,7 @@
         }
 
         
-        public function dms_inbox_list_ajax($userid){
+        public function dms_inbox_list_ajax($userid, $isRedSec){
             $draw = intval($this->input->post("draw"));
             $start = intval($this->input->post("start"));
             $length = intval($this->input->post("length"));
@@ -349,8 +359,15 @@
             $search = $this->input->post('search');
             $search = $search['value'];
             
-            $query =  $this->Dms_model->dms_list_ajax_inbox($userid, $length, $start, $search);
-            $query_all = $this->Dms_model->dms_list_ajax_inbox_count($userid);
+            if($isRedSec == 'red'){
+                //for red secretary
+                $query =  $this->Dms_model->dms_list_ajax_inbox_red($userid, $length, $start, $search);
+                $query_all = $this->Dms_model->dms_list_ajax_inbox_red_count($userid);
+            }else{
+                //for regular user
+                $query =  $this->Dms_model->dms_list_ajax_inbox($userid, $length, $start, $search);
+                $query_all = $this->Dms_model->dms_list_ajax_inbox_count($userid);
+            }
          
             if($query_all > 0){
                 foreach($query as $rows){

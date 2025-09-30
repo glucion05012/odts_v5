@@ -114,6 +114,39 @@
                   </p>
                 </a>
               </li>
+              <!-- RED Secretary -->
+              <?php if($_SESSION['userid'] == $_SESSION['red_sec'] ) : ?>
+                <li class="nav-item">
+                  <a href="<?php echo base_url(); ?>red_inbox" class="nav-link">
+                  <i class="nav-icon fa fa-user"></i>
+                    <p>RED Inbox
+                        <!-- <span class="badge badge-success right" title="Process">
+                          <?php 
+                            $i = 0;
+                            foreach ($inbox AS $inb) {
+                                if ($inb['ts_accepted_date'] != '') {
+                                  $i++;
+                                }
+                            }
+                            echo $i;
+                          ?>
+                        </span>
+                        <span class="badge badge-primary right" title="Receive">
+                          <?php 
+                            $i = 0;
+                            foreach ($inbox AS $inb) {
+                                if ($inb['ts_accepted_date'] == '') {
+                                  $i++;
+                                }
+                            }
+                            echo $i;
+                          ?>  
+                        </span> -->
+                    </p>
+                  </a>
+                </li>
+              <?php endif; ?>
+              <!-- RED Secretary End -->
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>outbox" class="nav-link">
                 <i class="nav-icon fa fa-folder-open"></i>

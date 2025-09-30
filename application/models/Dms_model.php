@@ -166,6 +166,121 @@ LIMIT $start, $length;");
 
         return $query->num_rows();
     }
+
+    public function dms_list_ajax_inbox_red($userid, $length, $start, $search){
+        $red_id = $_SESSION['red_userid'];
+
+            $query = $this->db->query("SELECT 
+        a.*,
+        b.main_category,
+        c.sub_category,
+        d.ts_action,
+        d.ts_action_id,
+        d.ts_attachment_type,
+        d.ts_remarks,
+        d.ts_forwarded_by_id,
+        d.ts_forwarded_date,
+        d.ts_timestamp_forwarded_date,
+        d.ts_forwarded_to_id,
+        d.ts_accepted_date,
+        d.ts_timestamp_accepted_date,
+        d.ts_transaction_id,
+        d.ts_status,
+        d.ts_office_id,
+        d.ts_main_dms_id
+    FROM dms_dms a
+    LEFT JOIN conf_category b ON a.category_id = b.id
+    LEFT JOIN conf_sub_category c ON a.sub_category_id = c.id
+    LEFT JOIN (
+        SELECT
+            dt.id AS ts_transaction_id,
+            dt.forwarded_by_id AS ts_forwarded_by_id,
+            dt.forwarded_to_id AS ts_forwarded_to_id,
+            dt.dms_id,
+            dt.accepted_date AS ts_accepted_date,
+            dt.timestamp_accepted_date AS ts_timestamp_accepted_date,
+            dt.office_id AS ts_office_id,
+            dt.status AS ts_status,
+            ac.action AS ts_action,
+            dt.action_id AS ts_action_id,
+            dt.attachment_type AS ts_attachment_type,
+            dt.remarks AS ts_remarks,
+            dt.forwarded_date AS ts_forwarded_date,
+            dt.timestamp_forwarded_date AS ts_timestamp_forwarded_date,
+            dt.main_dms_id AS ts_main_dms_id
+        FROM dms_transaction dt
+        LEFT JOIN conf_action ac ON dt.action_id = ac.id
+        WHERE dt.id IN (
+            SELECT MAX(dt2.id) 
+            FROM dms_transaction dt2 
+            GROUP BY dt2.dms_id
+        )
+    ) AS d ON a.id = d.dms_id
+    WHERE 
+        d.ts_forwarded_to_id = $red_id AND
+        c.id IN (100, 99, 138) AND
+        (
+            a.reference_no LIKE ('%$search%') OR 
+            a.subject_name LIKE ('%$search%')
+        ) AND 
+        a.status = 'Active'
+    ORDER BY 
+        CASE WHEN a.category_id = 13 THEN 0 ELSE 1 END,
+        d.ts_forwarded_date ASC
+    LIMIT $start, $length;");
+
+            return $query->result_array();
+    }
+
+    public function dms_list_ajax_inbox_red_count($userid){
+        $red_id = $_SESSION['red_userid'];
+
+        $query = $this->db->query("SELECT 
+                                a.*,
+                                b.main_category,
+                                c.sub_category,
+                                d.ts_action,
+                                d.ts_action_id,
+                                d.ts_attachment_type,
+                                d.ts_remarks,
+                                d.ts_forwarded_by_id,
+                                d.ts_forwarded_date,
+                                d.ts_timestamp_forwarded_date,
+                                d.ts_forwarded_to_id,
+                                d.ts_accepted_date,
+                                d.ts_timestamp_accepted_date,
+                                d.ts_transaction_id,
+                                d.ts_status,
+                                d.ts_office_id,
+                                d.ts_main_dms_id
+                                FROM dms_dms a
+                                LEFT JOIN conf_category b on a.category_id=b.id
+                                LEFT JOIN conf_sub_category c on a.sub_category_id=c.id
+                                LEFT JOIN (
+                                            select
+                                                dt.id as ts_transaction_id,
+                                                dt.forwarded_by_id as ts_forwarded_by_id,
+                                                dt.forwarded_to_id as ts_forwarded_to_id,
+                                                dt.dms_id,
+                                                dt.accepted_date as ts_accepted_date,
+                                                dt.timestamp_accepted_date as ts_timestamp_accepted_date,
+                                                dt.office_id as ts_office_id,
+                                                dt.status as ts_status,
+                                                ac.action as ts_action,
+                                                dt.action_id as ts_action_id,
+                                                dt.attachment_type as ts_attachment_type,
+                                                dt.remarks as ts_remarks,
+                                               	dt.forwarded_date as ts_forwarded_date,
+                                               	dt.timestamp_forwarded_date as ts_timestamp_forwarded_date,
+                                                dt.main_dms_id as ts_main_dms_id
+                                            from dms_transaction as dt
+                                            left join conf_action as ac on dt.action_id=ac.id
+                                    WHERE dt.id IN (SELECT max(dt2.id) from dms_transaction dt2
+                                    group by dt2.dms_id
+                                        ))as d on a.id=d.dms_id where d.ts_forwarded_to_id = $red_id and c.id IN (100, 99, 138) and a.status = 'Active'");
+
+        return $query->num_rows();
+    }
     
     public function dms_list_ajax_outbox($userid, $length, $start, $search){
         $query = $this->db->query("SELECT 

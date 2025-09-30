@@ -203,7 +203,9 @@ $(document).ready(function(e){
             "bDestroy": true,
             'order': [],
             'ajax': {
-                url : base_url+'Inboxcontroller/dms_inbox_list_ajax/'+<?php echo $_SESSION['userid']; ?>,
+                url: base_url + 'Inboxcontroller/dms_inbox_list_ajax/' + 
+                                '<?php echo $_SESSION['userid']; ?>' + '/' + 
+                                'regular',
                 type : 'POST',
                 dataSrc: function(json) {
                     console.log(json);
