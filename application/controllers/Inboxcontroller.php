@@ -420,7 +420,7 @@
                         $action_btn = '<button type="button" id ="receiveBtn" data-var1="'.$rows['reference_no'].'" data-var2="'.$rows['ts_transaction_id'].'" data-var3="'.base64_encode($rows['ts_transaction_id']).'" class="receivebtn btn btn-primary btn-sm waves-effect waves-light" >Receive</button>';
                     }else{
                         if($rows['ts_action_id'] != 0){
-                            $action_btn = '<a class="viewbtn btn btn-success btn-sm waves-effect waves-light" href="inbox/process/'.base64_encode($rows['ts_transaction_id']).'"><span class="btn-label"> Process</a>';
+                            $action_btn = '<a class="viewbtn btn btn-success btn-sm waves-effect waves-light" href="inbox/process/'.base64_encode($rows['ts_transaction_id']).'/'.$isRedSec.'"><span class="btn-label"> Process</a>';
                         }
                     }
                     //action button end
@@ -573,7 +573,7 @@
             echo json_encode($data);
         }
         
-        public function process($id){
+        public function process($id, $source = 'regular'){
             $data['category_list'] =  $this->Config_model->category_list();
             $data['sub_category_list'] =  $this->Config_model->sub_category_list();
             $data['action_list'] =  $this->Config_model->action_list();
@@ -590,6 +590,7 @@
             $data['notice_list'] =  $this->Notice_model->list();
 
             $data['inbox'] =  $this->Dms_model->dms_list_forward_to();
+            $data['source'] =  $source; // Pass the source to the view
 
             $this->load->view('templates/header');
             $this->load->view('templates/navbar', $data);

@@ -11,7 +11,7 @@ $route['maintenance'] = 'Dashboardcontroller/maintenance';
 $route['red_inbox'] = 'Inboxcontroller/red_inbox';
 $route['inbox'] = 'Inboxcontroller/inbox';
 $route['inbox/new'] = 'Inboxcontroller/new';
-$route['inbox/process/(:any)'] = 'Inboxcontroller/process/$1';
+$route['inbox/process/(:any)/(:any)'] = 'Inboxcontroller/process/$1/$2';
 
 $route['outbox'] = 'Outboxcontroller/outbox';
 $route['all'] = 'Inboxcontroller/all_transactions';

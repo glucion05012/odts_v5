@@ -71,6 +71,7 @@
 
                         <!-- <input type="hidden" id="isautoSO" value="<?php echo $isatuoSO ; ?>"> -->
                         <input type="hidden" id="isautoSO" value="<?php echo $dms_transaction_list_one['so_exists'] ; ?>">
+                        <input type="hidden" id="inbox_source" value="<?php echo isset($source) ? $source : 'regular'; ?>">
 
                     </div>  
                     <div class="col-sm-1" style='padding-top: 1rem'></div>
@@ -727,9 +728,10 @@
                         var remarks = $('#remarks').val();
                         var office_id = $('#office').val();
                         var isautoSO = $('#isautoSO').val();
+                        var inbox_source = $('#inbox_source').val();
                         // var userid = <?php echo $_SESSION['userid']; ?>;
                         var userid;
-                                    if ([100, 99, 138].includes(parseInt(sub_category_id)) && "<?php echo $_SESSION['userid']; ?>" == "<?php echo $_SESSION['red_sec']; ?>") {
+                                    if (inbox_source == 'red') {
                                         userid = <?php echo json_encode($_SESSION['red_userid']); ?>;
                                     } else {
                                         userid = <?php echo json_encode($_SESSION['userid']); ?>;
@@ -776,6 +778,9 @@
                                 let action_id = (JSON.parse(resac));
                                 var countdz= myDropzone.files.length;
                                 
+                                // Check if transaction is from red_inbox or regular inbox
+                                var redirect_url = (inbox_source === 'red') ? "<?php echo base_url('red_inbox'); ?>" : "<?php echo base_url('inbox'); ?>";
+                                
                                 if(countdz == 0){
                                     if(action_id == 0){
                                         Swal.fire({
@@ -783,7 +788,7 @@
                                         title: "Success",
                                         html: "Transaction Successfully Closed.",
                                         }).then(function(){ 
-                                            window.location = "<?php  echo base_url('inbox'); ?>";
+                                            window.location = redirect_url;
                                         });
                                     }else{
                                         Swal.fire({
@@ -791,7 +796,7 @@
                                         title: "Success",
                                         html: "Transaction Successfully Forwarded to <b style='color:blue'>" + for_name + "</b>.",
                                         }).then(function(){ 
-                                            window.location = "<?php  echo base_url('inbox'); ?>";
+                                            window.location = redirect_url;
                                         });
                                     }
                                         
@@ -807,7 +812,7 @@
                                             title: "Success",
                                             html: "Transaction Successfully Closed.",
                                             }).then(function(){ 
-                                                window.location = "<?php  echo base_url('inbox'); ?>";
+                                                window.location = redirect_url;
                                             });
                                         }else{
                                             Swal.fire({
@@ -815,7 +820,7 @@
                                             title: "Success",
                                             html: "Transaction Successfully Forwarded to <b style='color:blue'>" + for_name + "</b>.",
                                             }).then(function(){ 
-                                                window.location = "<?php  echo base_url('inbox'); ?>";
+                                                window.location = redirect_url;
                                             });
                                         }
                                     });

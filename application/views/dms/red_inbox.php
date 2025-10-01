@@ -330,7 +330,7 @@ $(document).ready(function(e){
                                 title: "Success",
                                 html: "Transaction Successfully Received. <br> Reference No. <b style='color:blue'>" + reference_no + "</b>.",
                                 }).then(function(){ 
-                                    window.location = "<?php  echo base_url(); ?>"+'inbox/process/'+transaction_id_encoded;
+                                    window.location = "<?php  echo base_url(); ?>"+'inbox/process/'+transaction_id_encoded+'/red';
                             });
                         }
                     })  
